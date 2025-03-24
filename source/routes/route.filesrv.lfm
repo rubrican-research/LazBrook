@@ -1,0 +1,23 @@
+object FilesrvRouter: TFilesrvRouter
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 265
+  HorizontalOffset = 277
+  VerticalOffset = 449
+  Width = 291
+  object router: TBrookURLRouter
+    Routes = <    
+      item
+        Default = True
+        Pattern = '/'
+      end>
+    OnNotFound = routerNotFound
+    Left = 80
+    Top = 32
+  end
+  object BrookMIME: TBrookMIME
+    FileName = 'mime.types'
+    Left = 80
+    Top = 104
+  end
+end

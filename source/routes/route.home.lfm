@@ -1,0 +1,42 @@
+object HomeRouter: THomeRouter
+  OldCreateOrder = False
+  Height = 216
+  HorizontalOffset = 1105
+  VerticalOffset = 431
+  Width = 291
+  object router: TBrookURLRouter
+    Routes = <    
+      item
+        Pattern = '/about'
+        Methods = [rmGET]
+        OnRequest = OnAbout
+      end    
+      item
+        Default = True
+        Pattern = '/home'
+        OnRequest = onDefault
+      end>
+    Left = 16
+    Top = 24
+  end
+  object api1router: TBrookURLRouter
+    Routes = <    
+      item
+        Pattern = '/about'
+        Methods = [rmGET]
+        OnRequest = OnAbout
+      end    
+      item
+        Default = True
+        Pattern = '/one/(?P<file>[\w\-\._@\s]+)'
+        OnRequest = onOne
+      end    
+      item
+        Pattern = '/two(?P<file>[/\w\-\._@\s]+)'
+        OnRequest = onTwo
+      end>
+    OnRoute = api1routerRoute
+    Left = 96
+    Top = 24
+  end
+end

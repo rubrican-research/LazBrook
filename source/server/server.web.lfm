@@ -1,0 +1,64 @@
+object Webserver: TWebserver
+  OnCreate = DataModuleCreate
+  OldCreateOrder = True
+  Height = 265
+  HorizontalOffset = 484
+  VerticalOffset = 282
+  Width = 676
+  object BrookLibraryLoader: TBrookLibraryLoader
+    Active = True
+    LibraryName = 'R:\Data\Dev\Libraries\fpcwebapp\bin\libsagui-3.dll'
+    Left = 64
+    Top = 24
+  end
+  object BrookURLEntryPoints: TBrookURLEntryPoints
+    List = <    
+      item
+        Name = '/'
+        Router = HomeRouter.router
+      end    
+      item
+        Name = '/assets'
+        Router = FilesrvRouter.router
+      end    
+      item
+        Name = '/api1'
+        Router = HomeRouter.api1router
+      end    
+      item
+        Name = '/shutdown'
+        Router = shutdownRouter
+      end>
+    Left = 224
+    Top = 24
+  end
+  object BrookHTTPServer: TBrookHTTPServer
+    Port = 1123
+    Threaded = True
+    NoFavicon = True
+    OnRequest = BrookHTTPServerRequest
+    OnRequestError = BrookHTTPServerRequestError
+    Left = 64
+    Top = 96
+  end
+  object BrookLogger: TBrookLogger
+    Filters.Strings = (
+      'INFO'
+      'HINT'
+      'DEBUG'
+    )
+    Left = 376
+    Top = 24
+  end
+  object shutdownRouter: TBrookURLRouter
+    Routes = <    
+      item
+        Default = True
+        Pattern = '/'
+        Methods = [rmGET]
+        OnRequest = shutdownRouterRoutes0Request
+      end>
+    Left = 224
+    Top = 96
+  end
+end
