@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Console"/>
+    <Units>
+      <Unit>
+        <Filename Value="LazBrook.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="5" Y="32"/>
+        <UsageCount Value="108"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="source\gui\form.main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="WebServerGui"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit>
+      <Unit>
+        <Filename Value="source\pages\page.home.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit>
+      <Unit>
+        <Filename Value="source\pages\pages.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit>
+      <Unit>
+        <Filename Value="gui\form.main.pas"/>
+        <ComponentName Value="WebServerGui"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="37"/>
+        <UsageCount Value="108"/>
+      </Unit>
+      <Unit>
+        <Filename Value="pages\page.home.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="18"/>
+        <UsageCount Value="108"/>
+      </Unit>
+      <Unit>
+        <Filename Value="pages\pages.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="14"/>
+        <UsageCount Value="81"/>
+      </Unit>
+      <Unit>
+        <Filename Value="server\server.defines.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="20"/>
+        <UsageCount Value="33"/>
+      </Unit>
+      <Unit>
+        <Filename Value="server\server.init.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="13"/>
+        <UsageCount Value="33"/>
+      </Unit>
+      <Unit>
+        <Filename Value="routes\route.base.pas"/>
+        <ComponentName Value="RouterBase"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="23"/>
+        <CursorPos Y="30"/>
+        <UsageCount Value="107"/>
+      </Unit>
+      <Unit>
+        <Filename Value="server\server.web.pas"/>
+        <ComponentName Value="Webserver"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="72"/>
+        <CursorPos X="41" Y="91"/>
+        <UsageCount Value="106"/>
+      </Unit>
+      <Unit>
+        <Filename Value="routes\route.filesrv.pas"/>
+        <ComponentName Value="FilesrvRouter"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="283"/>
+        <CursorPos X="10" Y="318"/>
+        <UsageCount Value="105"/>
+      </Unit>
+      <Unit>
+        <Filename Value="server\server.stub.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="42" Y="24"/>
+        <UsageCount Value="55"/>
+      </Unit>
+      <Unit>
+        <Filename Value="routes\route.home.pas"/>
+        <ComponentName Value="HomeRouter"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="6"/>
+        <CursorPos X="9" Y="23"/>
+        <UsageCount Value="99"/>
+      </Unit>
+      <Unit>
+        <Filename Value="db\sqlitehelper.pas"/>
+        <ComponentName Value="DBModule"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="22"/>
+        <CursorPos X="4" Y="298"/>
+        <UsageCount Value="54"/>
+      </Unit>
+      <Unit>
+        <Filename Value="pkg\sugar.http.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="25" Y="41"/>
+        <UsageCount Value="27"/>
+      </Unit>
+      <Unit>
+        <Filename Value="pkg\sugar.utils.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="69" Y="3"/>
+        <UsageCount Value="25"/>
+      </Unit>
+      <Unit>
+        <Filename Value="pkg\sugar.collections.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="277"/>
+        <UsageCount Value="17"/>
+      </Unit>
+      <Unit>
+        <Filename Value="routes\route.dash.pas"/>
+        <ComponentName Value="DashRouter"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="6"/>
+        <UsageCount Value="11"/>
+      </Unit>
+      <Unit>
+        <Filename Value="filesrv.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="11"/>
+        <UsageCount Value="39"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\brookframework\Source\BrookHTTPRequest.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="102"/>
+        <CursorPos X="30" Y="122"/>
+        <UsageCount Value="16"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\brookframework\Source\BrookUtility.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="362"/>
+        <CursorPos X="3" Y="366"/>
+        <UsageCount Value="16"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\brookframework\Source\libsagui.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1204"/>
+        <CursorPos X="16" Y="1215"/>
+        <UsageCount Value="16"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\fpc\3.2.2\source\packages\hash\src\md5.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="813"/>
+        <CursorPos X="3" Y="815"/>
+        <UsageCount Value="8"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\fpc\3.2.2\source\packages\rtl-objpas\src\inc\dateutils.pp"/>
+        <UnitName Value="DateUtils"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="5"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\fpc\3.2.2\source\packages\rtl-objpas\src\inc\dateutil.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1574"/>
+        <CursorPos X="3" Y="1576"/>
+        <UsageCount Value="11"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\dev\ninjav3bpackages\packages\rbhtml\vuejs.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="5"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\dev\ninjav3bpackages\packages\rbhtml\htmlbuilder.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="9648"/>
+        <CursorPos X="5" Y="9651"/>
+        <UsageCount Value="5"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\dev\ninjav3bpackages\packages\rbutils\rbcollections.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="952"/>
+        <CursorPos X="39" Y="961"/>
+        <UsageCount Value="5"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\sugar\src\mod\sugar.webpage.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="306"/>
+        <CursorPos X="5" Y="310"/>
+        <UsageCount Value="8"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\sugar\original\rbhtml\htmlpage.pas"/>
+        <UnitName Value="HtmlPage"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="570"/>
+        <CursorPos X="5" Y="624"/>
+        <UsageCount Value="7"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\sugar\src\mod\sugar.vuejs.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1890"/>
+        <CursorPos X="18" Y="1917"/>
+        <UsageCount Value="8"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\sugar\original\rbhtml\vuejs.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2112"/>
+        <CursorPos X="3" Y="2165"/>
+        <UsageCount Value="7"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\sugar\src\mod\sugar.jshelpers.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="124"/>
+        <UsageCount Value="8"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\sugar\original\rbhtml\jshelpers.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="275"/>
+        <CursorPos Y="328"/>
+        <UsageCount Value="7"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\sugar\src\mod\sugar.jsonbuilder.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="198"/>
+        <CursorPos X="34" Y="72"/>
+        <UsageCount Value="8"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\sugar\original\rbhtml\jsonbuilder.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="227"/>
+        <CursorPos Y="281"/>
+        <UsageCount Value="7"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\sugar\src\mod\sugar.utils.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="514"/>
+        <CursorPos X="5" Y="516"/>
+        <UsageCount Value="20"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\sugar\original\rbutils\rbutils.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="843"/>
+        <CursorPos Y="854"/>
+        <UsageCount Value="6"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\brookframework\Source\BrookLibraryLoader.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="142"/>
+        <CursorPos Y="156"/>
+        <UsageCount Value="7"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\lcl\lresources.pp"/>
+        <UnitName Value="LResources"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3119"/>
+        <CursorPos X="23" Y="3142"/>
+        <UsageCount Value="17"/>
+      </Unit>
+      <Unit>
+        <Filename Value="websrv.lfm"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="19" Y="9"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\objpas\sysutils\filutil.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="337"/>
+        <CursorPos X="3" Y="339"/>
+        <UsageCount Value="6"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\objpas\sysutils\filutilh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="190"/>
+        <CursorPos X="40" Y="224"/>
+        <UsageCount Value="6"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\sugar\src\mod\sugar.httphelper.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="154"/>
+        <CursorPos X="24" Y="111"/>
+        <UsageCount Value="7"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\lcl\include\customform.inc"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="2036"/>
+        <CursorPos Y="2056"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\lcl\include\application.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2485"/>
+        <CursorPos X="28" Y="2496"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\lcl\include\sysenvapis_win.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="313"/>
+        <CursorPos X="3" Y="353"/>
+        <UsageCount Value="6"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\lcl\forms.pp"/>
+        <UnitName Value="Forms"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1313"/>
+        <CursorPos X="3" Y="1329"/>
+        <UsageCount Value="12"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\lcl\include\customtrayicon.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="31"/>
+        <CursorPos Y="50"/>
+        <UsageCount Value="6"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\lcl\interfacebase.pp"/>
+        <UnitName Value="InterfaceBase"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="118"/>
+        <CursorPos X="15" Y="138"/>
+        <UsageCount Value="6"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\inc\strings.pp"/>
+        <UnitName Value="Strings"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="16"/>
+        <CursorPos X="18" Y="26"/>
+        <UsageCount Value="26"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\objpas\sysutils\syspch.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="55"/>
+        <CursorPos X="60" Y="72"/>
+        <UsageCount Value="25"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\objpas\sysutils\syspchh.inc"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="70" Y="18"/>
+        <UsageCount Value="25"/>
+      </Unit>
+      <Unit>
+        <Filename Value="routes\route.base.lfm"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="4" Y="7"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit>
+      <Unit>
+        <Filename Value="routes\route.home.lfm"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="18"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit>
+      <Unit>
+        <Filename Value="routes\route.filesrv.lfm"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="33" Y="8"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\brookframework\Source\libsagui.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1120"/>
+        <CursorPos X="48" Y="1207"/>
+        <UsageCount Value="8"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.logger.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="133"/>
+        <CursorPos X="10" Y="142"/>
+        <UsageCount Value="18"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\objpas\fgl.pp"/>
+        <TopLine Value="1813"/>
+        <CursorPos X="5" Y="1824"/>
+        <UsageCount Value="17"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.utils.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="253"/>
+        <CursorPos X="16" Y="275"/>
+        <UsageCount Value="14"/>
+      </Unit>
+      <Unit>
+        <Filename Value="server\server.intf.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="15"/>
+        <UsageCount Value="13"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\brookframework\Source\BrookURLRouter.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="159"/>
+        <CursorPos X="3" Y="180"/>
+        <UsageCount Value="12"/>
+      </Unit>
+    </Units>
+    <OtherDefines Count="1">
+      <Define0 Value="CONSERVE"/>
+    </OtherDefines>
+    <JumpHistory HistoryIndex="2">
+      <Position>
+        <Filename Value="LazBrook.lpr"/>
+        <Caret Line="14" Column="54" TopLine="14"/>
+      </Position>
+      <Position>
+        <Filename Value="LazBrook.lpr"/>
+        <Caret Line="50" TopLine="17"/>
+      </Position>
+      <Position>
+        <Filename Value="LazBrook.lpr"/>
+        <Caret Line="32" Column="5"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

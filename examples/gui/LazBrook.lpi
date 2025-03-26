@@ -25,7 +25,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="pages;gui;server;routes"/>
+            <OtherUnitFiles Value="source\gui;source\pages"/>
             <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -77,7 +77,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="pages;gui;server;routes"/>
+            <OtherUnitFiles Value="source\gui;source\pages"/>
             <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -120,12 +120,12 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="..\bin\LazBrook"/>
+            <Filename Value="bin\LazBrook"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="pages;gui;server;routes"/>
-            <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
+            <OtherUnitFiles Value="source\gui;source\pages"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
             <SyntaxOptions>
@@ -175,7 +175,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="pages;gui;server;routes"/>
+            <OtherUnitFiles Value="source\gui;source\pages"/>
             <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -223,6 +223,9 @@
     </RunParams>
     <RequiredPackages>
       <Item>
+        <PackageName Value="Lazbrookpkg"/>
+      </Item>
+      <Item>
         <PackageName Value="fp_sugar"/>
       </Item>
       <Item>
@@ -238,51 +241,17 @@
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="gui\form.main.pas"/>
+        <Filename Value="source\gui\form.main.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="WebServerGui"/>
-        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
-        <Filename Value="pages\page.home.pas"/>
+        <Filename Value="source\pages\page.home.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="pages\pages.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="server\server.defines.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="server\server.init.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="routes\route.base.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="RouterBase"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="DataModule"/>
-      </Unit>
-      <Unit>
-        <Filename Value="server\server.web.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="Webserver"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="DataModule"/>
-      </Unit>
-      <Unit>
-        <Filename Value="routes\route.filesrv.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="FilesrvRouter"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="DataModule"/>
-      </Unit>
-      <Unit>
-        <Filename Value="server\server.stub.pas"/>
+        <Filename Value="source\pages\pages.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
     </Units>
@@ -295,7 +264,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="pages;gui;server;routes"/>
+      <OtherUnitFiles Value="source\gui;source\pages"/>
       <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>

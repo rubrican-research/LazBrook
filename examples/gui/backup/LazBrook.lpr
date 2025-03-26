@@ -10,15 +10,13 @@ uses
 	 athreads,
 	 {$ENDIF}
 	 Interfaces, // this includes the LCL widgetset
-	 Forms, form.main, pages, page.home, server.defines, server.web, sugar.logger,
-	 server.init, server.stub, route.base, route.filesrv;
+	 Forms, form.main, pages, page.home, sugar.logger, server.web;
 
 {$R *.res}
 
 {$IFDEF CONSOLEAPP}
 var
     cmd: string;
-    terminated: boolean = false;
 
 function processCmd(_cmd: shortstring; out _terminate: boolean): string;
 begin

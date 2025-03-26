@@ -8,100 +8,108 @@
       <Unit>
         <Filename Value="LazBrook.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="8"/>
-        <TopLine Value="27"/>
-        <CursorPos X="9" Y="33"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="5" Y="32"/>
         <UsageCount Value="108"/>
         <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="source\gui\form.main.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="WebServerGui"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit>
+      <Unit>
+        <Filename Value="source\pages\page.home.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit>
+      <Unit>
+        <Filename Value="source\pages\pages.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
       </Unit>
       <Unit>
         <Filename Value="gui\form.main.pas"/>
-        <IsPartOfProject Value="True"/>
         <ComponentName Value="WebServerGui"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <CursorPos Y="37"/>
         <UsageCount Value="108"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="pages\page.home.pas"/>
-        <IsPartOfProject Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <CursorPos Y="18"/>
         <UsageCount Value="108"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="pages\pages.pas"/>
-        <IsPartOfProject Value="True"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="-1"/>
         <CursorPos Y="14"/>
         <UsageCount Value="81"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="server\server.defines.pas"/>
-        <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <CursorPos Y="20"/>
         <UsageCount Value="33"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="server\server.init.pas"/>
-        <IsPartOfProject Value="True"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <CursorPos Y="13"/>
         <UsageCount Value="33"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="routes\route.base.pas"/>
-        <IsPartOfProject Value="True"/>
         <ComponentName Value="RouterBase"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="23"/>
         <CursorPos Y="30"/>
         <UsageCount Value="107"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="server\server.web.pas"/>
-        <IsPartOfProject Value="True"/>
         <ComponentName Value="Webserver"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="72"/>
-        <CursorPos Y="130"/>
+        <CursorPos X="41" Y="91"/>
         <UsageCount Value="106"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="routes\route.filesrv.pas"/>
-        <IsPartOfProject Value="True"/>
         <ComponentName Value="FilesrvRouter"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="283"/>
         <CursorPos X="10" Y="318"/>
         <UsageCount Value="105"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="server\server.stub.pas"/>
-        <IsPartOfProject Value="True"/>
-        <EditorIndex Value="5"/>
-        <CursorPos X="47" Y="24"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="42" Y="24"/>
         <UsageCount Value="55"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="routes\route.home.pas"/>
@@ -330,10 +338,12 @@
       </Unit>
       <Unit>
         <Filename Value="R:\Apps\Lazarus\3.8\lcl\include\customform.inc"/>
-        <EditorIndex Value="-1"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
         <TopLine Value="2036"/>
-        <CursorPos Y="2056"/>
-        <UsageCount Value="6"/>
+        <CursorPos X="37" Y="2055"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="R:\Apps\Lazarus\3.8\lcl\include\application.inc"/>
@@ -423,15 +433,13 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.logger.pas"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="133"/>
         <CursorPos X="10" Y="142"/>
         <UsageCount Value="18"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\objpas\fgl.pp"/>
-        <EditorIndex Value="3"/>
         <TopLine Value="1813"/>
         <CursorPos X="5" Y="1824"/>
         <UsageCount Value="17"/>
@@ -439,151 +447,40 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.utils.pas"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="253"/>
         <CursorPos X="16" Y="275"/>
         <UsageCount Value="14"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="server\server.intf.pas"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="-1"/>
         <CursorPos Y="15"/>
         <UsageCount Value="13"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\Libraries\brookframework\Source\BrookURLRouter.pas"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="159"/>
         <CursorPos X="3" Y="180"/>
         <UsageCount Value="12"/>
-        <Loaded Value="True"/>
       </Unit>
     </Units>
     <OtherDefines Count="1">
       <Define0 Value="CONSERVE"/>
     </OtherDefines>
-    <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.utils.pas"/>
-        <Caret Line="263" Column="59" TopLine="243"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.utils.pas"/>
-        <Caret Line="25" Column="37" TopLine="5"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.utils.pas"/>
-        <Caret Line="255" Column="32" TopLine="243"/>
-      </Position>
-      <Position>
-        <Filename Value="routes\route.filesrv.pas"/>
-        <Caret Line="320" Column="41" TopLine="305"/>
-      </Position>
-      <Position>
-        <Filename Value="routes\route.filesrv.pas"/>
-        <Caret Line="344" Column="32" TopLine="331"/>
-      </Position>
-      <Position>
-        <Filename Value="routes\route.filesrv.pas"/>
-        <Caret Line="398" Column="39" TopLine="267"/>
-      </Position>
-      <Position>
-        <Filename Value="routes\route.filesrv.pas"/>
-        <Caret Line="48" Column="23" TopLine="26"/>
-      </Position>
-      <Position>
-        <Filename Value="routes\route.filesrv.pas"/>
-        <Caret Line="382" Column="47" TopLine="354"/>
-      </Position>
-      <Position>
-        <Filename Value="routes\route.filesrv.pas"/>
-        <Caret Line="305" Column="39" TopLine="284"/>
-      </Position>
-      <Position>
-        <Filename Value="routes\route.filesrv.pas"/>
-        <Caret Line="318" Column="7" TopLine="283"/>
-      </Position>
-      <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="280" Column="37" TopLine="220"/>
-      </Position>
-      <Position>
-        <Filename Value="server\server.stub.pas"/>
-        <Caret Line="57" TopLine="9"/>
-      </Position>
+    <JumpHistory HistoryIndex="2">
       <Position>
         <Filename Value="LazBrook.lpr"/>
         <Caret Line="14" Column="54" TopLine="14"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="559" Column="37" TopLine="550"/>
+        <Filename Value="LazBrook.lpr"/>
+        <Caret Line="50" TopLine="17"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="241" Column="29" TopLine="226"/>
-      </Position>
-      <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="402" Column="55" TopLine="375"/>
-      </Position>
-      <Position>
-        <Filename Value="routes\route.base.pas"/>
-        <Caret Line="44" Column="38" TopLine="16"/>
-      </Position>
-      <Position>
-        <Filename Value="routes\route.base.pas"/>
-        <Caret Line="112" TopLine="80"/>
-      </Position>
-      <Position>
-        <Filename Value="routes\route.base.pas"/>
-        <Caret Line="57" Column="14" TopLine="23"/>
-      </Position>
-      <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="312" TopLine="269"/>
-      </Position>
-      <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="104" Column="62" TopLine="85"/>
-      </Position>
-      <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="97" Column="65" TopLine="85"/>
-      </Position>
-      <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="167" Column="5" TopLine="165"/>
-      </Position>
-      <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="93" Column="10" TopLine="76"/>
-      </Position>
-      <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="133" Column="5" TopLine="131"/>
-      </Position>
-      <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="94" Column="10" TopLine="72"/>
-      </Position>
-      <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="157" Column="17" TopLine="136"/>
-      </Position>
-      <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="106" Column="24" TopLine="85"/>
-      </Position>
-      <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="105" Column="19" TopLine="84"/>
-      </Position>
-      <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="106" Column="20" TopLine="84"/>
+        <Filename Value="LazBrook.lpr"/>
+        <Caret Line="32" Column="5"/>
       </Position>
     </JumpHistory>
     <RunParams>

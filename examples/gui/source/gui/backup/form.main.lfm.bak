@@ -1,0 +1,70 @@
+object WebServerGui: TWebServerGui
+  Left = 663
+  Height = 138
+  Top = 621
+  Width = 381
+  Caption = 'LazBrook Web Server'
+  ClientHeight = 138
+  ClientWidth = 381
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '3.8.0.0'
+  object lblBackground: TLabel
+    Left = 7
+    Height = 124
+    Top = 7
+    Width = 367
+    Align = alClient
+    BorderSpacing.Around = 7
+    Caption = 'LazBrook Web Server'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = 15918295
+    Font.Height = -27
+    Font.Name = 'Bahnschrift SemiBold SemiConden'
+    Font.Pitch = fpVariable
+    Font.Quality = fqProof
+    Font.Style = [fsBold]
+    Layout = tlBottom
+    ParentColor = False
+    ParentFont = False
+  end
+  object Button1: TButton
+    Left = 324
+    Height = 50
+    Top = 19
+    Width = 50
+    Caption = 'Start'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Label1: TLabel
+    Left = 7
+    Height = 16
+    Top = 7
+    Width = 35
+    Caption = 'Open:'
+    Font.Name = 'Arial'
+    Font.Quality = fqProof
+    ParentColor = False
+    ParentFont = False
+  end
+  object lblUrl: TLabel
+    Left = 48
+    Height = 16
+    Top = 7
+    Width = 21
+    Caption = '___'
+    Font.Name = 'Arial'
+    Font.Quality = fqProof
+    ParentColor = False
+    ParentFont = False
+    OnClick = lblUrlClick
+  end
+  object TrayIcon1: TTrayIcon
+    BalloonFlags = bfInfo
+    BalloonHint = 'FPC Webserver'
+    Visible = True
+    Left = 280
+    Top = 24
+  end
+end
