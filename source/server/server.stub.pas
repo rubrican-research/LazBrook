@@ -5,11 +5,15 @@ unit server.stub;
 interface
 
 uses
-    Classes, SysUtils;
+    SysUtils;
+
+const
+    LAZBROOK_IDV1 = '{B3F543DF-F070-4D0E-8FA2-9849A2B02B73}';
+
 // This function announces that the library is indeed a LazBrook Server Library
 // AFter loading the library check if this method exists. If it does, check
 // the returned string to correctly identify the library.
-function libIdentity: pChar; stdcall;
+function lazBrookID: pChar; stdcall;
 
 function startServer (_host: pChar; _port: dword): boolean; stdcall;
 function serverRunning: boolean; stdcall;
@@ -20,24 +24,21 @@ function serverURL: pChar; stdcall;
 function serverEndPoints: pChar; stdcall;
 function stopServer: boolean; stdcall;
 
-const
-    LAZBROOKID = 'LazBrook Server Library V1';
-
 implementation
 
 uses
-    server.web, sugar.utils, route.base, route.filesrv, route.home ;
+    server.web, sugar.utils;
 
-function libIdentity: pChar; stdcall;
+function lazBrookID: pChar; stdcall;
 begin
-    Result := getPChar(LAZBROOKID);
+    Result := getPChar(LAZBROOK_IDV1);
 end;
 
 function startServer(_host: pChar; _port: dword): boolean; stdcall;
 begin
     Result := false;
     try
-        Result    := server.web.startServer(_host, _port);
+        Result := server.web.startServer(_host, _port);
 	except
         on E: Exception do begin
             raise;

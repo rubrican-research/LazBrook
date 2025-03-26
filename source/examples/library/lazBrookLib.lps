@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Release"/>
+    <Units>
+      <Unit>
+        <Filename Value="lazBrookLib.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <CursorPos X="22" Y="13"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\server\server.stub.pas"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="37"/>
+        <CursorPos X="15" Y="41"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\server\server.web.pas"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="168"/>
+        <CursorPos X="5" Y="174"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="5">
+      <Position>
+        <Filename Value="lazBrookLib.lpr"/>
+        <Caret Line="6" Column="52"/>
+      </Position>
+      <Position>
+        <Filename Value="lazBrookLib.lpr"/>
+        <Caret Line="13" Column="29"/>
+      </Position>
+      <Position>
+        <Filename Value="lazBrookLib.lpr"/>
+        <Caret Line="10"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.web.pas"/>
+        <Caret Line="99" Column="12" TopLine="64"/>
+      </Position>
+      <Position>
+        <Filename Value="lazBrookLib.lpr"/>
+        <Caret Line="13" Column="22"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.stub.pas"/>
+        <Caret Line="18" Column="20"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

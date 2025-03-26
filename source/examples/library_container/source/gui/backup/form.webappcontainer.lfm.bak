@@ -1,0 +1,200 @@
+object Form1: TForm1
+  Left = 648
+  Height = 745
+  Top = 458
+  Width = 990
+  Caption = 'LazBrook Server Container:: Loads and serves LazBrook Libraries'
+  ClientHeight = 745
+  ClientWidth = 990
+  Constraints.MinWidth = 990
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '3.8.0.0'
+  object Panel1: TPanel
+    Left = 292
+    Height = 745
+    Top = 0
+    Width = 698
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 745
+    ClientWidth = 698
+    TabOrder = 0
+    object Memo1: TMemo
+      Left = 169
+      Height = 680
+      Top = 60
+      Width = 524
+      Align = alClient
+      BorderSpacing.Around = 5
+      TabOrder = 0
+    end
+    object Panel3: TPanel
+      Left = 5
+      Height = 50
+      Top = 5
+      Width = 688
+      Align = alTop
+      BorderSpacing.Around = 5
+      BevelColor = clInactiveCaption
+      BevelInner = bvRaised
+      BevelOuter = bvNone
+      ClientHeight = 50
+      ClientWidth = 688
+      TabOrder = 1
+      object Check: TButton
+        Left = 610
+        Height = 28
+        Top = 11
+        Width = 75
+        Align = alLeft
+        BorderSpacing.Around = 10
+        Caption = 'Check'
+        Enabled = False
+        TabOrder = 0
+      end
+      object Load: TButton
+        Left = 525
+        Height = 28
+        Top = 11
+        Width = 75
+        Align = alLeft
+        BorderSpacing.Around = 10
+        Caption = 'Load'
+        TabOrder = 1
+        OnClick = LoadClick
+      end
+      object Edit1: TEdit
+        Left = 11
+        Height = 22
+        Top = 14
+        Width = 504
+        Align = alLeft
+        BorderSpacing.Top = 3
+        BorderSpacing.Bottom = 3
+        BorderSpacing.Around = 10
+        TabOrder = 2
+        Text = 'R:\Data\Dev\Projects\LazBrook\source\examples\library\bin'
+      end
+    end
+    object Panel4: TPanel
+      Left = 5
+      Height = 680
+      Top = 60
+      Width = 159
+      Align = alLeft
+      BorderSpacing.Around = 5
+      BevelColor = clInactiveCaption
+      BevelInner = bvRaised
+      BevelOuter = bvNone
+      ClientHeight = 680
+      ClientWidth = 159
+      TabOrder = 2
+      object StartServer: TButton
+        Left = 11
+        Height = 30
+        Top = 11
+        Width = 137
+        Align = alTop
+        BorderSpacing.Around = 10
+        Caption = 'StartServer'
+        Enabled = False
+        TabOrder = 0
+        OnClick = StartServerClick
+      end
+      object StopServer: TButton
+        Left = 11
+        Height = 30
+        Top = 51
+        Width = 137
+        Align = alTop
+        BorderSpacing.Around = 10
+        Caption = 'StopServer'
+        Enabled = False
+        TabOrder = 1
+        OnClick = StopServerClick
+      end
+      object Info: TButton
+        Left = 11
+        Height = 30
+        Top = 91
+        Width = 137
+        Align = alTop
+        BorderSpacing.Around = 10
+        Caption = 'Info'
+        Enabled = False
+        TabOrder = 2
+        OnClick = InfoClick
+      end
+      object ServerName: TButton
+        Left = 11
+        Height = 30
+        Top = 131
+        Width = 137
+        Align = alTop
+        BorderSpacing.Around = 10
+        Caption = 'ServerName'
+        Enabled = False
+        TabOrder = 3
+        OnClick = ServerNameClick
+      end
+      object ServerID: TButton
+        Left = 11
+        Height = 30
+        Top = 171
+        Width = 137
+        Align = alTop
+        BorderSpacing.Around = 10
+        Caption = 'ServerID'
+        Enabled = False
+        TabOrder = 4
+        OnClick = ServerIDClick
+      end
+      object ServerAbout: TButton
+        Left = 11
+        Height = 30
+        Top = 211
+        Width = 137
+        Align = alTop
+        BorderSpacing.Around = 10
+        Caption = 'ServerAbout'
+        Enabled = False
+        TabOrder = 5
+        OnClick = ServerAboutClick
+      end
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 745
+    Top = 0
+    Width = 282
+    Align = alLeft
+    BevelOuter = bvNone
+    Caption = 'Panel2'
+    ClientHeight = 745
+    ClientWidth = 282
+    TabOrder = 1
+    object ListView1: TListView
+      Left = 5
+      Height = 735
+      Top = 5
+      Width = 272
+      Align = alClient
+      BorderSpacing.Around = 5
+      Columns = <>
+      TabOrder = 0
+      OnSelectItem = ListView1SelectItem
+    end
+  end
+  object Splitter1: TSplitter
+    Left = 282
+    Height = 745
+    Top = 0
+    Width = 10
+  end
+  object SelectDirectoryDialog1: TSelectDirectoryDialog
+    Left = 256
+    Top = 296
+  end
+end

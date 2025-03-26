@@ -6,11 +6,11 @@ interface
 
 uses
      Classes, SysUtils, Forms, Controls, Graphics, Dialogs, BrookMediaTypes,
-	 route.base, BrookURLRouter, BrookHTTPResponse, BrookHTTPRequest;
+	 BrookURLRouter, BrookHTTPResponse, BrookHTTPRequest, server.defines;
 
 const
     {named group "file". alphanumeric, starts with / and contains -, _ @ and .}
-    pcreFileName  = '/(?P<file>[\w\-\._@\s]+)'; // this has been assigned to the route
+    pcreFileName  = '(?P<file>[/\w\-\._@\s]+)'; // this has been assigned to the route
 
 type
      RFileCacheTags = record
@@ -27,7 +27,7 @@ type
 		  procedure DataModuleCreate(Sender: TObject);
 		  procedure routerNotFound(ASender: TObject; const ARoute: string;
 			   ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
-		  procedure routerRoutes0Request(ASender: TObject;
+		  procedure OnFileRequest(ASender: TObject;
 			   ARoute: TBrookURLRoute; ARequest: TBrookHTTPRequest;
 			   AResponse: TBrookHTTPResponse);
      private
@@ -62,14 +62,33 @@ type
      function sendAsset(const _filepath: string; AResponse: TBrookHTTPResponse): boolean;
      function sendFile(const _filepath: string; AResponse: TBrookHTTPResponse;_offerDownload: boolean = True): boolean;
 
-var
-     FilesrvRouter: TFilesrvRouter;
+
+     function FilesrvRouter: TFilesrvRouter;
 
 implementation
 {$R *.lfm}
 
 uses
-     LazFileUtils, FileUtil, md5, DateUtils, pages, sugar.httphelper, sugar.utils, sugar.logger ;
+     LazFileUtils, FileUtil, md5, DateUtils, sugar.httphelper, sugar.utils, sugar.logger ;
+var
+    myFilesrvRouter : TFilesrvRouter = nil;
+function FilesrvRouter: TFilesrvRouter;
+begin
+    if not assigned(myFilesrvRouter) then
+        Application.CreateForm(TFilesrvRouter, myFilesrvRouter);
+
+    Result := myFilesrvRouter;
+end;
+
+function assetFolder: string;
+begin
+
+end;
+
+procedure setAssetFoldee(const _folder: string);
+begin
+
+end;
 
 function getETag(const _file: string; _lastmodified: string): string;
 begin
@@ -132,7 +151,7 @@ end;
 
 procedure TFilesrvRouter.DataModuleCreate(Sender: TObject);
 begin
-     router.Items[0].Pattern:= pcreFileName;
+     router.Items[0].Pattern:= '/' + pcreFileName;
 end;
 
 procedure TFilesrvRouter.routerNotFound(ASender: TObject; const ARoute: string;
@@ -141,7 +160,7 @@ begin
      AResponse.SendEmpty;
 end;
 
-procedure TFilesrvRouter.routerRoutes0Request(ASender: TObject;
+procedure TFilesrvRouter.OnFileRequest(ASender: TObject;
 	 ARoute: TBrookURLRoute; ARequest: TBrookHTTPRequest;
 	 AResponse: TBrookHTTPResponse);
 begin
@@ -231,18 +250,21 @@ end;
 procedure TFilesrvRouter.DeleteFile(const _route: string;
 	 ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
 begin
+    log('Delete file not implemented');
      AResponse.Send(
-        pages.info('Delete file not implemented'),
+        'Delete file not implemented',
         mimeHTML,
         httpOK.code
      );
+
 end;
 
 procedure TFilesrvRouter.PatchFile(const _route: string;
 	 ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
 begin
+    log('Patch file not implemented');
     AResponse.Send(
-       pages.info('Patch file not implemented'),
+       'Patch file not implemented',
        mimeHTML,
        httpOK.code
     );
@@ -252,8 +274,9 @@ end;
 procedure TFilesrvRouter.ReplaceFile(const _route: string;
 	 ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
 begin
+    log('Replace file not implemented');
      AResponse.Send(
-        pages.info('Replace file not implemented'),
+        'Replace file not implemented',
         mimeHTML,
         httpOK.code
      );
@@ -272,19 +295,25 @@ procedure TFilesrvRouter.ServeFile(const _route: string;
 	     Result := True;
 	     {ETag being sent by libsagui appends  "-gzip". Have to remove from eTag
 	     before comparing.... ugh!}
-	     _len := _fileCacheTags.etag.Length-1;
+         _etag:= _fileCacheTags.etag;
+	     _len := _fileCacheTags.etag.Length;
+
+         log('If-None-Match');
+         log(ARequest.Headers.Get('If-None-Match'));
+
+        {Extract the If-None-Match header}
 	     _noneMatch := Copy(ARequest.Headers.Get('If-None-Match'),1, _len );
-	     _etag:= Copy(_fileCacheTags.etag,1, _len);
 	     r := CompareStr(_noneMatch, _etag);
 
-	     //log(_fileCacheTags.filepath);
-	     //log(_noneMatch, ' vs ',  _etag);
-	     //log('compare string gave ', r);
+	     log(_fileCacheTags.filepath);
+	     log('%s %s %s',[_noneMatch, ' vs ',  _etag]);
+	     log('compare string gave %d',[r]);
+
 	     if (r = 0)
 	          OR
 	        (CompareStr(ARequest.Headers.Get('If-Modified-Since'),_fileCacheTags.last_modified) = 0) then
 	     begin
-	        //Log('If-None-Match is identical so use cache');
+	        Log('If-None-Match is identical so use cache');
 	        Result := False; {Don't send the file}
 	     end;
 	 end;
@@ -294,31 +323,38 @@ var
     _fileETag: RFileCacheTags;
     _offerDownload: boolean;
 begin
-    ThreadSwitch;
     {This is where the files are served}
     {Assume that the urlparamPath in ARoute points to the file needed}
     _filePath := appendPath([downloadPath, _route]);
+
+
     if not FileExists (_filePath) then
     begin
-        log('fileserver:: No file %s', [_filePath]);
         AResponse.SendEmpty;
         Exit;
    	end;
 
     if not FileAge(_filePath, _fileAge) then
     begin
-        log('fileserver:: FileAge returned error %s', [_filePath]);
         AResponse.SendEmpty;
         Exit;
    	end;
 
+
     with _fileETag do
     begin
-        filepath := _filePath;
-        mimeType := getMIMEType(_filepath);
-        last_modified := getHttpTime(_fileAge);
-    	etag := getETag(_filepath, last_modified); // MD5 Hash of filename and modification time
-    end;
+        try
+	        filepath := _filePath;
+	        mimeType := getMIMEType(_filepath);
+	        last_modified := getHttpTime(_fileAge);
+	    	etag := getETag(_filepath, last_modified); // MD5 Hash of filename and modification time
+        except
+            on E:Exception do begin
+                AResponse.Send(e.Message, mimePlainText, THTTPResponses.httpOK.code);
+                Exit;
+			end;
+		end;
+	end;
 
 	AResponse.Headers.AddOrSet('Content-Type', _fileETag.mimeType);
   	AResponse.Headers.AddOrSet('Cache-Control', 'public');
@@ -332,8 +368,6 @@ begin
 					   	  or _fileETag.mimeType.StartsWith('image')
 					   	  or _fileETag.mimeType.StartsWith('audio')
 					   	  or _fileETag.mimeType.StartsWith('text') );
-
-  	//resp.Headers.AddOrSet('Last-Modified', _fileETag.last_modified);
 
   	{ServerFile files from here}
   	try
@@ -358,7 +392,7 @@ procedure TFilesrvRouter.UploadFile(const _route: string;
 	 ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
 begin
      AResponse.Send(
-        pages.info('Upload file not implemented'),
+        'Upload file not implemented',
         mimeHTML,
         httpOK.code
      );

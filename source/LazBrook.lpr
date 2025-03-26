@@ -10,8 +10,8 @@ uses
 	 athreads,
 	 {$ENDIF}
 	 Interfaces, // this includes the LCL widgetset
-	 Forms, form.main, page.home, route.base, server.web, server.stub,
-     route.home, route.filesrv, pages, sugar.logger;
+	 Forms, form.main, pages, page.home, server.defines, server.web, sugar.logger,
+	 server.init, server.stub, route.base, route.filesrv;
 
 {$R *.res}
 
@@ -42,11 +42,11 @@ begin
     writeln('');
     writeln('Serving ' + server.web.serverURL);
     while (not Application.Terminated) do begin
-        readln(cmd);
-        processCmd(cmd, terminated);
+        //readln(cmd);
+        //processCmd(cmd, terminated);
+        Application.Run;
     end;
 end;
-
 {$ENDIF}
 
 begin
@@ -64,8 +64,6 @@ begin
 	Application.CreateForm(TWebServerGui, WebServerGui);
     {$ENDIF}
 
-	Application.CreateForm(THomeRouter, HomeRouter);
-	Application.CreateForm(TFilesrvRouter, FilesrvRouter);
 
     {$IFDEF CONSOLEAPP}
     RunConsoleApp;

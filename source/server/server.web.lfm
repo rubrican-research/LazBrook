@@ -1,9 +1,10 @@
 object Webserver: TWebserver
   OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
   OldCreateOrder = True
-  Height = 265
-  HorizontalOffset = 484
-  VerticalOffset = 282
+  Height = 267
+  HorizontalOffset = 762
+  VerticalOffset = 210
   Width = 676
   object BrookLibraryLoader: TBrookLibraryLoader
     Active = True
@@ -11,44 +12,33 @@ object Webserver: TWebserver
     Left = 64
     Top = 24
   end
-  object BrookURLEntryPoints: TBrookURLEntryPoints
+  object URLEntryPoints: TBrookURLEntryPoints
     List = <    
       item
         Name = '/'
-        Router = HomeRouter.router
+        Router = homeRouter
       end    
       item
         Name = '/assets'
         Router = FilesrvRouter.router
       end    
       item
-        Name = '/api1'
-        Router = HomeRouter.api1router
-      end    
-      item
         Name = '/shutdown'
         Router = shutdownRouter
       end>
+    OnNotFound = URLEntryPointsNotFound
     Left = 224
     Top = 24
   end
-  object BrookHTTPServer: TBrookHTTPServer
+  object HTTPServer: TBrookHTTPServer
     Port = 1123
     Threaded = True
     NoFavicon = True
-    OnRequest = BrookHTTPServerRequest
-    OnRequestError = BrookHTTPServerRequestError
+    OnRequest = HTTPServerRequest
+    OnRequestError = HTTPServerRequestError
+    OnError = HTTPServerError
     Left = 64
-    Top = 96
-  end
-  object BrookLogger: TBrookLogger
-    Filters.Strings = (
-      'INFO'
-      'HINT'
-      'DEBUG'
-    )
-    Left = 376
-    Top = 24
+    Top = 112
   end
   object shutdownRouter: TBrookURLRouter
     Routes = <    
@@ -58,7 +48,41 @@ object Webserver: TWebserver
         Methods = [rmGET]
         OnRequest = shutdownRouterRoutes0Request
       end>
+    Left = 336
+    Top = 24
+  end
+  object homeRouter: TBrookURLRouter
+    Routes = <    
+      item
+        Default = True
+        Pattern = '/'
+        OnRequest = onHomePage
+      end>
     Left = 224
-    Top = 96
+    Top = 120
+  end
+  object BrookURLRouter1: TBrookURLRouter
+    Routes = <    
+      item
+        Pattern = '/route1'
+      end    
+      item
+        Pattern = '/route2'
+      end    
+      item
+        Default = True
+        Pattern = '/route3'
+      end    
+      item
+        Pattern = '/route4'
+      end    
+      item
+        Pattern = '/route5'
+      end    
+      item
+        Pattern = '/route6'
+      end>
+    Left = 440
+    Top = 136
   end
 end

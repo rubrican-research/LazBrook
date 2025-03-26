@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="lazBrookLibContainer.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="38"/>
+      </Unit>
+      <Unit>
+        <Filename Value="source\gui\form.webappcontainer.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="form.WebAppContainer"/>
+        <TopLine Value="157"/>
+        <CursorPos X="44" Y="170"/>
+        <UsageCount Value="38"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="source\form.main.pas"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="17"/>
+        <UsageCount Value="18"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\server\server.intf.pas"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="144"/>
+        <CursorPos X="5" Y="177"/>
+        <UsageCount Value="19"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\..\..\Libraries\sugar\src\mod\sugar.utils.pas"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="526"/>
+        <CursorPos X="9" Y="533"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\lcl\include\customlistview.inc"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="1189"/>
+        <CursorPos X="3" Y="1193"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\lcl\comctrls.pp"/>
+        <UnitName Value="ComCtrls"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="1611"/>
+        <CursorPos X="15" Y="1670"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\lcl\lclmessageglue.pas"/>
+        <UnitName Value="LCLMessageGlue"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="98"/>
+        <CursorPos Y="107"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\server\server.stub.pas"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="37"/>
+        <CursorPos X="5" Y="40"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\objpas\sysutils\syspch.inc"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="69"/>
+        <CursorPos X="3" Y="96"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\server\server.web.pas"/>
+        <ComponentName Value="Webserver"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="168"/>
+        <CursorPos X="5" Y="183"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="29">
+      <Position>
+        <Filename Value="..\..\server\server.intf.pas"/>
+        <Caret Line="67" Column="23" TopLine="48"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.intf.pas"/>
+        <Caret Line="68" Column="21" TopLine="48"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.intf.pas"/>
+        <Caret Line="34" Column="22"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.intf.pas"/>
+        <Caret Line="96" Column="5" TopLine="92"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.stub.pas"/>
+        <Caret Line="16" Column="18"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.stub.pas"/>
+        <Caret Line="38" Column="6"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\..\Libraries\sugar\src\mod\sugar.utils.pas"/>
+        <Caret Line="533" Column="9" TopLine="526"/>
+      </Position>
+      <Position>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\objpas\sysutils\syspch.inc"/>
+        <Caret Line="96" Column="3" TopLine="69"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.web.pas"/>
+        <Caret Line="51" Column="49" TopLine="16"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.intf.pas"/>
+        <Caret Line="70" Column="29" TopLine="48"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.stub.pas"/>
+        <Caret Line="18" Column="14"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.stub.pas"/>
+        <Caret Line="40" Column="5" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="source\gui\form.webappcontainer.pas"/>
+        <Caret Line="170" TopLine="156"/>
+      </Position>
+      <Position>
+        <Filename Value="source\gui\form.webappcontainer.pas"/>
+        <Caret Line="74" Column="7" TopLine="48"/>
+      </Position>
+      <Position>
+        <Filename Value="source\gui\form.webappcontainer.pas"/>
+        <Caret Line="147" Column="5" TopLine="125"/>
+      </Position>
+      <Position>
+        <Filename Value="source\gui\form.webappcontainer.pas"/>
+        <Caret Line="156" Column="5" TopLine="125"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.intf.pas"/>
+        <Caret Line="70" Column="29" TopLine="42"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.intf.pas"/>
+        <Caret Line="35" Column="23" TopLine="15"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.intf.pas"/>
+        <Caret Line="110" Column="5" TopLine="106"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.intf.pas"/>
+        <Caret Line="38" Column="23"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.intf.pas"/>
+        <Caret Line="116" Column="43" TopLine="109"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.intf.pas"/>
+        <Caret Line="31" Column="23" TopLine="20"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.intf.pas"/>
+        <Caret Line="136" Column="5" TopLine="133"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.intf.pas"/>
+        <Caret Line="31" Column="18" TopLine="9"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.intf.pas"/>
+        <Caret Line="136" Column="5" TopLine="133"/>
+      </Position>
+      <Position>
+        <Filename Value="source\gui\form.webappcontainer.pas"/>
+        <Caret Line="18" Column="17" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="source\gui\form.webappcontainer.pas"/>
+        <Caret Line="173" Column="6" TopLine="157"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.intf.pas"/>
+        <Caret Line="35" Column="62"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\server\server.intf.pas"/>
+        <Caret Line="173" Column="15" TopLine="139"/>
+      </Position>
+      <Position>
+        <Filename Value="source\gui\form.webappcontainer.pas"/>
+        <Caret Line="170" Column="44" TopLine="157"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

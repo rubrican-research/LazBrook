@@ -25,7 +25,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="routes;pages;gui;server"/>
+            <OtherUnitFiles Value="pages;gui;server;routes"/>
             <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -77,7 +77,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="routes;pages;gui;server"/>
+            <OtherUnitFiles Value="pages;gui;server;routes"/>
             <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -124,7 +124,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="routes;pages;gui;server"/>
+            <OtherUnitFiles Value="pages;gui;server;routes"/>
             <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -175,7 +175,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="routes;pages;gui;server"/>
+            <OtherUnitFiles Value="pages;gui;server;routes"/>
             <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -245,20 +245,25 @@
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
-        <Filename Value="routes\route.base.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="RouterBase"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="DataModule"/>
-      </Unit>
-      <Unit>
         <Filename Value="pages\page.home.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="routes\route.home.pas"/>
+        <Filename Value="pages\pages.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="HomeRouter"/>
+      </Unit>
+      <Unit>
+        <Filename Value="server\server.defines.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="server\server.init.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="routes\route.base.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="RouterBase"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
       </Unit>
@@ -277,10 +282,6 @@
         <ResourceBaseClass Value="DataModule"/>
       </Unit>
       <Unit>
-        <Filename Value="pages\pages.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit>
-      <Unit>
         <Filename Value="server\server.stub.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
@@ -294,7 +295,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="routes;pages;gui;server"/>
+      <OtherUnitFiles Value="pages;gui;server;routes"/>
       <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>

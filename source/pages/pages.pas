@@ -11,11 +11,6 @@ interface
 
 uses
      Classes, SysUtils;
-const
-
-    mimePlainText   = 'text/plain; charset=UTF-8';
-    mimeHTML        = 'text/html; charset=UTF-8';
-    mimeJSON        = 'application/json';
 
     function homePage: string;
     function message(_msg: string): string;

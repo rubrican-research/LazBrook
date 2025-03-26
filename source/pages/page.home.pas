@@ -13,7 +13,7 @@ implementation
 
 function html: string;
 begin
-     Result:= 'HOME PAGE';
+     Result:= 'Welcome Home';
 end;
 
 end.
