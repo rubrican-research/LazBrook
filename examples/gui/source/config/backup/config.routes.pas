@@ -12,8 +12,8 @@ const
     AppRoutesTemplate: TLazBrookRoutes = (
         (
             entryPoint: '/';
-            comment: 'This is a template to define routes.'__
-            'You can create different constants (or variables) for different parts '__
+            comment: 'This is a template to define routes.' + sLineBreak +
+            'You can create different constants (or variables) for different parts '+ sLineBreak +
             'of your application instead of having it all in one place';
             endpoints : (
                 (
@@ -33,7 +33,7 @@ const
     UserRoutes: TLazBrookRoutes = (
             (
                 entryPoint: '/users';
-                comment:    'Users';
+                comment:    'Users endpoint';
                 endpoints : (
                     (
                         regex: '/';
@@ -57,10 +57,19 @@ const
                         regex: CONCAT('/', pcreUser,'/login');
                         name: 'User Login';
                         comment:'';
-                        default:false;
+                        default:true;
                         methods:[rmPOST];
                         routeClass: TRoutePostDoLogin;
+                    ),
+                    (
+                        regex: CONCAT('/elevate');
+                        name: 'Elevate User';
+                        comment:'';
+                        default:true;
+                        methods:[rmPOST];
+                        routeClass: TRouteGetUserDetails;
                     )
+
                 )
             )
         );

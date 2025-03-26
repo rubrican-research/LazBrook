@@ -11,8 +11,6 @@ uses
     route.base, route.filesrv,
     server.defines;
 
-
-
 type
 
     { TWebserver }
@@ -35,9 +33,11 @@ type
         procedure DataModuleCreate(Sender: TObject);
         procedure DataModuleDestroy(Sender: TObject);
         procedure shutdownRouterRoutes0Request(ASender: TObject;
-            ARoute: TBrookURLRoute; ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
-        procedure URLEntryPointsNotFound(ASender: TObject; const AEntryPoint, APath: string;
-            ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
+            ARoute: TBrookURLRoute; ARequest: TBrookHTTPRequest;
+            AResponse: TBrookHTTPResponse);
+        procedure URLEntryPointsNotFound(ASender: TObject;
+            const AEntryPoint, APath: string; ARequest: TBrookHTTPRequest;
+            AResponse: TBrookHTTPResponse);
     private
         myhomePageHtml: string;
         function getDownloadPath: string;
@@ -74,10 +74,13 @@ type
         function addRoute(_entryPoint: string;
             constref _routeFactoryMethod: TBrookURLRouteFactoryMethod): TBrookURLRoute; overload;
         function addRoute(_entryPoint: string;
-            constref _routeFactoryMethodArray: array of TBrookURLRouteFactoryMethod): TWebServer;
-            overload;
+            constref _routeFactoryMethodArray: array of TBrookURLRouteFactoryMethod):
+            TWebServer; overload;
 
         function addRoutes(_appRoutes: TLazBrookRoutes): TWebserver; overload;
+
+        function setDefaultRoute(_entryPoint: string; constref _route: TBrookURLRoute
+			): boolean;
     public
         property Running: boolean read getServerRunning write setServerRunning;
         property host: string read getHost write setHost;
@@ -88,7 +91,7 @@ type
         property uploadPath: string read getuploadPath write setuploadPath;
     end;
 
-    TProcCreateServerHook  = function(_server: TWebserver): TWebserver; // Return _server
+    TProcCreateServerHook = function(_server: TWebserver): TWebserver; // Return _server
     TProcDestroyServerHook = function(_server: TWebserver): TWebserver;
 
 function webServer: TWebServer;
@@ -108,9 +111,10 @@ var
     OnDestroyServer: TProcDestroyServerHook = nil;
 
     {Identification information about this server}
-    ServerName: string   = 'LazBrook Webserver';
-    ServerID: string     = '1.0';
-    serverAbout: string  = 'An easy-to-use template for creating webserver applications in Lazarus/FPC using Brookframework';
+    ServerName: string = 'LazBrook Webserver';
+    ServerID: string = '1.0';
+    serverAbout: string =
+    'An easy-to-use template for creating webserver applications in Lazarus/FPC using Brookframework';
 
 implementation
 
@@ -179,7 +183,7 @@ begin
     WebServer.port := _port;
     WebServer.host := _host;
     Webserver.Running := True;
-    Result := true;
+    Result := True;
     //OpenURL(Webserver.serverUrl);
 end;
 
@@ -431,7 +435,7 @@ begin
         SetLength(Result, _aSize);
         for r in e.Router.Routes do
         begin
-            Result[_i] := Format('%s%s%s', [serverUrl, e.Name,r.Pattern]);
+            Result[_i] := Format('%s%s%s', [serverUrl, e.Name, r.Pattern]);
             Inc(_i);
         end;
     end;
@@ -577,16 +581,48 @@ begin
                 _r := addRoute(_entryPoint.entryPoint, _endPoint.routeFactoryMethod)
             else
                 continue;
-            if assigned(_r) then with _r do
-                begin
-                    pattern := _endpoint.regex;
-                    Default := _endpoint.default;
-                    METHODS := _endpoint.methods;
-                end;
-        end;
+
+            if assigned(_r) then begin
+                _r.pattern := _endpoint.regex;
+                _r.METHODS := _endpoint.methods;
+                if _endpoint.default then
+                    setDefaultRoute(_entryPoint.entryPoint, _r)
+                else
+                    _r.Default:=false;
+			end;
+		end;
     end;
 end;
 
+function TWebserver.setDefaultRoute(_entryPoint: string; constref _route: TBrookURLRoute
+	): boolean;
+var
+    _EP: TBrookURLEntryPoint;
+    _router: TBrookURLRouter;
+    _i: integer;
+    _routePattern: string;
+	_defaultRoute: TBrookURLRoute;
+begin
+    Result := false;
+    if Running then
+    begin
+        raise Exception.Create(
+            'Webserver is running. You can only set a route to default when the server is not running');
+    end;
+
+    if _entryPoint.isEmpty then exit;
+    if not assigned(_route) then exit;
+
+    _EP := initEntryPoint(_entryPoint);
+    _router := _EP.Router;
+    _defaultRoute := _router.Routes.FindDefault;
+    if _defaultRoute <> _route then begin
+        if assigned(_defaultRoute) then
+            _defaultRoute.Default:=False;
+        _route.Default := true;
+        Result := true;
+	end;
+end;
 
 initialization
     createServer;

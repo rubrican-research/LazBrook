@@ -54,7 +54,7 @@ begin
     writeln(server.web.serverAbout );
     writeln('');
     writeln('Serving ' + server.web.serverURL);
-    OpenDocument;
+    OpenURL(server.web.serverURL);
     while (not Application.Terminated) do begin
         //readln(cmd);
         //processCmd(cmd, terminated);

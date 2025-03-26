@@ -33,7 +33,7 @@ const
     UserRoutes: TLazBrookRoutes = (
             (
                 entryPoint: '/users';
-                comment:    'Users';
+                comment:    'Users endpoint';
                 endpoints : (
                     (
                         regex: '/';
@@ -57,10 +57,19 @@ const
                         regex: CONCAT('/', pcreUser,'/login');
                         name: 'User Login';
                         comment:'';
-                        default:false;
+                        default:true;
                         methods:[rmPOST];
                         routeClass: TRoutePostDoLogin;
+                    ),
+                    (
+                        regex: CONCAT('/elevate');
+                        name: 'Elevate User';
+                        comment:'';
+                        default:true;
+                        methods:[rmGET];
+                        routeClass: TRouteGetUserDetails;
                     )
+
                 )
             )
         );

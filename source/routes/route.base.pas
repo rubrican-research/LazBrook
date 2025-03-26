@@ -40,6 +40,9 @@ type
 
 	{ TLazBrookURLRoute }
     TLazBrookURLRoute = class(TBrookURLRoute)
+    private
+        class var myCount: integer;
+    public
         class function routePattern: string virtual; // override this in child classes to indentify the pattern
         constructor Create(ACollection: TCollection); override;
 	end;
@@ -127,13 +130,22 @@ end;
 
 class function TLazBrookURLRoute.routePattern: string;
 begin
-    Result := '/';
+    // To avoid any accidental duplicate patterns
+    Result := Format('/%s%d', [ClassName, myCount]);
 end;
 
 constructor TLazBrookURLRoute.Create(ACollection: TCollection);
 begin
 	inherited Create(ACollection);
-    pattern := routePattern;
+
+    {This handles the case where pattern already exists in routes.
+    Apply a default value that is unique}
+    inc(myCount);
+    try
+        pattern := routePattern{which can be overriden in child classes}
+    except
+        pattern := Format('/%s%d', [ClassName, myCount])
+    end;
 end;
 
 { TLazBrookCommand }
