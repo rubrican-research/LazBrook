@@ -25,7 +25,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="source\gui;source\pages"/>
+            <OtherUnitFiles Value="source\gui;source\pages;source\config;source\routes"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -77,7 +77,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="source\gui;source\pages"/>
+            <OtherUnitFiles Value="source\gui;source\pages;source\config;source\routes"/>
             <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -124,7 +124,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="source\gui;source\pages"/>
+            <OtherUnitFiles Value="source\gui;source\pages;source\config;source\routes"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -175,7 +175,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="source\gui;source\pages"/>
+            <OtherUnitFiles Value="source\gui;source\pages;source\config;source\routes"/>
             <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -244,6 +244,7 @@
         <Filename Value="source\gui\form.main.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="WebServerGui"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
@@ -252,6 +253,18 @@
       </Unit>
       <Unit>
         <Filename Value="source\pages\pages.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="source\config\config.routes.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="source\routes\route.users.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="source\pages\page.template.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
     </Units>
@@ -264,7 +277,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="source\gui;source\pages"/>
+      <OtherUnitFiles Value="source\gui;source\pages;source\config;source\routes"/>
       <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>

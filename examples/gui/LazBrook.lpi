@@ -25,7 +25,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="source\gui;source\pages"/>
+            <OtherUnitFiles Value="source\gui;source\pages;source\config;source\routes"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -73,12 +73,12 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="..\bin\LazBrook"/>
+            <Filename Value="bin\LazBrook"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="source\gui;source\pages"/>
-            <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
+            <OtherUnitFiles Value="source\gui;source\pages;source\config;source\routes"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
             <SyntaxOptions>
@@ -124,7 +124,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="source\gui;source\pages"/>
+            <OtherUnitFiles Value="source\gui;source\pages;source\config;source\routes"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -171,12 +171,12 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="..\bin\LazBrook"/>
+            <Filename Value="bin\LazBrook"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="source\gui;source\pages"/>
-            <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
+            <OtherUnitFiles Value="source\gui;source\pages;source\config;source\routes"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
             <SyntaxOptions>
@@ -244,6 +244,7 @@
         <Filename Value="source\gui\form.main.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="WebServerGui"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
@@ -254,18 +255,30 @@
         <Filename Value="source\pages\pages.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="source\config\config.routes.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="source\routes\route.users.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="source\pages\page.template.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <Target>
-      <Filename Value="..\bin\LazBrook"/>
+      <Filename Value="bin\LazBrook"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="source\gui;source\pages"/>
-      <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
+      <OtherUnitFiles Value="source\gui;source\pages;source\config;source\routes"/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>
       <SyntaxOptions>
@@ -295,6 +308,9 @@
         <ShowLineNum Value="True"/>
         <ShowCond Value="True"/>
       </Verbosity>
+      <OtherDefines Count="1">
+        <Define0 Value="CONSERVE"/>
+      </OtherDefines>
     </Other>
   </CompilerOptions>
   <Debugging>

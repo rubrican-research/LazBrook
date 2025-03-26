@@ -64,7 +64,7 @@ end;
 
 procedure TWebServerGui.startServer;
 begin
-    server.web.StartServer;
+    server.web.startServer;
     label1.Visible := True;
     lblUrl.Visible := True;
     lblUrl.Caption := serverURL;

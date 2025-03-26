@@ -10,9 +10,24 @@ uses
 	 athreads,
 	 {$ENDIF}
 	 Interfaces, // this includes the LCL widgetset
-	 Forms, sugar.logger, server.web, page.home, pages;
+     LCLIntf,
+	 Forms, sugar.logger, server.web, page.home, pages, form.main, config.routes,
+	 route.users, page.template;
 
 {$R *.res}
+
+procedure initWebServer;
+begin
+    server.web.serverName  := 'QATree User Module';
+    server.web.serverID    := 'V1.0';
+    server.web.serverAbout := 'This microserver handles user authentication, user management';
+    {Init routes for this server}
+    webServer.addRoutes(UserRoutes);
+
+    {Set the home page}
+    webServer.homePageHtml := page.home.html();
+end;
+
 
 {$IFDEF CONSOLEAPP}
 var
@@ -39,6 +54,7 @@ begin
     writeln(server.web.serverAbout );
     writeln('');
     writeln('Serving ' + server.web.serverURL);
+    OpenDocument;
     while (not Application.Terminated) do begin
         //readln(cmd);
         //processCmd(cmd, terminated);
@@ -48,15 +64,12 @@ end;
 {$ENDIF}
 
 begin
-    server.web.serverName  := 'QATree User Module';
-    server.web.serverID    := 'V1.0';
-    server.web.serverAbout := 'This microserver handles user authentication, user management';
-
-    startLog();
-
 	RequireDerivedFormResource:=True;
 	Application.Scaled:=True;
 	Application.Initialize;
+
+    startLog();
+    initWebServer();
 
     {$IFNDEF CONSOLEAPP}
 	Application.CreateForm(TWebServerGui, WebServerGui);

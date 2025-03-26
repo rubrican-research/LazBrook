@@ -1,7 +1,7 @@
 object WebServerGui: TWebServerGui
-  Left = 663
+  Left = 770
   Height = 138
-  Top = 621
+  Top = 487
   Width = 381
   Caption = 'LazBrook Web Server'
   ClientHeight = 138

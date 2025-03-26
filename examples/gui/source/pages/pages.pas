@@ -12,18 +12,12 @@ interface
 uses
      Classes, SysUtils;
 
-    function homePage: string;
     function message(_msg: string): string;
     function blank: string;
     function error(_msg: string): string;
     function info(_msg: string): string;
 
 implementation
-
-function homePage: string;
-begin
-    Result:= 'Home Page';
-end;
 
 function message(_msg: string): string;
 begin

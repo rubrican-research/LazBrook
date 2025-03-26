@@ -306,7 +306,10 @@ end;
 
 function TWebserver.getServerUrl: string;
 begin
-    Result := Format('http://%s:%d', [host, Port]);
+    if port = 0 then
+        Result := Format('http://%s', [host])
+    else
+        Result := Format('http://%s:%d', [host, Port]);
 end;
 
 function TWebserver.getuploadPath: string;
@@ -428,8 +431,7 @@ begin
         SetLength(Result, _aSize);
         for r in e.Router.Routes do
         begin
-            Result[_i] := Format('%s%s%s - %s', [serverUrl, e.Name,
-                r.Pattern, BoolToStr(e.Router.Active, 'Running', 'off')]);
+            Result[_i] := Format('%s%s%s', [serverUrl, e.Name,r.Pattern]);
             Inc(_i);
         end;
     end;
