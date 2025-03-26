@@ -10,7 +10,7 @@ uses
 	 athreads,
 	 {$ENDIF}
 	 Interfaces, // this includes the LCL widgetset
-	 Forms, form.main, pages, page.home, sugar.logger, server.web;
+	 Forms, sugar.logger, server.web, page.home, pages;
 
 {$R *.res}
 

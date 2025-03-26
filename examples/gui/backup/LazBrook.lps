@@ -3,14 +3,14 @@
   <ProjectSession>
     <PathDelim Value="\"/>
     <Version Value="12"/>
-    <BuildModes Active="Console"/>
+    <BuildModes Active="Debug"/>
     <Units>
       <Unit>
         <Filename Value="LazBrook.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos X="5" Y="32"/>
-        <UsageCount Value="108"/>
+        <CursorPos Y="60"/>
+        <UsageCount Value="109"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -18,11 +18,11 @@
         <IsPartOfProject Value="True"/>
         <ComponentName Value="WebServerGui"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <WindowIndex Value="-1"/>
-        <TopLine Value="-1"/>
-        <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="20"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="31" Y="26"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="source\pages\page.home.pas"/>
@@ -31,7 +31,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit>
       <Unit>
         <Filename Value="source\pages\pages.pas"/>
@@ -40,7 +40,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit>
       <Unit>
         <Filename Value="gui\form.main.pas"/>
@@ -338,12 +338,10 @@
       </Unit>
       <Unit>
         <Filename Value="R:\Apps\Lazarus\3.8\lcl\include\customform.inc"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="2036"/>
-        <CursorPos Y="2056"/>
+        <CursorPos X="24" Y="2051"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="R:\Apps\Lazarus\3.8\lcl\include\application.inc"/>
@@ -469,7 +467,7 @@
     <OtherDefines Count="1">
       <Define0 Value="CONSERVE"/>
     </OtherDefines>
-    <JumpHistory HistoryIndex="2">
+    <JumpHistory HistoryIndex="4">
       <Position>
         <Filename Value="LazBrook.lpr"/>
         <Caret Line="14" Column="54" TopLine="14"/>
@@ -481,6 +479,14 @@
       <Position>
         <Filename Value="LazBrook.lpr"/>
         <Caret Line="32" Column="5"/>
+      </Position>
+      <Position>
+        <Filename Value="LazBrook.lpr"/>
+        <Caret Line="29" Column="15"/>
+      </Position>
+      <Position>
+        <Filename Value="LazBrook.lpr"/>
+        <Caret Line="60"/>
       </Position>
     </JumpHistory>
     <RunParams>

@@ -21,12 +21,12 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="..\bin\LazBrook"/>
+            <Filename Value="bin\LazBrook"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="pages;gui"/>
-            <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
+            <OtherUnitFiles Value="source\gui;source\pages"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
             <SyntaxOptions>
@@ -77,7 +77,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="pages;gui"/>
+            <OtherUnitFiles Value="source\gui;source\pages"/>
             <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -120,12 +120,12 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="..\bin\LazBrook"/>
+            <Filename Value="bin\LazBrook"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="pages;gui"/>
-            <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
+            <OtherUnitFiles Value="source\gui;source\pages"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
             <SyntaxOptions>
@@ -175,7 +175,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="pages;gui"/>
+            <OtherUnitFiles Value="source\gui;source\pages"/>
             <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -241,18 +241,17 @@
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="gui\form.main.pas"/>
+        <Filename Value="source\gui\form.main.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="WebServerGui"/>
-        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
-        <Filename Value="pages\page.home.pas"/>
+        <Filename Value="source\pages\page.home.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="pages\pages.pas"/>
+        <Filename Value="source\pages\pages.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
     </Units>
@@ -265,7 +264,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="pages;gui"/>
+      <OtherUnitFiles Value="source\gui;source\pages"/>
       <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>

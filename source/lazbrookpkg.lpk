@@ -63,6 +63,10 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
         <Filename Value="routes\route.base.pas"/>
         <UnitName Value="route.base"/>
       </Item>
+      <Item>
+        <Filename Value="server\server.init.pas"/>
+        <UnitName Value="server.init"/>
+      </Item>
     </Files>
     <RequiredPkgs>
       <Item>
