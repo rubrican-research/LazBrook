@@ -57,6 +57,7 @@ type
     TLazBrookCommand = class(TJSONObject)
 	private
 		mypath: string;
+        myEndPoint: string;
 		function getEndPoint: string;
 		function getRequestMethod: TBrookHTTPRequestMethod;
 		function getServerURL: string;
@@ -93,6 +94,8 @@ type
 
 
 implementation
+uses
+    server.defines;
 
 function listRoutes(constref router: TBrookURLRouter): TStringArray;
 var
@@ -121,7 +124,7 @@ end;
 
 procedure sendHTML(constref AResponse: TBrookHTTPResponse; const _html: string);
 begin
-    AResponse.Send(_html, 'text/html', 200);
+    AResponse.Send(_html, mimeHTML, 200);
 end;
 
 {$R *.lfm}
@@ -152,7 +155,7 @@ end;
 
 function TLazBrookCommand.getEndPoint: string;
 begin
-
+    Result := myEndPoint;
 end;
 
 function TLazBrookCommand.getIsWellDefined: boolean;
@@ -195,7 +198,8 @@ end;
 
 procedure TLazBrookCommand.setEndPoint(const _value: string);
 begin
-
+    if myEndPoint = _value then exit;
+    myEndPoint := _valur;
 end;
 
 procedure TLazBrookCommand.setpath(const _value: string);
