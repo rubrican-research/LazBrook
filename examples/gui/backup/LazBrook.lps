@@ -3,13 +3,14 @@
   <ProjectSession>
     <PathDelim Value="\"/>
     <Version Value="12"/>
-    <BuildModes Active="Console"/>
+    <BuildModes Active="Debug"/>
     <Units>
       <Unit>
         <Filename Value="LazBrook.lpr"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="29" Y="28"/>
-        <UsageCount Value="114"/>
+        <TopLine Value="10"/>
+        <CursorPos X="16" Y="21"/>
+        <UsageCount Value="115"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -18,28 +19,54 @@
         <ComponentName Value="WebServerGui"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="16"/>
-        <CursorPos X="28" Y="68"/>
-        <UsageCount Value="26"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="54"/>
+        <CursorPos X="5" Y="57"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="source\pages\page.home.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="21"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="27"/>
         <CursorPos X="21" Y="54"/>
-        <UsageCount Value="26"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="source\pages\pages.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="1"/>
         <CursorPos Y="18"/>
-        <UsageCount Value="26"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="source\config\config.routes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="33"/>
+        <CursorPos X="62" Y="57"/>
+        <UsageCount Value="24"/>
+      </Unit>
+      <Unit>
+        <Filename Value="source\routes\route.users.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="27"/>
+        <CursorPos X="55" Y="40"/>
+        <UsageCount Value="24"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="source\pages\page.template.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="84" Y="26"/>
+        <UsageCount Value="24"/>
       </Unit>
       <Unit>
         <Filename Value="gui\form.main.pas"/>
@@ -337,11 +364,10 @@
       </Unit>
       <Unit>
         <Filename Value="R:\Apps\Lazarus\3.8\lcl\include\customform.inc"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="2036"/>
         <CursorPos X="47" Y="2063"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="R:\Apps\Lazarus\3.8\lcl\include\application.inc"/>
@@ -352,11 +378,10 @@
       </Unit>
       <Unit>
         <Filename Value="R:\Apps\Lazarus\3.8\lcl\include\sysenvapis_win.inc"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="312"/>
         <CursorPos X="3" Y="320"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="R:\Apps\Lazarus\3.8\lcl\forms.pp"/>
@@ -466,19 +491,20 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\source\server\server.defines.pas"/>
-        <EditorIndex Value="9"/>
-        <CursorPos X="13" Y="13"/>
+        <EditorIndex Value="4"/>
+        <CursorPos X="40" Y="12"/>
         <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\source\routes\route.base.pas"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="8"/>
-        <TopLine Value="89"/>
-        <CursorPos X="5" Y="127"/>
+        <ComponentName Value="RouterBase"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="134"/>
+        <CursorPos Y="148"/>
         <UsageCount Value="12"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\source\server\server.init.pas"/>
@@ -487,10 +513,14 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\source\routes\route.filesrv.pas"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="88"/>
-        <CursorPos X="73" Y="95"/>
+        <ComponentName Value="FilesrvRouter"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="46"/>
+        <CursorPos X="6" Y="24"/>
         <UsageCount Value="11"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\..\Libraries\fpcwebapp\src\gui\form.main.pas"/>
@@ -508,202 +538,218 @@
         <UsageCount Value="11"/>
       </Unit>
       <Unit>
-        <Filename Value="source\config\config.routes.pas"/>
-        <IsPartOfProject Value="True"/>
-        <EditorIndex Value="14"/>
-        <TopLine Value="30"/>
-        <CursorPos X="22" Y="64"/>
-        <UsageCount Value="23"/>
-        <Loaded Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="source\routes\route.users.pas"/>
-        <IsPartOfProject Value="True"/>
-        <EditorIndex Value="15"/>
-        <CursorPos X="27" Y="30"/>
-        <UsageCount Value="23"/>
-        <Loaded Value="True"/>
-      </Unit>
-      <Unit>
         <Filename Value="..\..\source\server\server.web.pas"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="593"/>
-        <CursorPos X="27" Y="617"/>
+        <ComponentName Value="Webserver"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="308"/>
+        <CursorPos X="5" Y="312"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="source\pages\page.template.pas"/>
-        <IsPartOfProject Value="True"/>
-        <EditorIndex Value="12"/>
-        <CursorPos X="84" Y="26"/>
-        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\..\Libraries\sugar\src\mod\sugar.htmlpage.pas"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="71"/>
         <CursorPos X="21" Y="89"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\inc\sstrings.inc"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="407"/>
         <CursorPos X="3" Y="411"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\..\Libraries\sugar\src\mod\sugar.htmlbuilder.pas"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="9688"/>
         <CursorPos X="5" Y="9690"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\..\Libraries\brookframework\Source\BrookURLRouter.pas"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="146"/>
         <CursorPos X="14" Y="165"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\..\Libraries\brookframework\Source\BrookUtility.pas"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="416"/>
         <CursorPos X="3" Y="418"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\brookframework\Source\libsagui.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="73"/>
+        <CursorPos X="14" Y="85"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\brookframework\Source\BrookLibraryLoader.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="145"/>
+        <CursorPos X="5" Y="162"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\source\server\server.web.lfm"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="19" Y="10"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\..\..\..\..\..\usr\share\lazarus\3.8.0\lcl\lresources.pp"/>
+        <UnitName Value="LResources"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3143"/>
+        <CursorPos X="7" Y="3154"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\..\..\..\..\..\usr\share\lazarus\3.8.0\lcl\include\customform.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2041"/>
+        <CursorPos X="24" Y="2053"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\brookframework\Source\BrookURLRouter.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="499"/>
+        <CursorPos X="57" Y="508"/>
+        <UsageCount Value="10"/>
       </Unit>
     </Units>
     <OtherDefines Count="1">
       <Define0 Value="CONSERVE"/>
     </OtherDefines>
-    <JumpHistory HistoryIndex="26">
+    <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="81" Column="89" TopLine="57"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="598" TopLine="569"/>
+        <Caret Line="137" Column="11" TopLine="121"/>
       </Position>
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="64" Column="18" TopLine="62"/>
+        <Caret Line="132" TopLine="121"/>
+      </Position>
+      <Position>
+        <Filename Value="source\gui\form.main.pas"/>
+        <Caret Line="52" Column="29" TopLine="41"/>
+      </Position>
+      <Position>
+        <Filename Value="source\gui\form.main.pas"/>
+        <Caret Line="45" Column="16" TopLine="41"/>
+      </Position>
+      <Position>
+        <Filename Value="source\gui\form.main.pas"/>
+        <Caret Line="62" Column="5" TopLine="41"/>
       </Position>
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="458" TopLine="440"/>
+        <Caret Line="201" Column="5" TopLine="199"/>
       </Position>
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="461" TopLine="440"/>
+        <Caret Line="147" Column="6" TopLine="132"/>
       </Position>
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="81" Column="18" TopLine="45"/>
+        <Caret Line="142" TopLine="132"/>
       </Position>
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="616" Column="18" TopLine="575"/>
+        <Caret Line="100" Column="10" TopLine="84"/>
       </Position>
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="596" Column="67" TopLine="580"/>
+        <Caret Line="157" TopLine="151"/>
       </Position>
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="597" Column="13" TopLine="577"/>
+        <Caret Line="156" Column="34" TopLine="151"/>
       </Position>
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="81" Column="18" TopLine="63"/>
+        <Caret Line="101" Column="25" TopLine="86"/>
       </Position>
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="588" Column="38" TopLine="566"/>
+        <Caret Line="648" Column="5" TopLine="622"/>
       </Position>
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="75" Column="18" TopLine="61"/>
+        <Caret Line="155" Column="7" TopLine="139"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv.pas"/>
+        <Caret Line="66" Column="15" TopLine="52"/>
       </Position>
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="80" Column="10" TopLine="63"/>
+        <Caret Line="161" TopLine="139"/>
       </Position>
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="588" Column="33" TopLine="563"/>
+        <Caret Line="641" Column="9" TopLine="616"/>
       </Position>
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="592" Column="8" TopLine="563"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\..\..\Libraries\brookframework\Source\BrookURLRouter.pas"/>
-        <Caret Line="499" Column="66" TopLine="478"/>
+        <Caret Line="162" Column="24" TopLine="148"/>
       </Position>
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="620" TopLine="593"/>
+        <Caret Line="101" Column="29" TopLine="87"/>
       </Position>
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="589" TopLine="569"/>
+        <Caret Line="172" Column="30" TopLine="152"/>
       </Position>
       <Position>
-        <Filename Value="source\config\config.routes.pas"/>
-        <Caret Line="70" Column="57" TopLine="31"/>
+        <Filename Value="..\..\source\server\server.web.pas"/>
+        <Caret Line="639" Column="27" TopLine="616"/>
       </Position>
       <Position>
-        <Filename Value="..\..\..\..\Libraries\brookframework\Source\BrookURLRouter.pas"/>
-        <Caret Line="513" TopLine="479"/>
+        <Filename Value="..\..\source\server\server.web.pas"/>
+        <Caret Line="235" Column="12" TopLine="223"/>
       </Position>
       <Position>
-        <Filename Value="..\..\source\routes\route.base.pas"/>
-        <Caret Line="139" Column="21" TopLine="116"/>
+        <Filename Value="..\..\source\server\server.web.pas"/>
+        <Caret Line="33" Column="19" TopLine="26"/>
       </Position>
       <Position>
-        <Filename Value="..\..\source\routes\route.base.pas"/>
-        <Caret Line="147" TopLine="116"/>
+        <Filename Value="..\..\source\server\server.web.pas"/>
+        <Caret Line="243" Column="5" TopLine="238"/>
       </Position>
       <Position>
-        <Filename Value="..\..\source\routes\route.base.pas"/>
-        <Caret Line="44" Column="25" TopLine="28"/>
+        <Filename Value="..\..\source\server\server.web.pas"/>
+        <Caret Line="245" Column="30" TopLine="235"/>
       </Position>
       <Position>
-        <Filename Value="..\..\source\routes\route.base.pas"/>
-        <Caret Line="132" TopLine="119"/>
+        <Filename Value="..\..\source\server\server.web.pas"/>
+        <Caret Line="25" Column="26" TopLine="20"/>
       </Position>
       <Position>
-        <Filename Value="..\..\source\routes\route.base.pas"/>
-        <Caret Line="47" Column="36" TopLine="24"/>
+        <Filename Value="source\gui\form.main.pas"/>
+        <Caret Line="52" Column="29" TopLine="41"/>
       </Position>
       <Position>
-        <Filename Value="..\..\source\routes\route.base.pas"/>
-        <Caret Line="124" Column="35" TopLine="89"/>
+        <Filename Value="source\gui\form.main.pas"/>
+        <Caret Line="44" Column="5" TopLine="41"/>
       </Position>
       <Position>
-        <Filename Value="..\..\source\routes\route.base.pas"/>
-        <Caret Line="92" Column="15" TopLine="89"/>
+        <Filename Value="source\gui\form.main.pas"/>
+        <Caret Line="68" Column="30" TopLine="54"/>
       </Position>
       <Position>
-        <Filename Value="..\..\source\routes\route.base.pas"/>
-        <Caret Line="7"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\source\routes\route.base.pas"/>
-        <Caret Line="98" TopLine="75"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\source\server\server.defines.pas"/>
-        <Caret Line="13" Column="13"/>
+        <Filename Value="source\gui\form.main.pas"/>
+        <Caret Line="76" Column="9" TopLine="54"/>
       </Position>
     </JumpHistory>
     <RunParams>

@@ -1,19 +1,20 @@
 object WebServerGui: TWebServerGui
   Left = 770
-  Height = 138
+  Height = 139
   Top = 487
-  Width = 381
+  Width = 385
   Caption = 'LazBrook Web Server'
-  ClientHeight = 138
-  ClientWidth = 381
+  ClientHeight = 139
+  ClientWidth = 385
+  DesignTimePPI = 97
   OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '3.8.0.0'
   object lblBackground: TLabel
     Left = 7
-    Height = 124
+    Height = 125
     Top = 7
-    Width = 367
+    Width = 371
     Align = alClient
     BorderSpacing.Around = 7
     Caption = 'LazBrook Web Server'
@@ -29,10 +30,10 @@ object WebServerGui: TWebServerGui
     ParentFont = False
   end
   object Button1: TButton
-    Left = 324
-    Height = 50
+    Left = 327
+    Height = 51
     Top = 19
-    Width = 50
+    Width = 51
     Caption = 'Start'
     TabOrder = 0
     OnClick = Button1Click
@@ -64,7 +65,7 @@ object WebServerGui: TWebServerGui
     BalloonFlags = bfInfo
     BalloonHint = 'FPC Webserver'
     Visible = True
-    Left = 280
+    Left = 283
     Top = 24
   end
 end

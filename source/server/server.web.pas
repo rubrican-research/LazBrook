@@ -94,16 +94,19 @@ type
     TProcCreateServerHook = function(_server: TWebserver): TWebserver; // Return _server
     TProcDestroyServerHook = function(_server: TWebserver): TWebserver;
 
-function webServer: TWebServer;
+function BrookLibPath: string;
+
 function serverInitialized: boolean;
 function createServer: TWebserver;
-procedure destroyServer;
+procedure destroyServer(var _webServer: TWebServer);
 
 function startServer(const _host: string = ''; _port: word = DEFAULT_PORT): boolean;
 function serverRunning: boolean;
 function serverURL: string;
 function serverEndPoints: string;
 procedure stopServer;
+
+function webServer: TWebServer;
 
 var
     {Use these to initialize routes when instantiating server}
@@ -121,11 +124,19 @@ implementation
 {$R *.lfm}
 
 uses
-    LCLIntf, sugar.utils, sugar.logger;
+    LCLIntf, sugar.utils, sugar.logger, libsagui;
 
 var
-    BrookLibPath: string = BROOKLIB;
+    mylibsagui : string = '';
     myWebServer: TWebServer = nil;
+
+function BrookLibPath: string;
+begin
+    if mylibsagui = '' then begin
+        mylibsagui := ExpandFileName(SG_LIB_NAME);
+	end;
+    result := mylibsagui;
+end;
 
 function webServer: TWebServer;
 begin
@@ -141,32 +152,25 @@ end;
 
 function createServer: TWebserver;
 begin
-    if not assigned(myWebserver) then
-    begin
-        myWebServer := TWebServer.Create(nil);
-        FilesrvRouter(); // force init
-
-        myWebServer.homePageHtml := 'LazBrook server is running at ' + serverURL;
-
-        if assigned(OnCreateServer) then
-            OnCreateServer(myWebServer);
-
-    end;
-    Result := myWebServer;
+    Result := TWebServer.Create(nil);
+    FilesrvRouter(); // force init
+    Result.homePageHtml := 'LazBrook server is running at ' + serverURL;
+    if assigned(OnCreateServer) then
+        OnCreateServer(Result);
 end;
 
-procedure destroyServer;
+procedure destroyServer(var _webServer: TWebServer);
 begin
-    if assigned(myWebServer) then
+    if assigned(_webServer) then
     begin
         if assigned(OnDestroyServer) then
-            OnDestroyServer(myWebserver);
+            OnDestroyServer(_webServer);
 
-        if serverRunning then
-            stopServer;
+        if _webServer.Running then
+            _webServer.stopServer;
 
+        FreeAndNil(_webServer);
     end;
-    FreeAndNil(myWebServer);
 end;
 
 function startServer(const _host: string; _port: word): boolean;
@@ -233,8 +237,12 @@ begin
 end;
 
 procedure TWebserver.DataModuleCreate(Sender: TObject);
+var
+	sLibPath: RawByteString;
 begin
     setPort(DEFAULT_PORT);
+    BrookLibraryLoader.LibraryName := BrookLibPath;
+    BrookLibraryLoader.Active      := true;
     Log('TWebserver.Create');
 end;
 
@@ -405,7 +413,6 @@ procedure TWebserver.stopServer;
 begin
     HTTPServer.Active := False;
     EntryPointsActive(False);
-    //BrookLibraryLoader.Active := False;
 end;
 
 procedure TWebserver.EntryPointsActive(_val: boolean);
@@ -599,8 +606,6 @@ function TWebserver.setDefaultRoute(_entryPoint: string; constref _route: TBrook
 var
     _EP: TBrookURLEntryPoint;
     _router: TBrookURLRouter;
-    _i: integer;
-    _routePattern: string;
 	_defaultRoute: TBrookURLRoute;
 begin
     Result := false;
@@ -625,11 +630,11 @@ begin
 end;
 
 initialization
-    createServer;
+    myWebServer := createServer;
 
 finalization
     if serverInitialized then
     begin
-        destroyServer;
+        destroyServer(myWebServer);
     end;
 end.
