@@ -199,7 +199,7 @@ end;
 procedure TLazBrookCommand.setEndPoint(const _value: string);
 begin
     if myEndPoint = _value then exit;
-    myEndPoint := _valur;
+    myEndPoint := _value;
 end;
 
 procedure TLazBrookCommand.setpath(const _value: string);
