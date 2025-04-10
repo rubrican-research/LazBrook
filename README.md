@@ -4,7 +4,7 @@
 ## Purpose
 Building complex webserver applications has become relatively easier with frameworks and libraries for backend development. Although JS frameworks are now the most popular and the tooling has become very mature, the challenge of maintaining and growing  webserver applications can only be avoided when every developer strictly adhere to the standards of their chosen dev-stack.
 
-This library is built on [Silvio's](https://github.com/silvioprog),[BrookFramework](https://github.com/risoflora/brookframework). The intention is
+LazBrook library is built on [Silvio's](https://github.com/silvioprog),[BrookFramework](https://github.com/risoflora/brookframework). The intention is
 1. **One codebase, cross-platform binaries + as gui, console or lib**. This library gives you a starting point to create your application but with the flexibility to compile as:
     1. GUI application with inbuilt webserver
     2. Console application (by simply defining compiler flags)
@@ -17,6 +17,7 @@ This library is built on [Silvio's](https://github.com/silvioprog),[BrookFramewo
    2. is the user **_session still valid_**? if not, redirect to login page
    3. is the _**user authorized**_ to make the request? if not, reply with an error.
    4. manage additional security methods.
+6. To serve as a **template for web applications** built with Lazarus and Brookframework. In many instances, it is easier to understand how a framework is to be used when we can take a working template and customize it for our needs.
       
 ## Route definition
 You can define routes like this
@@ -76,9 +77,22 @@ The **comment** field is specifically there to add documention for the endpoint.
 2. Copy the appropriate files from the folder "/deploy" to your binary output folder.
 3. Define your routes as constants, while also creating TRoutexxx classes that will implement your logic (You can use any naming convention for your classes. They just need to be derived from TBrookURLRouteClass)
 
-## For console applications
+## Console applications
 1. Set your LCLWidgetType to nogui in your project's Compiler Options. ![image](https://github.com/user-attachments/assets/eca7df36-7f10-44c4-b152-2621b907b145)
 2. Recommend the use of complier defines to control the code that gets compiled. Note that console applications may not always use an Application.Run. You would have to implement your own main loop with readln or fppause.
+
+## Example projects
+There are 3 example projects that demonstrate how to use LazBrook.
+1. **gui** - This project can be compiled as a console application as well. See build "console" in project options.
+1. **library** - This project compiles to a library.
+2. **library_container** - An application that can load and run a lazbrook library. The logic of how to interrogate a library and how manage the server is implemented.
+
+## Todo
+1. Server configuration files
+2. User class, User list, Authentication and Authorization classes - to serve as base class for implementation in your application
+3. Sentry class - that sits before a request is processed and also finalizes any additional cookies or headers before the request is sent back to the browser. The intent is for you to derive custom sentry classes that can handle specific business rules.
+
+   
 
 
  
