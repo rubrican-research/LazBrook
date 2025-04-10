@@ -18,7 +18,13 @@ LazBrook library is built on [Silvio's](https://github.com/silvioprog),[BrookFra
    3. is the _**user authorized**_ to make the request? if not, reply with an error.
    4. manage additional security methods.
 6. To serve as a **template for web applications** built with Lazarus and Brookframework. In many instances, it is easier to understand how a framework is to be used when we can take a working template and customize it for our needs.
-      
+## Dependencies
+Lazbrook requires the following packages to be registered/installed in Lazarus:
+1. [BrookTardigrade](https://github.com/risoflora/brookframework)
+2. [fp_sugar](https://github.com/rubrican-research/sugar)
+
+_Note: fp_sugar was developed specifically to construct fully formed html pages in Lazarus with the additional intention of defining functions that return html snippets that we can use as components or reuse (example page header, footer, menu) across all application pages. I have been using this library for 5 years and it helped me immensely to build readable, reusable code._
+   
 ## Route definition
 You can define routes like this
 ```Pascal
@@ -83,12 +89,13 @@ The **comment** field is specifically there to add documention for the endpoint.
 
 ## Example projects
 There are 3 example projects that demonstrate how to use LazBrook.
+
 1. **gui** - This project can be compiled as a console application as well. See build "console" in project options.
 1. **library** - This project compiles to a library.
 2. **library_container** - An application that can load and run a lazbrook library. The logic of how to interrogate a library and how manage the server is implemented.
 
 ## Todo
-1. Server configuration files
+1. Server configuration files. To be able to build console applications that can be initialized with a configuration file.
 2. User class, User list, Authentication and Authorization classes - to serve as base class for implementation in your application
 3. Sentry class - that sits before a request is processed and also finalizes any additional cookies or headers before the request is sent back to the browser. The intent is for you to derive custom sentry classes that can handle specific business rules.
 
