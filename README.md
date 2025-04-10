@@ -76,6 +76,8 @@ const
 ```
 Notice that you can assign a TRoutexxx class to the endpoints which will handle the incoming request. This makes it easy to know how each server endpoint is defined. Additionally, you can also assign a factory method to the endpoint defintion where you can implement complex initialization of the TRoutexxx handler class. 
 
+Notice also that multiple endpoints have been marked with "default: true". This is to show that the last endpoint to be registered as default=true will be made as default. Previous assignments will be overwritten.
+
 The **comment** field is specifically there to add documention for the endpoint. The library supports generation of list of all endpoints supported by the server, where the comment field can serve as a good source of information about the capabilities of the server.
 
 ## How to use
