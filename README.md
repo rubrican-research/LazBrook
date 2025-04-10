@@ -1,5 +1,6 @@
 # LazBrook
- Web App template for FPC/Lazarus using Brook Framework
+ Web App template for FPC/Lazarus using Brook Framework [work in progress]. 
+ 
 ## Purpose
 Building complex webserver applications has become relatively easier with frameworks and libraries for backend development. Although JS frameworks are now the most popular and the tooling has become very mature, the challenge of maintaining and growing  webserver applications can only be avoided when every developer strictly adhere to the standards of their chosen dev-stack.
 
@@ -16,7 +17,7 @@ This library is built on [Silvio's](https://github.com/silvioprog),[BrookFramewo
    2. is the user **_session still valid_**? if not, redirect to login page
    3. is the _**user authorized**_ to make the request? if not, reply with an error.
    4. manage additional security methods.
-   5. 
+      
 ## Route definition
 You can define routes like this
 ```Pascal
@@ -69,6 +70,15 @@ const
 Notice that you can assign a TRoutexxx class to the endpoints which will handle the incoming request. This makes it easy to know how each server endpoint is defined. Additionally, you can also assign a factory method to the endpoint defintion where you can implement complex initialization of the TRoutexxx handler class. 
 
 The **comment** field is specifically there to add documention for the endpoint. The library supports generation of list of all endpoints supported by the server, where the comment field can serve as a good source of information about the capabilities of the server.
+
+## How to use
+1. Open and compile the lazbrook package in Lazarus. Then you can include this package with any application you are building.
+2. Copy the appropriate files from the folder "/deploy" to your binary output folder.
+3. Define your routes as constants, while also creating TRoutexxx classes that will implement your logic (You can use any naming convention for your classes. They just need to be derived from TBrookURLRouteClass)
+
+## For console applications
+1. Set your LCLWidgetType to nogui in your project's Compiler Options. ![image](https://github.com/user-attachments/assets/eca7df36-7f10-44c4-b152-2621b907b145)
+2. Recommend the use of complier defines to control the code that gets compiled. Note that console applications may not always use an Application.Run. You would have to implement your own main loop with readln or fppause.
 
 
  
