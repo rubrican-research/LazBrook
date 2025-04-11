@@ -6,6 +6,15 @@ interface
 
 uses
     Classes, SysUtils;
+const
+    {For future use}
+    LAZBROOK_IDV1 = '{B3F543DF-F070-4D0E-8FA2-9849A2B02B73}'; // This is the ID of the module.
+    LAZBROOK_IDV2 = '{73F06572-B48B-489D-8EE8-FB7B3032690F}';
+    LAZBROOK_IDV3 = '{3A3D073E-3994-4AB2-8707-DAB955C92229}';
+    LAZBROOK_IDV4 = '{A12AB16A-C58A-4CAB-AFA8-04FD1E84CE1F}';
+    LAZBROOK_IDV5 = '{F754577A-3605-4462-AD6F-69E12B9D824D}';
+
+
 type
 	ProcStartServer     =  function (_host: pChar; _port: dword): boolean; stdcall;
 	ProcServerText      =  function : pChar; stdcall;
@@ -38,10 +47,15 @@ type
         function start(_host: string; _port: DWord): boolean;
     end;
 
+    TWebAppIntfV1 = TWebAppIntf;
+    TWebAppIntfV2 = TWebAppIntf;
+    TWebAppIntfV3 = TWebAppIntf;
+    TWebAppIntfV4 = TWebAppIntf;
+    TWebAppIntfV5 = TWebAppIntf;
+
     function isLazBrookLib(const _libPath: string): boolean;
     function WebAppLib(const _libPath: string): TWebAppIntf;
     procedure close(constref _intf: TWebAppIntf);
-
 
 implementation
 uses
@@ -54,8 +68,6 @@ var
 
 
 function loadWebAppLib(const _libPath: string): TWebAppIntf;
-const
-    LAZBROOK_IDV1 = '{B3F543DF-F070-4D0E-8FA2-9849A2B02B73}';
 var
 	_plibID: pChar;
     _strLibID: shortString;
@@ -76,23 +88,32 @@ begin
                 _plibID    := Result.lazBrookID();
                 _strLibID := _plibID;
                  //StrDispose(_plibID);
+
+                 {Load version specific methods}
                 case _strLibID of
                     LAZBROOK_IDV1: ;
-                    else begin
+                    LAZBROOK_IDV2: ;
+                    LAZBROOK_IDV3: ;
+                    LAZBROOK_IDV4: ;
+                    LAZBROOK_IDV5: ;
+					else begin
                         Result.init;
                         _message := Format('%d (%s): This version of LazBrook server library is not supported.', [_libPath, _plibID]);
                         Raise Exception.Create(_message);
 					end;
 				end;
+
+                // Load the default methods
+                Pointer(Result.startServer    )  := GetProcAddress(Result.Handle, 'startServer');
+                Pointer(Result.serverRunning  )  := GetProcAddress(Result.Handle, 'serverRunning');
+                Pointer(Result.serverName     )  := GetProcAddress(Result.Handle, 'serverName');
+                Pointer(Result.serverID       )  := GetProcAddress(Result.Handle, 'serverID');
+                Pointer(Result.serverAbout    )  := GetProcAddress(Result.Handle, 'serverAbout');
+                Pointer(Result.serverURL      )  := GetProcAddress(Result.Handle, 'serverURL');
+                Pointer(Result.serverEndPoints)  := GetProcAddress(Result.Handle, 'serverEndPoints');
+                Pointer(Result.stopServer     )  := GetProcAddress(Result.Handle, 'stopServer');
+
 			end;
-            Pointer(Result.startServer    )  := GetProcAddress(Result.Handle, 'startServer');
-            Pointer(Result.serverRunning  )  := GetProcAddress(Result.Handle, 'serverRunning');
-            Pointer(Result.serverName     )  := GetProcAddress(Result.Handle, 'serverName');
-            Pointer(Result.serverID       )  := GetProcAddress(Result.Handle, 'serverID');
-            Pointer(Result.serverAbout    )  := GetProcAddress(Result.Handle, 'serverAbout');
-            Pointer(Result.serverURL      )  := GetProcAddress(Result.Handle, 'serverURL');
-            Pointer(Result.serverEndPoints)  := GetProcAddress(Result.Handle, 'serverEndPoints');
-            Pointer(Result.stopServer     )  := GetProcAddress(Result.Handle, 'stopServer');
 		end;
 	end;
 end;

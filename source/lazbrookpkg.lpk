@@ -9,7 +9,7 @@
       <Version Value="11"/>
       <PathDelim Value="\"/>
       <SearchPaths>
-        <OtherUnitFiles Value="server;routes"/>
+        <OtherUnitFiles Value="server;routes;users"/>
         <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
       <Parsing>
@@ -66,6 +66,18 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
       <Item>
         <Filename Value="server\server.init.pas"/>
         <UnitName Value="server.init"/>
+      </Item>
+      <Item>
+        <Filename Value="server\server.assets.pas"/>
+        <UnitName Value="server.assets"/>
+      </Item>
+      <Item>
+        <Filename Value="routes\route.parser.pas"/>
+        <UnitName Value="route.parser"/>
+      </Item>
+      <Item>
+        <Filename Value="users\server.users.pas"/>
+        <UnitName Value="server.users"/>
       </Item>
     </Files>
     <RequiredPkgs>
