@@ -2,14 +2,13 @@ object Webserver: TWebserver
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
   OldCreateOrder = True
-  Height = 267
-  HorizontalOffset = 762
-  VerticalOffset = 210
-  Width = 676
+  Height = 270
+  HorizontalOffset = 770
+  VerticalOffset = 212
+  Width = 683
+  PPI = 97
   object BrookLibraryLoader: TBrookLibraryLoader
-    Active = True
-    LibraryName = 'R:\Data\Dev\Libraries\fpcwebapp\bin\libsagui-3.dll'
-    Left = 64
+    Left = 65
     Top = 24
   end
   object URLEntryPoints: TBrookURLEntryPoints
@@ -27,7 +26,7 @@ object Webserver: TWebserver
         Router = shutdownRouter
       end>
     OnNotFound = URLEntryPointsNotFound
-    Left = 224
+    Left = 226
     Top = 24
   end
   object HTTPServer: TBrookHTTPServer
@@ -37,8 +36,8 @@ object Webserver: TWebserver
     OnRequest = HTTPServerRequest
     OnRequestError = HTTPServerRequestError
     OnError = HTTPServerError
-    Left = 64
-    Top = 112
+    Left = 65
+    Top = 113
   end
   object shutdownRouter: TBrookURLRouter
     Routes = <    
@@ -48,7 +47,7 @@ object Webserver: TWebserver
         Methods = [rmGET]
         OnRequest = shutdownRouterRoutes0Request
       end>
-    Left = 336
+    Left = 340
     Top = 24
   end
   object homeRouter: TBrookURLRouter
@@ -58,8 +57,8 @@ object Webserver: TWebserver
         Pattern = '/'
         OnRequest = onHomePage
       end>
-    Left = 224
-    Top = 120
+    Left = 226
+    Top = 121
   end
   object BrookURLRouter1: TBrookURLRouter
     Routes = <    
@@ -82,7 +81,7 @@ object Webserver: TWebserver
       item
         Pattern = '/route6'
       end>
-    Left = 440
-    Top = 136
+    Left = 445
+    Top = 137
   end
 end

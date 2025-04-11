@@ -5,14 +5,11 @@ unit server.defines;
 interface
 
 const
+    DEFAULT_PORT  = 3210;
 
-    BROOKLIB = 'libsagui-3.dll';
-    DEFAULT_PORT = 999;
-
-    mimePlainText   = 'text/plain; charset=UTF-8';
-    mimeHTML        = 'text/html; charset=UTF-8';
-    mimeJSON        = 'application/json';
-
+    mimePlainText = 'text/plain; charset=UTF-8';
+    mimeHTML      = 'text/html; charset=UTF-8';
+    mimeJSON      = 'application/json';
 
 implementation
 

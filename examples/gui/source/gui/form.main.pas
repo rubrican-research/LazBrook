@@ -41,7 +41,7 @@ uses
 procedure TWebServerGui.Button1Click(Sender: TObject);
 begin
     case isServerRunning of
-        True: StopServer;
+        True:  StopServer;
         False: StartServer;
     end;
 end;
@@ -54,7 +54,7 @@ end;
 
 procedure TWebServerGui.lblUrlClick(Sender: TObject);
 begin
-    OpenDocument(lblUrl.Caption);
+    OpenURL(lblUrl.Caption);
 end;
 
 function TWebServerGui.isServerRunning: boolean;
@@ -65,10 +65,15 @@ end;
 procedure TWebServerGui.startServer;
 begin
     server.web.startServer;
-    label1.Visible := True;
-    lblUrl.Visible := True;
-    lblUrl.Caption := serverURL;
-    Button1.Caption := 'Stop';
+    case server.web.serverRunning of
+    	True: begin
+            label1.Visible := server.web.serverRunning;
+	        lblUrl.Visible := server.web.serverRunning;
+            lblUrl.Caption := serverURL;
+            Button1.Caption := 'Stop';
+        end;
+        False: ShowMessage('The server could not be started. Check logfile for details.');
+    end;
 end;
 
 procedure TWebServerGui.stopServer;

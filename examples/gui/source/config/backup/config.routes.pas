@@ -45,7 +45,7 @@ const
                     ),
 
                     (
-                        regex: CONCAT('/', pcreUser,'/details');
+                        regex: CONCAT('/(', pcreUser,'/details)');
                         name: 'User Details';
                         comment:'';
                         default:false;
@@ -66,7 +66,7 @@ const
                         name: 'Elevate User';
                         comment:'';
                         default:true;
-                        methods:[rmPOST];
+                        methods:[rmGET];
                         routeClass: TRouteGetUserDetails;
                     )
 

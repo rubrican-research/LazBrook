@@ -45,7 +45,7 @@ const
                     ),
 
                     (
-                        regex: CONCAT('/', pcreUser,'/details');
+                        regex: CONCAT('/(', pcreUser,'/details)');
                         name: 'User Details';
                         comment:'';
                         default:false;
@@ -54,7 +54,7 @@ const
                     ),
 
                     (
-                        regex: CONCAT('/', pcreUser,'/login');
+                        regex: CONCAT('/(', pcreUser,'/login)');
                         name: 'User Login';
                         comment:'';
                         default:true;
