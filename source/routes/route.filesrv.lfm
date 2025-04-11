@@ -2,14 +2,15 @@ object FilesrvRouter: TFilesrvRouter
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 399
-  HorizontalOffset = 603
-  VerticalOffset = 195
+  HorizontalOffset = 868
+  VerticalOffset = 100
   Width = 291
   object router: TBrookURLRouter
     Routes = <    
       item
         Default = True
         Pattern = '/'
+        Methods = [rmGET, rmPOST, rmPUT, rmDELETE, rmPATCH, rmOPTIONS]
         OnRequest = OnFileRequest
       end>
     OnNotFound = routerNotFound

@@ -10,14 +10,15 @@ uses
 
 const
     {named group "file". alphanumeric, starts with / and contains -, _ @ and .}
-    pcreFileName  = '(?P<file>[/\w\-\._@\s]+)'; // this has been assigned to the route
+    pcreFileName    = '(?P<file>[/\w\-\._@\s]+)'; // this has been assigned to the route
+    assetFolderName = 'assets'; // Default foldername for assets
 
 type
      RFileCacheTags = record
        filepath: string;
+       last_modified: string;
        mimeType: string;
        etag: string;
-       last_modified: string;
      end;
 
 	 { TFilesrvRouter }
@@ -45,6 +46,7 @@ type
         procedure DeleteFile(const _route: string; ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
         procedure PatchFile(const _route: string; ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
         procedure ReplaceFile(const _route: string; ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
+
         procedure ServeFile(const _route: string; ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
         procedure UploadFile(const _route: string; ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
 
@@ -62,7 +64,6 @@ type
      function sendAsset(const _filepath: string; AResponse: TBrookHTTPResponse): boolean;
      function sendFile(const _filepath: string; AResponse: TBrookHTTPResponse;_offerDownload: boolean = True): boolean;
 
-
      function FilesrvRouter: TFilesrvRouter;
 
 implementation
@@ -72,6 +73,7 @@ uses
      LazFileUtils, FileUtil, md5, DateUtils, sugar.httphelper, sugar.utils, sugar.logger ;
 var
     myFilesrvRouter : TFilesrvRouter = nil;
+
 function FilesrvRouter: TFilesrvRouter;
 begin
     if not assigned(myFilesrvRouter) then
@@ -242,7 +244,7 @@ end;
 function TFilesrvRouter.rootPath: string;
 begin
      if myRootPath.IsEmpty then
-         Result:= ExpandFileName('')
+         Result:= ExpandFileName('assets')
      else
         Result:= myRootPath;
 end;
@@ -320,7 +322,7 @@ procedure TFilesrvRouter.ServeFile(const _route: string;
 var
     _filePath: string;
     _fileAge: TDateTime;
-    _fileETag: RFileCacheTags;
+    _fileTags: RFileCacheTags;
     _offerDownload: boolean;
 begin
     {This is where the files are served}
@@ -340,12 +342,11 @@ begin
         Exit;
    	end;
 
-
-    with _fileETag do
+    with _fileTags do
     begin
         try
-	        filepath := _filePath;
-	        mimeType := getMIMEType(_filepath);
+	        filepath      := _filePath;
+	        mimeType      := getMIMEType(_filepath);
 	        last_modified := getHttpTime(_fileAge);
 	    	etag := getETag(_filepath, last_modified); // MD5 Hash of filename and modification time
         except
@@ -356,22 +357,22 @@ begin
 		end;
 	end;
 
-	AResponse.Headers.AddOrSet('Content-Type', _fileETag.mimeType);
+	AResponse.Headers.AddOrSet('Content-Type', _fileTags.mimeType);
   	AResponse.Headers.AddOrSet('Cache-Control', 'public');
   	{$IFDEF RBDebug}
   	AResponse.Headers.AddOrSet('Access-Control-Allow-Origin', '*');
   	{$ENDIF}
-  	AResponse.Headers.AddOrSet('ETag', _fileETag.etag);
+  	AResponse.Headers.AddOrSet('ETag', _fileTags.etag);
   	AResponse.Headers.AddOrSet('Expires', defaultExpiresOn);
 
-  	_offerDownload := not (_fileETag.mimeType.StartsWith('video')
-					   	  or _fileETag.mimeType.StartsWith('image')
-					   	  or _fileETag.mimeType.StartsWith('audio')
-					   	  or _fileETag.mimeType.StartsWith('text') );
+  	_offerDownload := not (_fileTags.mimeType.StartsWith('video')
+					   	  or _fileTags.mimeType.StartsWith('image')
+					   	  or _fileTags.mimeType.StartsWith('audio')
+					   	  or _fileTags.mimeType.StartsWith('text') );
 
   	{ServerFile files from here}
   	try
-       if shouldSendFile(_fileETag) then
+       if shouldSendFile(_fileTags) then
        begin
        		sendFile(_filePath, AResponse, _offerDownload);
           	log('fileserver:: sending file');
@@ -379,7 +380,7 @@ begin
    	   else
        begin
           	{tell the browser to send use its cached version}
-          	AResponse.Send('', _fileETag.mimeType, httpNotModified.code);
+          	AResponse.Send('', _fileTags.mimeType, httpNotModified.code);
           	log('fileserver:: responded - not modified');
    	   end;
    	except
@@ -410,6 +411,9 @@ begin
     _ext := ExtractFileExt(_filePath);
     Result := BrookMIME.Types.Find(_ext);
 end;
+
+initialization
+    Application.CreateForm(TFilesrvRouter, myFilesrvRouter);
 
 end.
 

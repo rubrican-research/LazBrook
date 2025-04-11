@@ -33,6 +33,7 @@ type
     TEntryPoint = record
         entryPoint: string;
         comment: string;
+        authReq: boolean;// Should the server check for authorization before serving this Entrypoint?
         endpoints: TEndPointDefArray;
 	end;
 
@@ -86,7 +87,6 @@ type
         {In child classes, Add specific properties here}
 
     end;
-
 
     function listRoutes(constref router: TBrookURLRouter): TStringArray;
     function aboutRouter(constref router: TBrookURLRouter): string;

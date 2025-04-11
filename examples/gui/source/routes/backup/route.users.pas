@@ -58,7 +58,7 @@ end;
 procedure TRouteGetUserList.doRequest(ASender: TObject; ARoute: TBrookURLRoute;
 	ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
 begin
-    sendHTML(AResponse, ARoute.RawPattern + ' '  + ARoute.Path + ' invoked' );
+    sendHTML(AResponse, ARoute.Path + ' invoked' );
 end;
 
 constructor TRouteGetUserList.Create(ACollection: TCollection);
