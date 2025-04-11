@@ -43,8 +43,7 @@ begin
     with document.Body do begin
         h1('LazBrook Demo Page');
         with div_.p do begin
-            span_('You are seeing a page that has been rendered on the server with the ');
-            a('sugar.html library', 'https://github.com/rubrican-research/sugar');
+            span_('You are seeing a page that has been rendered on the server with the ').a('sugar.html library', 'https://github.com/rubrican-research/sugar');
 		end;
         with div_ do begin
             p('The server has the following endpoints');

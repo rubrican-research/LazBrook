@@ -15,6 +15,7 @@ const
             comment: 'This is a template to define routes.' + sLineBreak +
             'You can create different constants (or variables) for different parts '+ sLineBreak +
             'of your application instead of having it all in one place';
+            authReq: false;
             endpoints : (
                 (
                     regex: '/';
@@ -34,6 +35,7 @@ const
             (
                 entryPoint: '/users';
                 comment:    'Users endpoint';
+                authReq: false;
                 endpoints : (
                     (
                         regex: '/';
