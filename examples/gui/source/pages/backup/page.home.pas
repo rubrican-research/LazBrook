@@ -20,7 +20,7 @@ type
 
 implementation
 uses
-     server.web;
+     server.web, sugar.htmlbuilder;
 
 function html: string;
 var
@@ -41,6 +41,8 @@ var
 	e: String;
 begin
     with document.Body do begin
+        imgBase64(imgEmbedding('image/png', AssetIcons.base64(iconLogo)));
+        //img(imgAsBase64('R:\Data\Dev\Projects\STS\QATreeDev\assets\logos\QATree_259px.png'));
         h1('LazBrook Demo Page');
         with div_.p do begin
             span_('You are seeing a page that has been rendered on the server with the ');
@@ -48,8 +50,10 @@ begin
 		end;
         with div_ do begin
             p('The server has the following endpoints');
-            for e in webserver.endPoints do begin
-
+            with ul_ do begin
+	            for e in webserver.endPoints do begin
+                    item().a(e,e);
+				end;
 			end;
 		end;
 	end;
