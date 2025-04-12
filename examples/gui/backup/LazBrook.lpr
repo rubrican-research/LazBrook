@@ -12,7 +12,7 @@ uses
 	 Interfaces, // this includes the LCL widgetset
      LCLIntf,
 	 Forms, sugar.logger, server.web, page.home, pages, form.main, config.routes,
-	 route.users, page.template;
+	 route.users, route.filesrv, page.template;
 
 {$R *.res}
 
@@ -25,6 +25,7 @@ begin
 
     {Init routes for this server}
     webServer.addRoutes(UserRoutes);
+    webServer.addRoutes([FileSrvEntryPoint]);
 
     {Set the home page}
     webServer.homePageHtml := page.home.html();

@@ -8,7 +8,9 @@
       <Unit>
         <Filename Value="LazBrook.lpr"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="16" Y="21"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="10"/>
+        <CursorPos X="5" Y="29"/>
         <UsageCount Value="127"/>
         <Loaded Value="True"/>
       </Unit>
@@ -18,7 +20,7 @@
         <ComponentName Value="WebServerGui"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="12"/>
         <TopLine Value="48"/>
         <CursorPos X="12" Y="57"/>
         <UsageCount Value="39"/>
@@ -52,7 +54,7 @@
       <Unit>
         <Filename Value="source\routes\route.users.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="11"/>
         <TopLine Value="27"/>
         <CursorPos X="55" Y="40"/>
         <UsageCount Value="36"/>
@@ -489,7 +491,7 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\source\server\server.defines.pas"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="9"/>
         <CursorPos X="40" Y="12"/>
         <UsageCount Value="17"/>
         <Loaded Value="True"/>
@@ -515,11 +517,10 @@
         <ComponentName Value="FilesrvRouter"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="9"/>
-        <CursorPos X="74" Y="18"/>
+        <EditorIndex Value="10"/>
+        <CursorPos X="20" Y="22"/>
         <UsageCount Value="17"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\..\Libraries\fpcwebapp\src\gui\form.main.pas"/>
@@ -541,12 +542,12 @@
         <ComponentName Value="Webserver"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
-        <TopLine Value="299"/>
-        <CursorPos X="18" Y="319"/>
+        <TopLine Value="227"/>
+        <CursorPos X="94" Y="274"/>
         <UsageCount Value="17"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\..\Libraries\sugar\src\mod\sugar.htmlpage.pas"/>
@@ -633,27 +634,19 @@
         <UsageCount Value="16"/>
         <Loaded Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="..\..\..\..\Libraries\brookframework\Source\BrookHTTPCookies.pas"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="385"/>
+        <CursorPos X="43" Y="393"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
     </Units>
     <OtherDefines Count="1">
       <Define0 Value="CONSERVE"/>
     </OtherDefines>
-    <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="142" TopLine="132"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="100" Column="10" TopLine="84"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="157" TopLine="151"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="156" Column="34" TopLine="151"/>
-      </Position>
+    <JumpHistory HistoryIndex="28">
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
         <Caret Line="101" Column="25" TopLine="86"/>
@@ -756,6 +749,22 @@
       <Position>
         <Filename Value="..\..\source\routes\route.filesrv.pas"/>
         <Caret Line="18" Column="74"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\server\server.web.pas"/>
+        <Caret Line="319" Column="18" TopLine="299"/>
+      </Position>
+      <Position>
+        <Filename Value="LazBrook.lpr"/>
+        <Caret Line="28" Column="25" TopLine="10"/>
+      </Position>
+      <Position>
+        <Filename Value="LazBrook.lpr"/>
+        <Caret Line="14" Column="30" TopLine="10"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv.pas"/>
+        <Caret Line="22" Column="20"/>
       </Position>
     </JumpHistory>
     <RunParams>
