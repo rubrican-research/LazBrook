@@ -8,8 +8,8 @@ unit Lazbrookpkg;
 interface
 
 uses
-    server.intf, server.stub, server.web, route.filesrv, server.defines, 
-    route.base, server.init, server.assets, route.parser, server.users, 
+    server.intf, server.stub, server.web, server.defines, route.base, 
+    server.init, server.assets, route.parser, server.users, route.filesrv, 
     LazarusPackageIntf;
 
 implementation

@@ -2,13 +2,12 @@ object Webserver: TWebserver
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
   OldCreateOrder = True
-  Height = 270
-  HorizontalOffset = 770
-  VerticalOffset = 212
-  Width = 683
-  PPI = 97
+  Height = 267
+  HorizontalOffset = 762
+  VerticalOffset = 210
+  Width = 676
   object BrookLibraryLoader: TBrookLibraryLoader
-    Left = 65
+    Left = 64
     Top = 24
   end
   object URLEntryPoints: TBrookURLEntryPoints
@@ -18,15 +17,11 @@ object Webserver: TWebserver
         Router = homeRouter
       end    
       item
-        Name = '/assets'
-        Router = FilesrvRouter.router
-      end    
-      item
         Name = '/shutdown'
         Router = shutdownRouter
       end>
     OnNotFound = URLEntryPointsNotFound
-    Left = 226
+    Left = 224
     Top = 24
   end
   object HTTPServer: TBrookHTTPServer
@@ -36,8 +31,8 @@ object Webserver: TWebserver
     OnRequest = HTTPServerRequest
     OnRequestError = HTTPServerRequestError
     OnError = HTTPServerError
-    Left = 65
-    Top = 113
+    Left = 64
+    Top = 112
   end
   object shutdownRouter: TBrookURLRouter
     Routes = <    
@@ -47,7 +42,7 @@ object Webserver: TWebserver
         Methods = [rmGET]
         OnRequest = shutdownRouterRoutes0Request
       end>
-    Left = 340
+    Left = 336
     Top = 24
   end
   object homeRouter: TBrookURLRouter
@@ -57,31 +52,7 @@ object Webserver: TWebserver
         Pattern = '/'
         OnRequest = onHomePage
       end>
-    Left = 226
-    Top = 121
-  end
-  object BrookURLRouter1: TBrookURLRouter
-    Routes = <    
-      item
-        Pattern = '/route1'
-      end    
-      item
-        Pattern = '/route2'
-      end    
-      item
-        Default = True
-        Pattern = '/route3'
-      end    
-      item
-        Pattern = '/route4'
-      end    
-      item
-        Pattern = '/route5'
-      end    
-      item
-        Pattern = '/route6'
-      end>
-    Left = 445
-    Top = 137
+    Left = 224
+    Top = 112
   end
 end

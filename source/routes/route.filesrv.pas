@@ -1,47 +1,69 @@
 unit route.filesrv;
 
-{$mode ObjFPC}{$H+}
+{$mode objfpc}{$H+}
 
 interface
 
 uses
-     Classes, SysUtils, Forms, Controls, Graphics, Dialogs, BrookMediaTypes,
-	 BrookURLRouter, BrookHTTPResponse, BrookHTTPRequest, server.defines;
-
-const
-    {named group "file". alphanumeric, starts with / and contains -, _ @ and .}
-    pcreFileName    = '(?P<file>[/\w\-\._@\s]+)'; // this has been assigned to the route
-    assetFolderName = 'assets'; // Default foldername for assets
+    Classes, SysUtils, BrookUtility, BrookMediaTypes, BrookURLRouter,
+    BrookHTTPResponse, BrookHTTPRequest,
+    server.defines, route.base;
 
 type
-     RFileCacheTags = record
-       filepath: string;
-       last_modified: string;
-       mimeType: string;
-       etag: string;
-     end;
+    TLazBrookFileSrvRouter = class;
+    function LazBrookFileSrvRouterFactory (ACollection: TCollection): TBrookURLRoute;
 
-	 { TFilesrvRouter }
-     TFilesrvRouter = class(TDataModule)
-          router: TBrookURLRouter;
-		  BrookMIME: TBrookMIME;
-		  procedure DataModuleCreate(Sender: TObject);
-		  procedure routerNotFound(ASender: TObject; const ARoute: string;
-			   ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
-		  procedure OnFileRequest(ASender: TObject;
-			   ARoute: TBrookURLRoute; ARequest: TBrookHTTPRequest;
-			   AResponse: TBrookHTTPResponse);
-     private
-        myRootPath: string;
-        myDownloadPath: string;
-        myUploadPath: string;
-		function getDownloadPath: string;
-		function getUploadPath: string;
-		procedure setDownloadPath(const _value: string);
-		procedure setUploadPath(const _value: string);
-     public
-        procedure initRootPath(const _rootPath: string);
-        function rootPath(): string; // Returns the root path;
+const
+  {named group "file". alphanumeric, starts with / and contains -, _ @ and .}
+  pcreFileName    = '(?P<file>[/\w\-\._@\s]+)'; // this has been assigned to the route
+  assetFolderName = 'assets'; // Default foldername for assets
+  {File server entry point}
+
+  FileSrvEntryPoint :  TEntryPoint = (
+      entryPoint: '/assets';
+      comment: '';
+      authReq: false;
+      endpoints: (
+             (
+              regex: '/' + pcreFileName;   // The pattern of the endpoint
+              name: 'File';                // Use this field to store a readable caption for this endpoint
+              comment: '';
+              default: True;
+              methods: [rmGET, rmPOST, rmDELETE, rmPATCH, rmHEAD];
+              routeClass: nil;
+              routeFactory: @LazBrookFileSrvRouterFactory;
+              routeFactoryMethod: nil;
+             )
+      );
+  );
+
+type
+
+    RFileCacheTags = record
+      filepath: string;
+      last_modified: string;
+      mimeType: string;
+      etag: string;
+    end;
+
+
+	{ TLazBrookFileSrvRouter }
+    TLazBrookFileSrvRouter = class(TBrookURLRoute)
+    protected
+        BrookMIME: TBrookMIME;
+    public
+        constructor Create(ACollection: TCollection); override;
+        destructor Destroy; override;
+
+    public
+        procedure DoMatch(ARoute: TBrookURLRoute); override;
+
+        procedure DoRequestMethod(ASender: TObject; ARoute: TBrookURLRoute;
+          ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse;
+          var AAllowed: Boolean); override;
+
+        procedure DoRequest(ASender: TObject; ARoute: TBrookURLRoute;
+          ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse); override;
 
         procedure DeleteFile(const _route: string; ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
         procedure PatchFile(const _route: string; ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
@@ -50,50 +72,68 @@ type
         procedure ServeFile(const _route: string; ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
         procedure UploadFile(const _route: string; ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
 
-
         function getMIMEType(_filePath: string): string;
 
-     public
-        property downloadPath: string read getDownloadPath write setDownloadPath;
-        property uploadPath: string read getUploadPath write setUploadPath;
+	end;
 
-     end;
+const
+    DefaultDownloadFolderName = 'assets';
+    DefaultUploadFolderName   = 'uploads';
 
-     function getETag(const _file: string; _lastmodified: string): string;
-     function sendMedia(const _filepath: string; AResponse: TBrookHTTPResponse): boolean;
-     function sendAsset(const _filepath: string; AResponse: TBrookHTTPResponse): boolean;
-     function sendFile(const _filepath: string; AResponse: TBrookHTTPResponse;_offerDownload: boolean = True): boolean;
+    procedure setDownloadFolder(_download: string);
+    procedure setUploadFolder(_upload: string);
 
-     function FilesrvRouter: TFilesrvRouter;
+    // Set the path where the files to be served are found
+    function FileSrvDownloadPath : string;  // Path from where files will be served
+    function FileSrvUploadPath: string;     // Path where the files will be uploaded
+    function genETag(const _file: string; _lastmodified: string): string;
 
 implementation
-{$R *.lfm}
 
 uses
-     LazFileUtils, FileUtil, md5, DateUtils, sugar.httphelper, sugar.utils, sugar.logger ;
+  LazFileUtils, FileUtil, md5, DateUtils, sugar.httphelper,
+  sugar.utils, sugar.logger, server.web;
+
 var
-    myFilesrvRouter : TFilesrvRouter = nil;
+    myDownloadFolder: string = '';
+    myUploadFolder: string = '';
 
-function FilesrvRouter: TFilesrvRouter;
+function LazBrookFileSrvRouterFactory(ACollection: TCollection): TBrookURLRoute;
 begin
-    if not assigned(myFilesrvRouter) then
-        Application.CreateForm(TFilesrvRouter, myFilesrvRouter);
-
-    Result := myFilesrvRouter;
+    Result := TLazBrookFileSrvRouter.Create(ACollection);
 end;
 
-function assetFolder: string;
+procedure setDownloadFolder(_download: string);
 begin
-
+    myDownloadFolder := _download;
 end;
 
-procedure setAssetFoldee(const _folder: string);
+procedure setUploadFolder(_upload: string);
 begin
-
+    myUploadFolder := _upload;
 end;
 
-function getETag(const _file: string; _lastmodified: string): string;
+function FileSrvDownloadPath: string;
 begin
+    Result := myDownloadFolder;
+    if Result.isEmpty then begin
+        Result := ExpandFileName(DefaultDownloadFolderName);
+        ForceDirectories(Result);
+	end;
+end;
+
+function FileSrvUploadPath: string;
+begin
+    Result := myUploadFolder;
+    if Result.isEmpty then begin
+        Result := ExpandFileName(DefaultUploadFolderName);
+        ForceDirectories(Result);
+	end;
+end;
+
+function genETag(const _file: string; _lastmodified: string): string;
+begin
+    // MD5 Hash of filename and modification time
     Result := 'W/"' + MD5Print(MD5String(_file + _lastmodified )) + '"';
 end;
 
@@ -110,16 +150,6 @@ end;
 function defaultExpiresOn: string;
 begin
     Result:= getHttpTime(IncWeek(Now));
-end;
-
-function sendMedia(const _filepath: string; AResponse: TBrookHTTPResponse): boolean;
-begin
-    Result := sendFile(_filePath, AResponse, False {don't download});
-end;
-
-function sendAsset(const _filepath: string; AResponse: TBrookHTTPResponse): boolean;
-begin
-    Result := sendFile(_filePath, AResponse, True {download});
 end;
 
 function sendFile(const _filepath: string; AResponse: TBrookHTTPResponse;
@@ -149,108 +179,74 @@ begin
     end;
 end;
 
-{ TFilesrvRouter }
-
-procedure TFilesrvRouter.DataModuleCreate(Sender: TObject);
+function sendMedia(const _filepath: string; AResponse: TBrookHTTPResponse): boolean;
 begin
-     router.Items[0].Pattern:= '/' + pcreFileName;
+    Result := sendFile(_filePath, AResponse, False {don't download});
 end;
 
-procedure TFilesrvRouter.routerNotFound(ASender: TObject; const ARoute: string;
-	 ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
+function sendAsset(const _filepath: string; AResponse: TBrookHTTPResponse): boolean;
 begin
-     AResponse.SendEmpty;
+    Result := sendFile(_filePath, AResponse, True {download});
 end;
 
-procedure TFilesrvRouter.OnFileRequest(ASender: TObject;
-	 ARoute: TBrookURLRoute; ARequest: TBrookHTTPRequest;
-	 AResponse: TBrookHTTPResponse);
+
+{ TLazBrookFileSrvRouter }
+
+constructor TLazBrookFileSrvRouter.Create(ACollection: TCollection);
 begin
-     {==== /assets  FILE ServerFile }
-     case upperCase(ARequest.Method) of
-
-        // DELETE
-        // The DELETE method deletes the specified resource.
-        'DELETE' : DeleteFile(ARoute.Path, ARequest, AResponse);
-
-        // GET
-        // The GET method requests a representation of the specified resource. Requests using GET should only retrieve data.
-        'GET'    : serveFile(ARoute.Path, ARequest, AResponse);
-
-        // PATCH
-        // The PATCH method applies partial modifications to a resource.
-        'PATCH'  : patchFile(ARoute.Path, ARequest, AResponse);
-
-        // POST
-        // The POST method submits an entity to the specified resource, often causing a change in state or side effects on the ServerFile.
-        'POST'   : uploadFile(ARoute.Path, ARequest, AResponse);
-
-        // PUT
-        // The PUT method replaces all current representations of the target resource with the request payload.
-        'PUT'    : replaceFile(ARoute.Path, ARequest, AResponse);
-	 end;
-{
-
-HEAD
-The HEAD method asks for a response identical to a GET request, but without the response body.
-
-CONNECT
-The CONNECT method establishes a tunnel to the ServerFile identified by the target resource.
-
-OPTIONS
-The OPTIONS method describes the communication options for the target resource.
-
-TRACE
-The TRACE method performs a message loop-back test along the path to the target resource.
-
-}
-
-
+	inherited Create(ACollection);
+    BrookMIME := TBrookMIME.Create(nil);
 end;
 
-function TFilesrvRouter.getDownloadPath: string;
+destructor TLazBrookFileSrvRouter.Destroy;
 begin
-    if myDownloadPath.isEmpty then
-        Result:= rootPath()
-    else
-       Result:= myDownloadPath;
+	BrookMIME.Free;
+    inherited Destroy;
 end;
 
-function TFilesrvRouter.getUploadPath: string;
+procedure TLazBrookFileSrvRouter.DoMatch(ARoute: TBrookURLRoute);
 begin
-    if myUploadPath.isEmpty then
-        Result:= rootPath()
-    else
-       Result:= myUploadPath;
+	inherited DoMatch(ARoute);
 end;
 
-procedure TFilesrvRouter.setDownloadPath(const _value: string);
+procedure TLazBrookFileSrvRouter.DoRequestMethod(ASender: TObject;
+	ARoute: TBrookURLRoute; ARequest: TBrookHTTPRequest;
+	AResponse: TBrookHTTPResponse; var AAllowed: Boolean);
 begin
-    if myDownloadPath = _value then exit;
-    myDownloadPath := _value;
+	inherited DoRequestMethod(ASender, ARoute, ARequest, AResponse, AAllowed);
 end;
 
-procedure TFilesrvRouter.setUploadPath(const _value: string);
+procedure TLazBrookFileSrvRouter.DoRequest(ASender: TObject;
+	ARoute: TBrookURLRoute; ARequest: TBrookHTTPRequest;
+	AResponse: TBrookHTTPResponse);
 begin
-    if myUploadPath = _value then exit;
-    myUploadPath := _value;
+    log('FileSrv:: %s %s',[ARequest.Method, ARoute.Path]);
+    case upperCase(ARequest.Method) of
+
+       // DELETE
+       // The DELETE method deletes the specified resource.
+       'DELETE' : DeleteFile(ARoute.Path, ARequest, AResponse);
+
+       // GET
+       // The GET method requests a representation of the specified resource. Requests using GET should only retrieve data.
+       'GET'    : serveFile(ARoute.Path, ARequest, AResponse);
+
+       // PATCH
+       // The PATCH method applies partial modifications to a resource.
+       'PATCH'  : patchFile(ARoute.Path, ARequest, AResponse);
+
+       // POST
+       // The POST method submits an entity to the specified resource, often causing a change in state or side effects on the ServerFile.
+       'POST'   : uploadFile(ARoute.Path, ARequest, AResponse);
+
+       // PUT
+       // The PUT method replaces all current representations of the target resource with the request payload.
+       'PUT'    : replaceFile(ARoute.Path, ARequest, AResponse);
+    end;
 end;
 
-procedure TFilesrvRouter.initRootPath(const _rootPath: string);
-begin
-    myRootPath:= _rootPath;
-end;
-
-function TFilesrvRouter.rootPath: string;
-begin
-     if myRootPath.IsEmpty then
-         Result:= ExpandFileName('assets')
-     else
-        Result:= myRootPath;
-end;
-
-procedure TFilesrvRouter.DeleteFile(const _route: string;
-	 ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
+procedure TLazBrookFileSrvRouter.DeleteFile(const _route: string;
+	ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
 begin
     log('Delete file not implemented');
      AResponse.Send(
@@ -261,8 +257,8 @@ begin
 
 end;
 
-procedure TFilesrvRouter.PatchFile(const _route: string;
-	 ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
+procedure TLazBrookFileSrvRouter.PatchFile(const _route: string;
+	ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
 begin
     log('Patch file not implemented');
     AResponse.Send(
@@ -273,8 +269,8 @@ begin
 
 end;
 
-procedure TFilesrvRouter.ReplaceFile(const _route: string;
-	 ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
+procedure TLazBrookFileSrvRouter.ReplaceFile(const _route: string;
+	ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
 begin
     log('Replace file not implemented');
      AResponse.Send(
@@ -284,41 +280,42 @@ begin
      );
 end;
 
-procedure TFilesrvRouter.ServeFile(const _route: string;
-	 ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
+procedure TLazBrookFileSrvRouter.ServeFile(const _route: string;
+	ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
 
-	 function shouldSendFile(_fileCacheTags: RFileCacheTags): boolean;
-	 var
-	   r: integer;
-	   _noneMatch: string;
-	   _etag: string;
-	   _len: integer;
-	 begin
-	     Result := True;
-	     {ETag being sent by libsagui appends  "-gzip". Have to remove from eTag
-	     before comparing.... ugh!}
-         _etag:= _fileCacheTags.etag;
-	     _len := _fileCacheTags.etag.Length;
+    function shouldSendFile(_fileCacheTags: RFileCacheTags): boolean;
+	var
+	  r: integer;
+	  _noneMatch: string;
+	  _etag: string;
+	  _len: integer;
+	begin
+	    Result := True;
+	    {ETag being sent by libsagui appends  "-gzip". Have to remove from eTag
+	    before comparing.... ugh!}
+        _etag:= _fileCacheTags.etag;
+	    _len := _fileCacheTags.etag.Length;
 
-         log('If-None-Match');
-         log(ARequest.Headers.Get('If-None-Match'));
+        log('If-None-Match');
+        log(ARequest.Headers.Get('If-None-Match'));
 
-        {Extract the If-None-Match header}
-	     _noneMatch := Copy(ARequest.Headers.Get('If-None-Match'),1, _len );
-	     r := CompareStr(_noneMatch, _etag);
+       {Extract the If-None-Match header}
+	    _noneMatch := Copy(ARequest.Headers.Get('If-None-Match'),1, _len );
+	    r := CompareStr(_noneMatch, _etag);
 
-	     log(_fileCacheTags.filepath);
-	     log('%s %s %s',[_noneMatch, ' vs ',  _etag]);
-	     log('compare string gave %d',[r]);
+	    log(_fileCacheTags.filepath);
+	    log('%s %s %s',[_noneMatch, ' vs ',  _etag]);
+	    log('compare string gave %d',[r]);
 
-	     if (r = 0)
-	          OR
-	        (CompareStr(ARequest.Headers.Get('If-Modified-Since'),_fileCacheTags.last_modified) = 0) then
-	     begin
-	        Log('If-None-Match is identical so use cache');
-	        Result := False; {Don't send the file}
-	     end;
-	 end;
+	    if (r = 0)
+	         OR
+	       (CompareStr(ARequest.Headers.Get('If-Modified-Since'),_fileCacheTags.last_modified) = 0) then
+	    begin
+	       Log('If-None-Match is identical so use cache');
+	       Result := False; {Don't send the file}
+	    end;
+	end;
+
 var
     _filePath: string;
     _fileAge: TDateTime;
@@ -327,7 +324,7 @@ var
 begin
     {This is where the files are served}
     {Assume that the urlparamPath in ARoute points to the file needed}
-    _filePath := appendPath([downloadPath, _route]);
+    _filePath := appendPath([FileSrvDownloadPath, _route]);
 
 
     if not FileExists (_filePath) then
@@ -348,7 +345,7 @@ begin
 	        filepath      := _filePath;
 	        mimeType      := getMIMEType(_filepath);
 	        last_modified := getHttpTime(_fileAge);
-	    	etag := getETag(_filepath, last_modified); // MD5 Hash of filename and modification time
+	    	etag          := genETag(_filepath, last_modified); // MD5 Hash of filename and modification time
         except
             on E:Exception do begin
                 AResponse.Send(e.Message, mimePlainText, THTTPResponses.httpOK.code);
@@ -359,7 +356,7 @@ begin
 
 	AResponse.Headers.AddOrSet('Content-Type', _fileTags.mimeType);
   	AResponse.Headers.AddOrSet('Cache-Control', 'public');
-  	{$IFDEF RBDebug}
+  	{$IFDEF Debug}
   	AResponse.Headers.AddOrSet('Access-Control-Allow-Origin', '*');
   	{$ENDIF}
   	AResponse.Headers.AddOrSet('ETag', _fileTags.etag);
@@ -389,31 +386,29 @@ begin
     end;
 end;
 
-procedure TFilesrvRouter.UploadFile(const _route: string;
-	 ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
+procedure TLazBrookFileSrvRouter.UploadFile(const _route: string;
+	ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
 begin
-     AResponse.Send(
-        'Upload file not implemented',
-        mimeHTML,
-        httpOK.code
-     );
+    AResponse.Send(
+       'Upload file not implemented',
+       mimeHTML,
+       httpOK.code
+    );
+
 end;
 
-function TFilesrvRouter.getMIMEType(_filePath: string): string;
+function TLazBrookFileSrvRouter.getMIMEType(_filePath: string): string;
 var
     _ext: string;
 begin
     if not BrookMIME.Active then begin
-        BrookMime.FileName:= ExpandFileName('mime.types');
-        BrookMime.Active := True;
+        BrookMime.FileName:= appendPath([appPath, 'mime.types']);
+        BrookMime.Active  := True;
         BrookMime.Types.Prepare;
     end;
     _ext := ExtractFileExt(_filePath);
     Result := BrookMIME.Types.Find(_ext);
 end;
-
-initialization
-    Application.CreateForm(TFilesrvRouter, myFilesrvRouter);
 
 end.
 

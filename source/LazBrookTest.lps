@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Debug"/>
+    <Units>
+      <Unit>
+        <Filename Value="LazBrookTest.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="60" Y="16"/>
+        <UsageCount Value="31"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="tests\gui\testfilesrv.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="testFileSrv"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="35" Y="20"/>
+        <UsageCount Value="31"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="server\server.web.pas"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="529"/>
+        <CursorPos Y="550"/>
+        <UsageCount Value="15"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\brookframework\Source\BrookHTTPCookies.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="494"/>
+        <CursorPos X="3" Y="496"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="server\server.assets.pas"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="34"/>
+        <CursorPos X="5" Y="62"/>
+        <UsageCount Value="14"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="routes\route.filesrv.pas"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="290"/>
+        <CursorPos X="85" Y="303"/>
+        <UsageCount Value="14"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="routes\route.filesrv.pas"/>
+        <ComponentName Value="FilesrvRouter"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="385"/>
+        <CursorPos X="27" Y="399"/>
+        <UsageCount Value="11"/>
+      </Unit>
+      <Unit>
+        <Filename Value="server\server.defines.pas"/>
+        <EditorIndex Value="7"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.utils.pas"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="251"/>
+        <CursorPos X="5" Y="265"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="routes\route.base.pas"/>
+        <EditorIndex Value="6"/>
+        <CursorPos X="5" Y="17"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\brookframework\Source\BrookMediaTypes.pas"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="670"/>
+        <CursorPos X="24" Y="678"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\objpas\classes\compon.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="458"/>
+        <CursorPos X="3" Y="461"/>
+        <UsageCount Value="10"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="21">
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="407" Column="23" TopLine="395"/>
+      </Position>
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="75" Column="24" TopLine="48"/>
+      </Position>
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="549" Column="5" TopLine="529"/>
+      </Position>
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="531" Column="14" TopLine="529"/>
+      </Position>
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="549" TopLine="529"/>
+      </Position>
+      <Position>
+        <Filename Value="tests\gui\testfilesrv.pas"/>
+        <Caret Line="38" TopLine="4"/>
+      </Position>
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="612" TopLine="591"/>
+      </Position>
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="549" Column="65" TopLine="528"/>
+      </Position>
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="549" TopLine="528"/>
+      </Position>
+      <Position>
+        <Filename Value="tests\gui\testfilesrv.pas"/>
+        <Caret Line="38" TopLine="4"/>
+      </Position>
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="174" TopLine="153"/>
+      </Position>
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="150" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="196" TopLine="175"/>
+      </Position>
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="195" Column="21" TopLine="175"/>
+      </Position>
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="197" Column="20" TopLine="175"/>
+      </Position>
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="212" Column="5" TopLine="184"/>
+      </Position>
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="215" Column="9" TopLine="184"/>
+      </Position>
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="195" TopLine="175"/>
+      </Position>
+      <Position>
+        <Filename Value="tests\gui\testfilesrv.pas"/>
+        <Caret Line="30" TopLine="4"/>
+      </Position>
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="195" TopLine="181"/>
+      </Position>
+      <Position>
+        <Filename Value="server\server.web.pas"/>
+        <Caret Line="550" TopLine="529"/>
+      </Position>
+      <Position>
+        <Filename Value="tests\gui\testfilesrv.pas"/>
+        <Caret Line="16" Column="59"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+  <Debugging>
+    <BreakPoints>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="server\server.web.pas"/>
+        <Line Value="195"/>
+      </Item>
+    </BreakPoints>
+  </Debugging>
+</CONFIG>

@@ -2,8 +2,8 @@ object FilesrvRouter: TFilesrvRouter
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 399
-  HorizontalOffset = 868
-  VerticalOffset = 100
+  HorizontalOffset = -1346
+  VerticalOffset = 0
   Width = 291
   object router: TBrookURLRouter
     Routes = <    

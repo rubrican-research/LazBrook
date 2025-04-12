@@ -7,7 +7,7 @@ interface
 uses
     Classes, SysUtils, Forms, BrookLibraryLoader, BrookMediaTypes,
     BrookURLEntryPoints, BrookURLRouter, BrookHTTPServer,
-    BrookUtility, BrookHTTPResponse, BrookHTTPRequest,
+    BrookUtility, BrookHTTPResponse, BrookHTTPRequest, BrookHTTPCookies,
     route.base, route.filesrv,
     server.defines;
 
@@ -16,7 +16,6 @@ type
     { TWebserver }
 
     TWebserver = class(TDataModule)
-        BrookURLRouter1: TBrookURLRouter;
         HTTPServer: TBrookHTTPServer;
         BrookLibraryLoader: TBrookLibraryLoader;
         homeRouter: TBrookURLRouter;
@@ -39,19 +38,26 @@ type
             const AEntryPoint, APath: string; ARequest: TBrookHTTPRequest;
             AResponse: TBrookHTTPResponse);
     private
+		myerrorPageHtml: string;
         myhomePageHtml: string;
-        function getDownloadPath: string;
+		myinfoPageHtml: string;
+
+		function getErrorPageHtml: string;
+		function getHomePageHtml: string;
         function getHost: string;
+		function getInfoPageHtml: string;
         function getPort: uint16;
         function getServerRunning: boolean;
         function getServerUrl: string;
-        function getuploadPath: string;
-        procedure setDownloadPath(const _value: string);
+
+
+		procedure seterrorPageHtml(const _value: string);
         procedure sethomePageHtml(const _value: string);
         procedure setHost(const _value: string);
+		procedure setinfoPageHtml(const _value: string);
         procedure setPort(const _value: uint16);
         procedure setServerRunning(const _value: boolean);
-        procedure setuploadPath(const _value: string);
+
     protected
         function initEntryPoint(_entryPoint: string): TBrookURLEntryPoint;
         procedure asychTerminate(_data: PtrInt);
@@ -59,36 +65,36 @@ type
         procedure startServer;
         procedure stopServer;
         procedure EntryPointsActive(_val: boolean);
+
+        {Returns the endpoints server}
         function endPoints: TStringArray;
 
-        function addRoute(_entryPoint: string;
-            constref _routeClass: TBrookURLRouteClass): TBrookURLRoute; overload;
-        function addRoute(_entryPoint: string;
-            constref _routeClassArray: array of TBrookURLRouteClass): TWebServer; overload;
+        function addRoute(_entryPoint: string; constref _routeClass: TBrookURLRouteClass): TBrookURLRoute; overload;
+        function addRoute(_entryPoint: string; constref _routeClassArray: array of TBrookURLRouteClass): TWebServer; overload;
 
-        function addRoute(_entryPoint: string;
-            constref _routeFactory: TBrookURLRouteFactory): TBrookURLRoute; overload;
-        function addRoute(_entryPoint: string;
-            constref _routeFactoryArray: array of TBrookURLRouteFactory): TWebServer; overload;
+        function addRoute(_entryPoint: string; constref _routeFactory: TBrookURLRouteFactory): TBrookURLRoute; overload;
+        function addRoute(_entryPoint: string; constref _routeFactoryArray: array of TBrookURLRouteFactory): TWebServer; overload;
 
-        function addRoute(_entryPoint: string;
-            constref _routeFactoryMethod: TBrookURLRouteFactoryMethod): TBrookURLRoute; overload;
-        function addRoute(_entryPoint: string;
-            constref _routeFactoryMethodArray: array of TBrookURLRouteFactoryMethod):
-            TWebServer; overload;
+        function addRoute(_entryPoint: string; constref _routeFactoryMethod: TBrookURLRouteFactoryMethod): TBrookURLRoute; overload;
+        function addRoute(_entryPoint: string; constref _routeFactoryMethodArray: array of TBrookURLRouteFactoryMethod): TWebServer; overload;
 
         function addRoutes(_appRoutes: TLazBrookRoutes): TWebserver; overload;
 
-        function setDefaultRoute(_entryPoint: string; constref _route: TBrookURLRoute
-			): boolean;
+        {Sets the default route for an entry point.
+        If a default route is already assigned, it will be replaced by the new rout}
+        function setDefaultRoute(_entryPoint: string; constref _route: TBrookURLRoute): boolean;
+
     public
         property Running: boolean read getServerRunning write setServerRunning;
         property host: string read getHost write setHost;
         property port: uint16 read getPort write setPort;
         property serverUrl: string read getServerUrl;
-        property homePageHtml: string read myhomePageHtml write sethomePageHtml;
-        property downloadPath: string read getDownloadPath write setDownloadPath;
-        property uploadPath: string read getuploadPath write setuploadPath;
+
+        // Default Pages. Stored as the complete HTML
+        property homePageHtml: string read getHomePageHtml write sethomePageHtml;    // HTML for default home page.
+        property errorPageHtml: string read getErrorPageHtml write seterrorPageHtml; // HTML Display an error message. Suggest using templates to customize messages
+        property infoPageHtml: string read getInfoPageHtml write setinfoPageHtml;    // HTML Display information. Suggest using templates to customize messages.
+
     end;
 
     TProcCreateServerHook = function(_server: TWebserver): TWebserver; // Return _server
@@ -107,6 +113,7 @@ function serverEndPoints: string;
 procedure stopServer;
 
 function webServer: TWebServer;
+function appPath: string; // Returns the folder of the executable
 
 var
     {Use these to initialize routes when instantiating server}
@@ -114,10 +121,9 @@ var
     OnDestroyServer: TProcDestroyServerHook = nil;
 
     {Identification information about this server}
-    ServerName: string = 'LazBrook Webserver';
-    ServerID: string = '1.0';
-    serverAbout: string =
-    'An easy-to-use template for creating webserver applications in Lazarus/FPC using Brookframework';
+    ServerName: string  = 'LazBrook Webserver';
+    ServerID: string    = '1.0';
+    serverAbout: string = 'An easy-to-use template for creating webserver applications in Lazarus/FPC using Brookframework';
 
 implementation
 
@@ -141,8 +147,17 @@ end;
 function webServer: TWebServer;
 begin
     if not assigned(myWebServer) then
-        Application.CreateForm(TWebServer, myWebServer);
+        myWebServer := createServer;
     Result := myWebServer;
+end;
+
+var
+    myAppPath: string;
+function appPath: string;
+begin
+    if myAppPath.isEmpty then
+        myAppPath := ExtractFileDir(Application.ExeName);
+    Result := myAppPath;
 end;
 
 function serverInitialized: boolean;
@@ -153,8 +168,8 @@ end;
 function createServer: TWebserver;
 begin
     Result := TWebServer.Create(nil);
-    FilesrvRouter(); // force init
-    Result.homePageHtml := 'LazBrook server is running at ' + serverURL;
+    Result.homePageHtml := 'LazBrook server is running at ' + Result.serverUrl;
+    {You can initialize the server routes etc by attaching an OnCreateServer function}
     if assigned(OnCreateServer) then
         OnCreateServer(Result);
 end;
@@ -176,9 +191,10 @@ end;
 function startServer(const _host: string; _port: word): boolean;
 begin
     Result := False;
-    if not serverInitialized then createServer;
+    if not serverInitialized then
+        myWebServer := createServer;
 
-    if Webserver.Running then
+    if serverRunning then
     begin
         raise Exception.Create(Format('Server is already running (%s)',
             [Webserver.serverUrl]));
@@ -237,13 +253,11 @@ begin
 end;
 
 procedure TWebserver.DataModuleCreate(Sender: TObject);
-var
-	sLibPath: RawByteString;
 begin
     setPort(DEFAULT_PORT);
     BrookLibraryLoader.LibraryName := BrookLibPath;
     BrookLibraryLoader.Active      := true;
-    Log('TWebserver.Create');
+    Log('TWebserver.DataModuleCreate');
 end;
 
 procedure TWebserver.DataModuleDestroy(Sender: TObject);
@@ -271,9 +285,27 @@ begin
     if Result.isEmpty then Result := 'localhost';
 end;
 
-function TWebserver.getDownloadPath: string;
+function TWebserver.getInfoPageHtml: string;
 begin
-    Result := FilesrvRouter.downloadPath;
+
+end;
+
+
+function TWebserver.getErrorPageHtml: string;
+begin
+    if myerrorPageHtml.isEmpty then
+        Result := 'Lazbrook Webserver encountered an error.'
+    else
+        Result := myerrorPageHtml;
+end;
+
+function TWebserver.getHomePageHtml: string;
+begin
+    if myhomePageHtml.isEmpty then
+        Result := 'Lazbrook Webserver is running at ' + serverUrl
+    else
+        Result := myhomePageHtml;
+
 end;
 
 function TWebserver.getPort: uint16;
@@ -286,18 +318,17 @@ procedure TWebserver.HTTPServerRequest(ASender: TObject;
 var
     ep: TBrookURLEntryPoint;
     r: TBrookURLRoute;
+	c: TBrookHTTPCookie;
+
 begin
     log('REQUEST: ' + ARequest.Path);
     URLEntryPoints.Enter(ASender, ARequest, AResponse);
-
-    if AResponse.IsEmpty then
-        log('   Empty Request: ' + ARequest.Path);
-
-    log('   Looking at routes for /users:');
-    ep := URLEntryPoints.List.FindInList('/users');
-    if assigned(ep) then
-        for r in ep.Router.Routes do
-            log('       %s <br>', [r.Pattern]);
+    c := AResponse.Cookies.Find('lazbrookafter');
+    if not assigned(c) then begin
+        c :=  AResponse.Cookies.Add;
+        c.Name := 'lazbrookafter';
+	end;
+    c.Value := GetTickCount64.ToString;
 end;
 
 procedure TWebserver.onHomePage(ASender: TObject; ARoute: TBrookURLRoute;
@@ -308,7 +339,7 @@ end;
 
 procedure TWebserver.HTTPServerError(ASender: TObject; AException: Exception);
 begin
-    Log('HTTPServerError:: %s', [AException.Message]);
+    Log('Lazbrook HTTPServerError:: %s', [AException.Message]);
 end;
 
 function TWebserver.getServerRunning: boolean;
@@ -324,14 +355,12 @@ begin
         Result := Format('http://%s:%d', [host, Port]);
 end;
 
-function TWebserver.getuploadPath: string;
-begin
-    Result := FilesrvRouter.uploadPath;
-end;
 
-procedure TWebserver.setDownloadPath(const _value: string);
+
+procedure TWebserver.seterrorPageHtml(const _value: string);
 begin
-    FilesrvRouter.DownloadPath := _value;
+	if myerrorPageHtml=_value then Exit;
+	myerrorPageHtml:=_value;
 end;
 
 
@@ -344,6 +373,12 @@ end;
 procedure TWebserver.setHost(const _value: string);
 begin
     HTTPServer.HostName := _value;
+end;
+
+procedure TWebserver.setinfoPageHtml(const _value: string);
+begin
+	if myinfoPageHtml=_value then Exit;
+	myinfoPageHtml:=_value;
 end;
 
 procedure TWebserver.setPort(const _value: uint16);
@@ -360,15 +395,10 @@ begin
     end;
 end;
 
-procedure TWebserver.setuploadPath(const _value: string);
-begin
-    FilesrvRouter.uploadPath := _value;
-end;
 
 function TWebserver.initEntryPoint(_entryPoint: string): TBrookURLEntryPoint;
 var
     _EP: TBrookURLEntryPoint;
-    _router: TBrookURLRouter;
     _i: integer;
 begin
     {FIND THE ENTRY POINT}
@@ -376,17 +406,14 @@ begin
     if _i > -1 then
     begin
         _EP := URLEntryPoints.List.Items[_i];
-        _router := _EP.Router;
     end
     else
     begin
-        _EP := URLEntryPoints.Add;
-        _EP.Name := _entryPoint;
-        _router := TBrookURLRouter.Create(HTTPServer);
-        _EP.Router := _router;
+        _EP         := URLEntryPoints.Add;
+        _EP.Name    := _entryPoint;
+        _EP.Router  := TBrookURLRouter.Create(HTTPServer);
     end;
     Result := _EP;
-
 end;
 
 procedure TWebserver.asychTerminate(_data: PtrInt);
@@ -630,7 +657,7 @@ begin
 end;
 
 initialization
-    myWebServer := createServer;
+    //myWebServer := createServer;
 
 finalization
     if serverInitialized then

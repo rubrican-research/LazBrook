@@ -68,7 +68,7 @@ end;
 
 function assetRoot: string;
 begin
-    Result := webserver.downloadPath;
+
 end;
 
 
