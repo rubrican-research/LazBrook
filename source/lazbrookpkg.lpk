@@ -82,6 +82,12 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
     </Files>
     <RequiredPkgs>
       <Item>
+        <PackageName Value="HashLib4PascalPackage"/>
+      </Item>
+      <Item>
+        <PackageName Value="weblaz"/>
+      </Item>
+      <Item>
         <PackageName Value="fp_sugar"/>
       </Item>
       <Item>

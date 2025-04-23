@@ -9,8 +9,8 @@
         <Filename Value="LazBrook.lpr"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="10"/>
-        <CursorPos X="86" Y="28"/>
+        <TopLine Value="14"/>
+        <CursorPos X="124" Y="40"/>
         <UsageCount Value="127"/>
         <Loaded Value="True"/>
       </Unit>
@@ -543,8 +543,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="7"/>
-        <TopLine Value="227"/>
-        <CursorPos X="94" Y="274"/>
+        <TopLine Value="69"/>
+        <CursorPos X="68" Y="155"/>
         <UsageCount Value="17"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -647,10 +647,6 @@
       <Define0 Value="CONSERVE"/>
     </OtherDefines>
     <JumpHistory HistoryIndex="28">
-      <Position>
-        <Filename Value="..\..\source\server\server.web.pas"/>
-        <Caret Line="101" Column="25" TopLine="86"/>
-      </Position>
       <Position>
         <Filename Value="..\..\source\server\server.web.pas"/>
         <Caret Line="648" Column="5" TopLine="622"/>
@@ -763,8 +759,8 @@
         <Caret Line="14" Column="30" TopLine="10"/>
       </Position>
       <Position>
-        <Filename Value="..\..\source\routes\route.filesrv.pas"/>
-        <Caret Line="22" Column="20"/>
+        <Filename Value="LazBrook.lpr"/>
+        <Caret Line="40" Column="124" TopLine="14"/>
       </Position>
     </JumpHistory>
     <RunParams>

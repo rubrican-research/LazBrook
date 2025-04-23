@@ -3,7 +3,7 @@ object Webserver: TWebserver
   OnDestroy = DataModuleDestroy
   OldCreateOrder = True
   Height = 267
-  HorizontalOffset = 762
+  HorizontalOffset = -1158
   VerticalOffset = 210
   Width = 676
   object BrookLibraryLoader: TBrookLibraryLoader

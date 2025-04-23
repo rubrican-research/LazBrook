@@ -50,6 +50,20 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="testFileSrv"/>
       </Unit>
+      <Unit>
+        <Filename Value="tests\utils\lazbrook.httpclient.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="tests\testgender.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="testGender"/>
+      </Unit>
+      <Unit>
+        <Filename Value="tests\testcontactinfo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="testContactInfo"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -60,7 +74,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="tests\gui"/>
+      <OtherUnitFiles Value="tests\gui;tests\utils;tests"/>
       <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>

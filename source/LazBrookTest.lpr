@@ -3,7 +3,8 @@ program LazBrookTest;
 {$mode objfpc}{$H+}
 
 uses
-  Interfaces, Forms, GuiTestRunner, testFileSrv, sugar.logger;
+  Interfaces, Forms, GuiTestRunner, testFileSrv, sugar.logger, testGender,
+  testContactInfo;
 
 {$R *.res}
 

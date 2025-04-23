@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Debug"/>
+    <Units>
+      <Unit>
+        <Filename Value="laz.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit>
+      <Unit>
+        <Filename Value="source\unit1.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit1"/>
+        <CursorPos X="38" Y="26"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\source\routes\route.filesrv.pas"/>
+        <ComponentName Value="FilesrvRouter"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="2"/>
+        <CursorPos X="74" Y="9"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\source\server\server.web.pas"/>
+        <ComponentName Value="Webserver"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="56"/>
+        <CursorPos X="89" Y="80"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\source\routes\route.base.pas"/>
+        <EditorIndex Value="9"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\source\routes\route.filesrv0.pas"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="25"/>
+        <CursorPos X="29" Y="41"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\..\Libraries\brookframework\Source\BrookURLRouter.pas"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="114"/>
+        <CursorPos Y="130"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\..\Libraries\brookframework\Source\BrookHTTPRequest.pas"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="91"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\..\Libraries\brookframework\Source\BrookUtility.pas"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="206"/>
+        <CursorPos X="3" Y="226"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\source\server\server.assets.pas"/>
+        <EditorIndex Value="4"/>
+        <CursorPos X="109" Y="30"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\source\routes\route.parser.pas"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="29">
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv.pas"/>
+        <Caret Line="78" Column="5" TopLine="76"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv.pas"/>
+        <Caret Line="67" Column="48" TopLine="46"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv.pas"/>
+        <Caret Line="87" TopLine="85"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv.pas"/>
+        <Caret Line="66" Column="15" TopLine="47"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv.pas"/>
+        <Caret Line="81" Column="5" TopLine="47"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv.pas"/>
+        <Caret Line="88" Column="50" TopLine="85"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv.pas"/>
+        <Caret Line="421" Column="41" TopLine="385"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv.pas"/>
+        <Caret Line="418" Column="39" TopLine="385"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\server\server.web.pas"/>
+        <Caret Line="21" Column="37"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\server\server.web.pas"/>
+        <Caret Line="75" Column="86" TopLine="56"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\server\server.web.pas"/>
+        <Caret Line="603" Column="5" TopLine="593"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\server\server.web.pas"/>
+        <Caret Line="80" Column="89" TopLine="56"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.base.pas"/>
+        <Caret Line="36" Column="34" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.base.pas"/>
+        <Caret Line="31" Column="5" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv0.pas"/>
+        <Caret Line="8" Column="23"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv0.pas"/>
+        <Caret Line="13" Column="77"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Libraries\brookframework\Source\BrookURLRouter.pas"/>
+        <Caret TopLine="76"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv0.pas"/>
+        <Caret Line="27" Column="34"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv0.pas"/>
+        <Caret Line="31" Column="26" TopLine="5"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv0.pas"/>
+        <Caret Line="14" Column="31" TopLine="5"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv0.pas"/>
+        <Caret Line="38" Column="56" TopLine="12"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv.pas"/>
+        <Caret Line="9" Column="71" TopLine="2"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv0.pas"/>
+        <Caret Line="24" TopLine="4"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv0.pas"/>
+        <Caret Line="27" Column="15" TopLine="7"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv0.pas"/>
+        <Caret Line="34" Column="29" TopLine="14"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv0.pas"/>
+        <Caret Line="14" Column="73"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv0.pas"/>
+        <Caret Line="36" Column="74" TopLine="14"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\..\..\Libraries\brookframework\Source\BrookURLRouter.pas"/>
+        <Caret Line="131" Column="27" TopLine="110"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv0.pas"/>
+        <Caret Line="46" TopLine="14"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\source\routes\route.filesrv0.pas"/>
+        <Caret Line="66" TopLine="45"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

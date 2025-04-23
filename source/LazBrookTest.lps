@@ -8,188 +8,508 @@
       <Unit>
         <Filename Value="LazBrookTest.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="3"/>
-        <CursorPos X="60" Y="16"/>
-        <UsageCount Value="31"/>
+        <EditorIndex Value="4"/>
+        <CursorPos X="53" Y="17"/>
+        <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="tests\gui\testfilesrv.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="testFileSrv"/>
-        <IsVisibleTab Value="True"/>
-        <CursorPos X="35" Y="20"/>
-        <UsageCount Value="31"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="8"/>
+        <CursorPos Y="41"/>
+        <UsageCount Value="200"/>
+      </Unit>
+      <Unit>
+        <Filename Value="tests\utils\lazbrook.httpclient.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="57" Y="19"/>
+        <UsageCount Value="200"/>
+      </Unit>
+      <Unit>
+        <Filename Value="tests\testgender.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="testGender"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="132"/>
+        <CursorPos X="19" Y="154"/>
+        <UsageCount Value="106"/>
+      </Unit>
+      <Unit>
+        <Filename Value="tests\testcontactinfo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="testContactInfo"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="63"/>
+        <CursorPos X="28" Y="63"/>
+        <UsageCount Value="82"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="server\server.web.pas"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="529"/>
-        <CursorPos Y="550"/>
-        <UsageCount Value="15"/>
-        <Loaded Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="..\..\..\Libraries\brookframework\Source\BrookHTTPCookies.pas"/>
+        <ComponentName Value="Webserver"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="494"/>
-        <CursorPos X="3" Y="496"/>
-        <UsageCount Value="9"/>
+        <TopLine Value="173"/>
+        <CursorPos X="110" Y="203"/>
+        <UsageCount Value="88"/>
       </Unit>
       <Unit>
         <Filename Value="server\server.assets.pas"/>
-        <EditorIndex Value="8"/>
-        <TopLine Value="34"/>
-        <CursorPos X="5" Y="62"/>
-        <UsageCount Value="14"/>
-        <Loaded Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="routes\route.filesrv.pas"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="290"/>
-        <CursorPos X="85" Y="303"/>
-        <UsageCount Value="14"/>
-        <Loaded Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="routes\route.filesrv.pas"/>
-        <ComponentName Value="FilesrvRouter"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="DataModule"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="-1"/>
-        <WindowIndex Value="1"/>
-        <TopLine Value="385"/>
-        <CursorPos X="27" Y="399"/>
-        <UsageCount Value="11"/>
+        <TopLine Value="34"/>
+        <CursorPos X="77" Y="65"/>
+        <UsageCount Value="56"/>
+      </Unit>
+      <Unit>
+        <Filename Value="routes\route.filesrv.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="3" Y="22"/>
+        <UsageCount Value="84"/>
       </Unit>
       <Unit>
         <Filename Value="server\server.defines.pas"/>
-        <EditorIndex Value="7"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="57"/>
+        <CursorPos X="106" Y="76"/>
+        <UsageCount Value="53"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.utils.pas"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="251"/>
-        <CursorPos X="5" Y="265"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="957"/>
+        <CursorPos X="34" Y="1044"/>
+        <UsageCount Value="53"/>
       </Unit>
       <Unit>
         <Filename Value="routes\route.base.pas"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="5" Y="17"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="52"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\Libraries\brookframework\Source\BrookMediaTypes.pas"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="670"/>
         <CursorPos X="24" Y="678"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="52"/>
       </Unit>
       <Unit>
         <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\objpas\classes\compon.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="458"/>
         <CursorPos X="3" Y="461"/>
+        <UsageCount Value="2"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\packages\fcl-fpcunit\src\testutils.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="16"/>
+        <CursorPos X="17" Y="36"/>
+        <UsageCount Value="52"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\packages\winunits-base\src\httpapi.pp"/>
+        <UnitName Value="HttpApi"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="617"/>
+        <CursorPos X="21" Y="638"/>
+        <UsageCount Value="52"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\packages\fcl-web\src\base\fpweb.pp"/>
+        <UnitName Value="fpWeb"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="117"/>
+        <CursorPos X="30" Y="170"/>
+        <UsageCount Value="44"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\packages\fcl-web\src\base\fphttp.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="101"/>
+        <CursorPos X="14" Y="119"/>
+        <UsageCount Value="44"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\packages\fcl-web\src\base\httpdefs.pp"/>
+        <UnitName Value="HTTPDefs"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="55"/>
+        <CursorPos X="120" Y="68"/>
+        <UsageCount Value="44"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\packages\fcl-web\src\base\fphttpclient.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="145"/>
+        <CursorPos X="62" Y="375"/>
+        <UsageCount Value="44"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\brookframework\Source\BrookUtility.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="223"/>
+        <CursorPos X="15" Y="242"/>
+        <UsageCount Value="44"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\packages\fcl-web\src\base\fpmimetypes.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="178"/>
+        <UsageCount Value="44"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\packages\fcl-web\src\base\httpprotocol.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="13"/>
+        <UsageCount Value="44"/>
+      </Unit>
+      <Unit>
+        <Filename Value="users\server.users.pas"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="108"/>
+        <CursorPos X="18" Y="120"/>
+        <UsageCount Value="56"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.contactinfo.pas"/>
+        <UnitName Value="sugar.contactInfo"/>
+        <TopLine Value="184"/>
+        <CursorPos Y="216"/>
+        <UsageCount Value="80"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\objpas\fgl.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="578"/>
+        <CursorPos X="3" Y="582"/>
+        <UsageCount Value="80"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.gender.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="9"/>
+        <CursorPos X="5" Y="28"/>
+        <UsageCount Value="74"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\packages\fcl-base\src\gettext.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="73"/>
+        <UsageCount Value="30"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\lcl\lcltranslator.pas"/>
+        <UnitName Value="LCLTranslator"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="37"/>
+        <CursorPos Y="37"/>
+        <UsageCount Value="30"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.languages.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="32"/>
+        <CursorPos X="3" Y="53"/>
+        <UsageCount Value="62"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\inc\objpas.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="325"/>
+        <CursorPos X="9" Y="325"/>
+        <UsageCount Value="30"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\inc\objpash.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="187"/>
+        <CursorPos X="23" Y="206"/>
+        <UsageCount Value="30"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\laz_conf\3.8\onlinepackagemanager\packages\PascalSCADA\src\database\hmidbconnection_dsgn.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="64" Y="14"/>
+        <UsageCount Value="2"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\ide\lazarus.pp"/>
+        <UnitName Value="Lazarus"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="134"/>
+        <CursorPos X="70" Y="162"/>
+        <UsageCount Value="2"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.collections.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="134"/>
+        <CursorPos X="74" Y="148"/>
+        <UsageCount Value="4"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.maps.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="10"/>
+        <CursorPos X="5" Y="39"/>
+        <UsageCount Value="4"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\objpas\classes\classesh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="797"/>
+        <CursorPos X="3" Y="816"/>
+        <UsageCount Value="3"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\objpas\classes\stringl.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2104"/>
+        <CursorPos X="3" Y="2108"/>
+        <UsageCount Value="3"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\sugar\src\mod\tags\sugar.tagui.pas"/>
+        <UnitName Value="sugar.tagUI"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="228"/>
+        <CursorPos X="76" Y="240"/>
+        <UsageCount Value="3"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\lcl\include\application.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1068"/>
+        <CursorPos Y="1088"/>
+        <UsageCount Value="35"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\lcl\interfaces\win32\win32callback.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2520"/>
+        <CursorPos Y="2550"/>
+        <UsageCount Value="35"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\packages\fcl-fpcunit\src\fpcunit.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="189"/>
+        <CursorPos X="3" Y="197"/>
+        <UsageCount Value="35"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.register.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="35"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.repositionui.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="35"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.sqlitehelper.lfm"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="35"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.sqlitehelper.pas"/>
+        <ComponentName Value="DBModule"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1372"/>
+        <CursorPos Y="1380"/>
+        <UsageCount Value="35"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\packages\fcl-json\src\fpjson.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3795"/>
+        <CursorPos X="3" Y="3808"/>
+        <UsageCount Value="31"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\packages\fcl-fpcunit\src\testregistry.pp"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="5"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\packages\fcl-base\src\contnrs.pp"/>
+        <UnitName Value="Contnrs"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1821"/>
+        <CursorPos X="3" Y="1823"/>
+        <UsageCount Value="30"/>
+      </Unit>
+      <Unit>
+        <Filename Value="tests\testaddresses.pas"/>
+        <UnitName Value="testAddresses"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2"/>
+        <CursorPos X="35" Y="20"/>
+        <UsageCount Value="19"/>
+      </Unit>
+      <Unit>
+        <Filename Value="users\server.authentication.pas"/>
+        <EditorIndex Value="5"/>
+        <CursorPos X="28" Y="11"/>
+        <UsageCount Value="13"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\laz_conf\3.8\onlinepackagemanager\packages\Rhl\rhlTiger2.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="49" Y="24"/>
+        <UsageCount Value="13"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\laz_conf\3.8\onlinepackagemanager\packages\Rhl\rhlTiger.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="13"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\laz_conf\3.8\onlinepackagemanager\packages\HashLib\src\KDF\HlpPBKDF_Argon2NotBuildInAdapter.pas"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="13"/>
+        <CursorPos X="19" Y="27"/>
         <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="R:\Apps\Lazarus\laz_conf\3.8\onlinepackagemanager\packages\HashLib\src\KDF\HlpArgon2TypeAndVersion.pas"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <CursorPos Y="8"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="21">
+    <JumpHistory HistoryIndex="28">
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="407" Column="23" TopLine="395"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="60" Column="9" TopLine="42"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="75" Column="24" TopLine="48"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="55" Column="21" TopLine="36"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="549" Column="5" TopLine="529"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="80" Column="9" TopLine="57"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="531" Column="14" TopLine="529"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="110" Column="5" TopLine="89"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="549" TopLine="529"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="127" Column="10" TopLine="108"/>
       </Position>
       <Position>
-        <Filename Value="tests\gui\testfilesrv.pas"/>
-        <Caret Line="38" TopLine="4"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="122" Column="41" TopLine="108"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="612" TopLine="591"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="148" Column="16" TopLine="129"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="549" Column="65" TopLine="528"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="147" Column="34" TopLine="129"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="549" TopLine="528"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="55" Column="29" TopLine="29"/>
       </Position>
       <Position>
-        <Filename Value="tests\gui\testfilesrv.pas"/>
-        <Caret Line="38" TopLine="4"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="191" Column="5" TopLine="158"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="174" TopLine="153"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="55" Column="29" TopLine="36"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="150" TopLine="129"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="192" Column="34" TopLine="164"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="196" TopLine="175"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="134" Column="36" TopLine="124"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="195" Column="21" TopLine="175"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="192" Column="13" TopLine="156"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="197" Column="20" TopLine="175"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="103" Column="51" TopLine="82"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="212" Column="5" TopLine="184"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="242" Column="5" TopLine="240"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="215" Column="9" TopLine="184"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="103" Column="59" TopLine="84"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="195" TopLine="175"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="242" Column="20" TopLine="240"/>
       </Position>
       <Position>
-        <Filename Value="tests\gui\testfilesrv.pas"/>
-        <Caret Line="30" TopLine="4"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="102" Column="21" TopLine="84"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="195" TopLine="181"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="103" Column="21" TopLine="84"/>
       </Position>
       <Position>
-        <Filename Value="server\server.web.pas"/>
-        <Caret Line="550" TopLine="529"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="97" Column="34" TopLine="84"/>
       </Position>
       <Position>
-        <Filename Value="tests\gui\testfilesrv.pas"/>
-        <Caret Line="16" Column="59"/>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="99" Column="42" TopLine="74"/>
+      </Position>
+      <Position>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="146" Column="41" TopLine="116"/>
+      </Position>
+      <Position>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="279" TopLine="277"/>
+      </Position>
+      <Position>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="143" Column="9" TopLine="117"/>
+      </Position>
+      <Position>
+        <Filename Value="users\server.authentication.pas"/>
+        <Caret Line="11" Column="28"/>
+      </Position>
+      <Position>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="139" Column="9" TopLine="109"/>
+      </Position>
+      <Position>
+        <Filename Value="users\server.users.pas"/>
+        <Caret Line="325" TopLine="322"/>
+      </Position>
+      <Position>
+        <Filename Value="R:\Apps\Lazarus\laz_conf\3.8\onlinepackagemanager\packages\HashLib\src\KDF\HlpPBKDF_Argon2NotBuildInAdapter.pas"/>
+        <Caret Line="27" Column="19" TopLine="13"/>
       </Position>
     </JumpHistory>
     <RunParams>
@@ -197,15 +517,4 @@
       <Modes ActiveMode=""/>
     </RunParams>
   </ProjectSession>
-  <Debugging>
-    <BreakPoints>
-      <Item>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="server\server.web.pas"/>
-        <Line Value="195"/>
-      </Item>
-    </BreakPoints>
-  </Debugging>
 </CONFIG>

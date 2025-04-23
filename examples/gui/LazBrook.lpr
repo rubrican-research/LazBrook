@@ -19,7 +19,7 @@ uses
 procedure initWebServer;
 begin
     startlog();
-    server.web.serverName  := 'QATree User Module';
+    server.web.serverName  := 'User Module';
     server.web.serverID    := 'V1.0';
     server.web.serverAbout := 'This microserver handles user authentication, user management';
 

@@ -18,12 +18,16 @@ type
         procedure TearDown; override;
     published
         procedure StartServerTest;
+        procedure GetRequestTest;
+        procedure PostRequestTest;
+    public
+        constructor Create;
     end;
 
 implementation
 
 uses
-    LCLIntf;
+    LCLIntf, sugar.contactInfo;
 
 procedure TTestLazBrookFileSrv.StartServerTest;
 begin
@@ -32,21 +36,30 @@ begin
     OpenUrl(serverURL);
 end;
 
-function initWebServer(_server: TWebserver): TWebServer;
+procedure TTestLazBrookFileSrv.GetRequestTest;
 begin
-    Result := _server;
-    {Init the routes here}
-    _server.addRoutes([FileSrvEntryPoint]);
+
+end;
+
+procedure TTestLazBrookFileSrv.PostRequestTest;
+begin
+
+end;
+
+constructor TTestLazBrookFileSrv.Create;
+begin
+    inherited;
+    webserver.addRoutes([FileSrvEntryPoint]);
 end;
 
 procedure TTestLazBrookFileSrv.SetUp;
 begin
-    OnCreateServer := @InitWebserver;
+
 end;
 
 procedure TTestLazBrookFileSrv.TearDown;
 begin
-    //stopServer;
+
 end;
 
 initialization
