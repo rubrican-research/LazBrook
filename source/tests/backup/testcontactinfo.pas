@@ -15,18 +15,43 @@ type
     published
         procedure TestInitContactInfo;
         procedure TestInitContactPhone;
-        procedure TestPerson;
+        procedure TestAddPerson;
+        procedure TestSaltAndPWDHash;
+        procedure TestUserLoginSession;
+        procedure TestUserSessionValid;
+        procedure TestUserSessionInvalid;
+        procedure TestUserSessionTimeOut;
+        procedure TestJSONLib2;
     end;
 
 implementation
 
 uses
-    sugar.utils, sugar.contactInfo, sugar.logger, fpJson;
+    sugar.utils, sugar.contactInfo, sugar.logger, sugar.securesalt, sugar.maps, fpJson, server.users,
+    Math, sugar.jsonlib ;
+
+function genPWDHash(_pwd: unicodestring; _salt: unicodestring): unicodestring;
+begin
+    Result := genHashUTF8(_pwd, _salt, 30);
+end;
+
+
+function newPerson: TLazBrookUser;
+begin
+    Result := TLazBrookUser.Create;
+    with Result do begin
+        createdOn:= Now;
+        loginID  := genRandomKey(8);
+        Name     := genRandomKey(12) + ' ' + genRandomKey(5);
+        Emails.named['office'].Email:= genRandomKey(4) + '@' + genRandomKey(7) + '.' + genRandomKey(3);
+	end;
+end;
 
 procedure TTestContactInfo.TestInitContactInfo;
 var
 	_c: TContactInfo;
 begin
+
     _c := TContactInfo.Create;
     try
         log('TTestContactInfo.TestInitContactInfo');
@@ -55,9 +80,9 @@ begin
 	end;
 end;
 
-procedure TTestContactInfo.TestPerson;
+procedure TTestContactInfo.TestAddPerson;
 var
-	_p: TContactPersonBasic;
+	_p: TContactPerson;
 	s: String;
 begin
     _p := TContactPerson.Create;
@@ -128,9 +153,106 @@ begin
 
 end;
 
+procedure TTestContactInfo.TestSaltAndPWDHash;
+var
+    users: TMapLazBrookUsers;
+	u: TLazBrookUser;
+    pwds : TStringMap;
+	i: Integer;
+	pwd: String;
+	tmpHash: unicodestring;
 
+begin
+    {Tests the check of login credentials using pwdHash}
+
+    users := TMapLazBrookUsers.Create(true);
+    pwds  := TStringMap.Create;
+    try
+        // STEP 1
+        // Create Users, List of user=>passwords and generate password hash from salt.
+        for i := 0 to 10 do begin
+	        u := newPerson;
+	        // password
+	        pwds.KeyData[u.loginID] := genRandomKey(16);
+	        u.auth.salt   := genSecureSalt();
+	        u.auth.PwdHash:= genPWDHash(pwds.KeyData[u.loginID], u.auth.salt);
+	        users.Add(u.loginID, u);
+            log('%d. added user: %s', [i,u.loginID]);
+		end;
+        // STEP 2:
+        // Check passwords against pwdHash and salt stored with the user
+        for i := 0 to pred(users.Count) do begin
+            u := users.Data[i];
+            pwd := pwds.KeyData[u.loginID];
+            tmpHash := genPWDHash(pwds.KeyData[u.loginID], u.auth.salt);
+            Assert(UnicodeCompareStr(tmpHash, u.auth.PwdHash) = 0);
+            log('password match for user: %s', [u.loginID]);
+		end;
+
+	finally
+        pwds.Free;
+        users.Free;
+	end;
+end;
+
+procedure TTestContactInfo.TestUserLoginSession;
+var
+    users : TLazBrookLoginManager;
+begin
+    users := TLazBrookLoginManager.Create(nil);
+    try
+        users.addUser(newPerson);
+        users.addUser(newPerson);
+        users.addUser(newPerson);
+        users.addUser(newPerson);
+        users.addUser(newPerson);
+        users.addUser(newPerson);
+        log(users.asJSON());
+
+	finally
+        users.Free;
+	end;
+end;
+
+procedure TTestContactInfo.TestUserSessionValid;
+begin
+
+end;
+
+procedure TTestContactInfo.TestUserSessionInvalid;
+begin
+
+end;
+
+procedure TTestContactInfo.TestUserSessionTimeOut;
+begin
+
+end;
+
+procedure TTestContactInfo.TestJSONLib2;
+var
+    o1, o2: TJSONObject;
+	i: Integer;
+begin
+    for i := 0 to 49 do begin
+	    o1 := newJSONRandomObj();
+        log('ITERATION %d', [i]);
+	    log(o1.formatJSON);
+	    log('');
+	    log('');
+	    o2 := TJSONObject.Create;
+	    try
+		    AssertFalse('The two objects are not different', o1.formatJson = o2.FormatJson);
+		    AssertTrue('JSONObject copy did not succeed', copyJSONObject(o1, o2));
+		    AssertTrue('The two objects are different after copying', o1.formatJson = o2.FormatJson);
+		finally
+	    	o1.Free;
+	        o2.Free;
+		end;
+	end;
+end;
 
 initialization
-
+    Randomize;
     RegisterTest(TTestContactInfo);
 end.
