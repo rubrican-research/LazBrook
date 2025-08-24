@@ -5,10 +5,24 @@ unit server.web;
 interface
 
 uses
-    Classes, SysUtils, Forms, BrookLibraryLoader, BrookMediaTypes,
+    Classes, SysUtils, httpprotocol, BrookLibraryLoader, BrookMediaTypes,
 	BrookURLEntryPoints, BrookURLRouter, BrookHTTPServer, BrookUtility,
 	BrookHTTPResponse, BrookHTTPRequest, BrookHTTPCookies,
-	route.base, route.filesrv, server.defines;
+	route.base, route.filesrv, server.defines, URIParser;
+
+type
+    THTTPProtocol = (protocolUndefined, protocolhttp, protocolhttps, protocolfile);
+
+const
+    HTTPPrefix : array[THTTPProtocol] of string = (
+        {protocolUndefined} '',
+        {protocolhttp}      'http://',
+        {protocolhttp}      'https://',
+        {protocolfile}      'file://'
+    );
+
+    function strToHTTPProtocol(const _string: string): THTTPProtocol;
+    function URIToProtocol(const AURI: TURI): THTTPProtocol;
 
 type
 
@@ -40,6 +54,9 @@ type
 		myerrorPageHtml: string;
         myhomePageHtml: string;
 		myinfoPageHtml: string;
+		myonRestartRequest: TNotifyEvent;
+		myonTerminated: TNotifyEvent;
+		myprotocol: THTTPProtocol;
 
 		function getErrorPageHtml: string;
 		function getHomePageHtml: string;
@@ -54,15 +71,21 @@ type
         procedure sethomePageHtml(const _value: string);
         procedure setHost(const _value: string);
 		procedure setinfoPageHtml(const _value: string);
+		procedure setonRestartRequest(const _value: TNotifyEvent);
+		procedure setonTerminated(const _value: TNotifyEvent);
         procedure setPort(const _value: uint16);
+		procedure setprotocol(const _value: THTTPProtocol);
         procedure setServerRunning(const _value: boolean);
 
     protected
         function initEntryPoint(_entryPoint: string): TBrookURLEntryPoint;
-        procedure asychTerminate(_data: PtrInt);
+
+
     public
         procedure startServer;
+        procedure initiateShutDown;  // Initiates sequence to stop server; asynch is necessary.
         procedure stopServer;
+
         procedure EntryPointsActive(_val: boolean);
 
         {Returns the endpoints server}
@@ -85,6 +108,7 @@ type
 
     public
         property Running: boolean read getServerRunning write setServerRunning;
+        property protocol: THTTPProtocol read myprotocol write setprotocol;
         property host: string read getHost write setHost;
         property port: uint16 read getPort write setPort;
         property serverUrl: string read getServerUrl;
@@ -93,6 +117,9 @@ type
         property homePageHtml: string read getHomePageHtml write sethomePageHtml;    // HTML for default home page.
         property errorPageHtml: string read getErrorPageHtml write seterrorPageHtml; // HTML Display an error message. Suggest using templates to customize messages
         property infoPageHtml: string read getInfoPageHtml write setinfoPageHtml;    // HTML Display information. Suggest using templates to customize messages.
+
+        property onInitiateShutdown: TNotifyEvent read myonTerminated write setonTerminated;
+        property onRestartRequest: TNotifyEvent read myonRestartRequest write setonRestartRequest;
 
     end;
 
@@ -135,6 +162,22 @@ var
     mylibsagui : string = '';
     myWebServer: TWebServer = nil;
 
+function strToHTTPProtocol(const _string: string): THTTPProtocol;
+begin
+    case lowercase(_string) of
+        'http://'   : Result := protocolhttp;
+        'https://'  : Result := protocolhttps;
+        'file://'   : Result := protocolfile;
+        else          Result := protocolundefined;
+	end;
+end;
+
+function URIToProtocol(const AURI: TURI): THTTPProtocol;
+begin
+  Result := StrToHTTPProtocol(LowerCase(AURI.Protocol + '://'));
+end;
+
+
 function BrookLibPath: string;
 begin
     if mylibsagui = '' then begin
@@ -155,9 +198,10 @@ var
 function appPath: string;
 begin
     if myAppPath.isEmpty then
-        myAppPath := ExtractFileDir(Application.ExeName);
+        myAppPath := ExtractFileDir(ExpandFileName(''));
     Result := myAppPath;
 end;
+
 
 function serverInitialized: boolean;
 begin
@@ -167,7 +211,6 @@ end;
 function createServer: TWebserver;
 begin
     Result := TWebServer.Create(nil);
-    Result.homePageHtml := 'LazBrook server is running at ' + Result.serverUrl;
     {You can initialize the server routes etc by attaching an OnCreateServer function}
     if assigned(OnCreateServer) then
         OnCreateServer(Result);
@@ -203,6 +246,7 @@ begin
     WebServer.host := _host;
     Webserver.Running := True;
     Result := True;
+    Webserver.homePageHtml := 'LazBrook server is running at ' + serverUrl;
     //OpenURL(Webserver.serverUrl);
 end;
 
@@ -268,7 +312,7 @@ procedure TWebserver.shutdownRouterRoutes0Request(ASender: TObject;
     ARoute: TBrookURLRoute; ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
 begin
     SendHtml(AResponse, '');
-    Application.QueueAsyncCall(@asychTerminate, 0);
+    initiateShutDown;
 end;
 
 procedure TWebserver.URLEntryPointsNotFound(ASender: TObject;
@@ -349,9 +393,9 @@ end;
 function TWebserver.getServerUrl: string;
 begin
     if port = 0 then
-        Result := Format('http://%s', [host])
+        Result := Format('%s%s', [HTTPPrefix[protocol], host])
     else
-        Result := Format('http://%s:%d', [host, Port]);
+        Result := Format('%s%s:%d', [HTTPPrefix[protocol], host, Port]);
 end;
 
 
@@ -380,9 +424,27 @@ begin
 	myinfoPageHtml:=_value;
 end;
 
+procedure TWebserver.setonRestartRequest(const _value: TNotifyEvent);
+begin
+	if myonRestartRequest=_value then Exit;
+	myonRestartRequest:=_value;
+end;
+
+procedure TWebserver.setonTerminated(const _value: TNotifyEvent);
+begin
+	if myonTerminated=_value then Exit;
+	myonTerminated:=_value;
+end;
+
 procedure TWebserver.setPort(const _value: uint16);
 begin
     HTTPServer.Port := _value;
+end;
+
+procedure TWebserver.setprotocol(const _value: THTTPProtocol);
+begin
+	if myprotocol=_value then Exit;
+	myprotocol:=_value;
 end;
 
 procedure TWebserver.setServerRunning(const _value: boolean);
@@ -415,12 +477,6 @@ begin
     Result := _EP;
 end;
 
-procedure TWebserver.asychTerminate(_data: PtrInt);
-begin
-    Application.ProcessMessages;
-    Application.Terminate;
-end;
-
 procedure TWebserver.startServer;
 begin
     if HTTPServer.Active then exit;
@@ -435,10 +491,16 @@ begin
     EntryPointsActive(True);
 end;
 
+procedure TWebserver.initiateShutDown;
+begin
+    if assigned(onInitiateShutdown) then onInitiateShutdown(Self);
+end;
+
 procedure TWebserver.stopServer;
 begin
     HTTPServer.Active := False;
     EntryPointsActive(False);
+    Running := False;
 end;
 
 procedure TWebserver.EntryPointsActive(_val: boolean);
@@ -615,6 +677,7 @@ begin
             else
                 continue;
 
+            // Assign the default and the accepted methods here
             if assigned(_r) then begin
                 _r.pattern := _endpoint.regex;
                 _r.METHODS := _endpoint.methods;

@@ -10,7 +10,7 @@ interface
 uses
     server.intf, server.stub, server.web, server.defines, route.base, 
     server.init, server.assets, route.parser, server.users, route.filesrv, 
-    LazarusPackageIntf;
+    server.apploop, LazarusPackageIntf;
 
 implementation
 

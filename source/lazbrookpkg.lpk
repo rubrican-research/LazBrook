@@ -79,10 +79,14 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
         <Filename Value="routes\route.filesrv.pas"/>
         <UnitName Value="route.filesrv"/>
       </Item>
+      <Item>
+        <Filename Value="server\server.apploop.pas"/>
+        <UnitName Value="server.apploop"/>
+      </Item>
     </Files>
     <RequiredPkgs>
       <Item>
-        <PackageName Value="fp_sugar"/>
+        <PackageName Value="fp_sugar_nogui"/>
       </Item>
       <Item>
         <PackageName Value="BrookTardigrade"/>
