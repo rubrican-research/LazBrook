@@ -2,14 +2,13 @@ object Webserver: TWebserver
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
   OldCreateOrder = True
-  Height = 334
-  HorizontalOffset = 0
-  VerticalOffset = 263
-  Width = 845
-  PPI = 120
+  Height = 267
+  HorizontalOffset = 1540
+  VerticalOffset = 230
+  Width = 516
   object BrookLibraryLoader: TBrookLibraryLoader
-    Left = 80
-    Top = 30
+    Left = 64
+    Top = 24
   end
   object URLEntryPoints: TBrookURLEntryPoints
     List = <    
@@ -22,8 +21,8 @@ object Webserver: TWebserver
         Router = shutdownRouter
       end>
     OnNotFound = URLEntryPointsNotFound
-    Left = 280
-    Top = 30
+    Left = 224
+    Top = 24
   end
   object HTTPServer: TBrookHTTPServer
     Port = 1123
@@ -32,8 +31,8 @@ object Webserver: TWebserver
     OnRequest = HTTPServerRequest
     OnRequestError = HTTPServerRequestError
     OnError = HTTPServerError
-    Left = 80
-    Top = 140
+    Left = 64
+    Top = 112
   end
   object shutdownRouter: TBrookURLRouter
     Routes = <    
@@ -43,17 +42,17 @@ object Webserver: TWebserver
         Methods = [rmGET]
         OnRequest = shutdownRouterRoutes0Request
       end>
-    Left = 420
-    Top = 30
+    Left = 336
+    Top = 24
   end
   object homeRouter: TBrookURLRouter
     Routes = <    
       item
         Default = True
         Pattern = '/'
-        OnRequest = onHomePage
+        OnRequest = DoOnHomePage
       end>
-    Left = 280
-    Top = 140
+    Left = 224
+    Top = 112
   end
 end

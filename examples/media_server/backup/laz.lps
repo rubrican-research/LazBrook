@@ -42,7 +42,7 @@
         <ComponentName Value="Webserver"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="8"/>
         <TopLine Value="56"/>
         <CursorPos X="89" Y="80"/>
         <UsageCount Value="10"/>
@@ -51,7 +51,7 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\source\routes\route.base.pas"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="9"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit>
@@ -65,7 +65,7 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\..\Libraries\brookframework\Source\BrookURLRouter.pas"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="114"/>
         <CursorPos Y="130"/>
         <UsageCount Value="10"/>
@@ -73,14 +73,14 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\..\Libraries\brookframework\Source\BrookHTTPRequest.pas"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="91"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\..\Libraries\brookframework\Source\BrookUtility.pas"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="7"/>
         <TopLine Value="206"/>
         <CursorPos X="3" Y="226"/>
         <UsageCount Value="10"/>
@@ -88,6 +88,13 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\source\server\server.assets.pas"/>
+        <EditorIndex Value="4"/>
+        <CursorPos X="109" Y="30"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\source\routes\route.parser.pas"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <UsageCount Value="10"/>

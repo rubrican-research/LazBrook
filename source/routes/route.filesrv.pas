@@ -37,9 +37,8 @@ const
                     by / with no trailing / at the end.
   }
 
-    pcreFileSrvRouteDYN =
-        '^%s(?:/(?:upload/(?:(?P<upload>(?!.*(?:^|/)\.{1,2}(?:/|$))[\p{L}\p{N}\p{M}\p{Pc}\p{Pd} @%.,]+(?:/[\p{L}\p{N}\p{M}\p{Pc}\p{Pd} @%.,]+)*)|)|(?P<key>(?!.*(?:^|/)\.{1,2}(?:/|$))(?:[\p{L}\p{N}\p{M}\p{Pc}\p{Pd} @%.,]+/)*(?P<guid>[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}))))?$';
-    //pcreFileSrvRoute    = '^(?:/(?:upload/(?:(?P<upload>(?!.*(?:^|/)\.{1,2}(?:/|$))[\p{L}\p{N}\p{M}\p{Pc}\p{Pd} @%.,]+(?:/[\p{L}\p{N}\p{M}\p{Pc}\p{Pd} @%.,]+)*)|)|(?P<' + uploadKey +' >(?!.*(?:^|/)\.{1,2}(?:/|$))(?:[\p{L}\p{N}\p{M}\p{Pc}\p{Pd} @%.,]+/)*(?P<guid>[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}))))?$';
+    //pcreFileSrvRouteDYN = '^%s(?:/(?:upload/(?:(?P<upload>(?!.*(?:^|/)\.{1,2}(?:/|$))[\p{L}\p{N}\p{M}\p{Pc}\p{Pd} @%.,]+(?:/[\p{L}\p{N}\p{M}\p{Pc}\p{Pd} @%.,]+)*)|)|(?P<key>(?!.*(?:^|/)\.{1,2}(?:/|$))(?:[\p{L}\p{N}\p{M}\p{Pc}\p{Pd} @%.,]+/)*(?P<guid>[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}))))?';
+    //pcreFileSrvRoute    = '(?:/(?:upload/(?:(?P<upload>(?!.*(?:^|/)\.{1,2}(?:/|$))[\p{L}\p{N}\p{M}\p{Pc}\p{Pd} @%.,]+(?:/[\p{L}\p{N}\p{M}\p{Pc}\p{Pd} @%.,]+)*)|)|(?P<' + uploadKey +' >(?!.*(?:^|/)\.{1,2}(?:/|$))(?:[\p{L}\p{N}\p{M}\p{Pc}\p{Pd} @%.,]+/)*(?P<guid>[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}))))';
 
 
     {File server entry point}
@@ -63,6 +62,7 @@ const
 
 type
     RFileCacheTags = record
+        fileName: string;
         filepath: string;
         size: int64;
         fileAge: TDateTime;
@@ -92,11 +92,11 @@ const
         baseDir: '';
         // absolute path to your storage root. If empty then this will be ExpandFileName(routePrefix);
         routePrefix: assetKey;   // e.g. 'assets' (no slashes.They will be added)
-        uploadPrefix: 'upload';   // e.g.  upload  (no slashes.They will be added)
-        mode: fkmGuidOriginal;    // fkmGuidOriginal recommended
-        enableCORS: False;        // add permissive CORS headers
-        immutableIDs: True;       // strong caching on GET if true (GUIDs)
-        maxUploadBytes: 0;         // 0 = unlimited
+        uploadPrefix: 'upload';  // e.g.  upload  (no slashes.They will be added)
+        mode: fkmGuidOriginal;   // fkmGuidOriginal recommended
+        enableCORS: False;       // add permissive CORS headers
+        immutableIDs: false;     // strong caching on GET if true (GUIDs)
+        maxUploadBytes: 0;       // 0 = unlimited
         );
 
 type
@@ -104,16 +104,17 @@ type
     TLazBrookFileSrvRouter = class(TBrookURLRoute)
     private
         myconfig: RFileSrvConfig;
-        mydownloadPath: string;
-        myuploadPath: string;
         function getBasePath: string;
         function getDownloadPath: string;
         function getUploadPath: string;
         procedure setBasePath(const _value: string);
         procedure setconfig(const _value: RFileSrvConfig);
+		procedure StreamFile(const _fileTags: RFileCacheTags;
+			_req: TBrookHTTPRequest; _resp: TBrookHTTPResponse);
 
     protected
         BrookMIME: TBrookMIME;
+        procedure addCORSHeaders(const AResponse: TBrookHTTPResponse);
     public
         constructor Create(ACollection: TCollection); override;
         destructor Destroy; override;
@@ -168,12 +169,13 @@ function genETag(const _f: RFileCacheTags): string;
 implementation
 
 uses
-    LazFileUtils, FileUtil, md5, fpJSON, DateUtils, sugar.httphelper,
+    Math, LazFileUtils, FileUtil, md5, fpJSON, DateUtils, sugar.httphelper,
     sugar.utils, sugar.logger, server.web, httpprotocol, sugar.jsonlib;
 
 var
     myDownloadFolder: string = '';
     myUploadFolder: string = '';
+
 
 {
 function genUploadedFileName(_f: TBrookHTTPUpload): string;
@@ -264,7 +266,6 @@ begin
                 AResponse.Download(_filepath)
             else
                 AResponse.SendFile(0, 0, 0, _filepath, False{no download}, httpOK.code);
-
             Result := True;
         end
         else
@@ -296,6 +297,16 @@ procedure TLazBrookFileSrvRouter.setconfig(const _value: RFileSrvConfig);
 begin
     myconfig := _value;
 end;
+
+procedure TLazBrookFileSrvRouter.addCORSHeaders(const AResponse: TBrookHTTPResponse);
+begin
+    AResponse.Headers.Values['Access-Control-Allow-Origin']   := '*';
+    AResponse.Headers.Values['Access-Control-Allow-Methods']  := 'GET,HEAD,POST,DELETE,OPTIONS';
+    AResponse.Headers.Values['Access-Control-Allow-Headers']  := 'Content-Type,Range,X-CSRF,Authorization';
+    AResponse.Headers.Values['Access-Control-Expose-Headers'] := 'ETag,Content-Range,Content-Length,Last-Modified';
+    AResponse.Headers.Values['Access-Control-Max-Age'] := '86400';
+end;
+
 
 function TLazBrookFileSrvRouter.getDownloadPath: string;
 begin
@@ -344,8 +355,8 @@ begin
 end;
 
 procedure TLazBrookFileSrvRouter.DoRequestMethod(ASender: TObject;
-    ARoute: TBrookURLRoute; ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse;
-    var AAllowed: boolean);
+    ARoute: TBrookURLRoute; ARequest: TBrookHTTPRequest;
+    AResponse: TBrookHTTPResponse; var AAllowed: boolean);
 begin
     inherited DoRequestMethod(ASender, ARoute, ARequest, AResponse, AAllowed);
 end;
@@ -353,7 +364,7 @@ end;
 procedure TLazBrookFileSrvRouter.DoRequest(ASender: TObject;
     ARoute: TBrookURLRoute; ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
 begin
-    log('FileSrv:: %s %s', [ARequest.Method, ARoute.Path]);
+    log('TLazBrookFileSrvRouter.DoRequest() :: %s %s', [ARequest.Method, ARoute.Path]);
     case upperCase(ARequest.Method) of
 
         // DELETE
@@ -390,6 +401,127 @@ begin
 
 end;
 
+
+{Generated by ChatGPT. In probation. 25 Aug 2025}
+procedure TLazBrookFileSrvRouter.StreamFile(const _fileTags: RFileCacheTags;
+	_req: TBrookHTTPRequest; _resp: TBrookHTTPResponse);
+var
+    len: Int64;
+    a,b: Int64;
+    inm: string;
+	Status: Integer;
+	_inline: Boolean;
+	fs: TFileStream;
+
+    function ParseRange(const S: string; Size: Int64; out A, B: Int64): Boolean;
+    var
+        p: SizeInt;
+        s1,s2: string;
+    begin
+        Result := False; A := 0; B := 0;
+        if (S = '') or (LeftStr(S,6) <> 'bytes=') then exit;
+        s1 := Copy(S,7,MaxInt);
+        p := Pos('-', s1); if p = 0 then exit;
+        s2 := Copy(s1, p+1, MaxInt);
+        s1 := Copy(s1, 1, p-1);
+        if s1 = '' then begin
+            // suffix bytes
+            A := Max(Size - StrToInt64Def(s2,0), 0);
+            B := Size - 1;
+        end else begin
+            A := StrToInt64Def(s1,0);
+            if s2 = '' then B := Size - 1 else B := StrToInt64Def(s2,0);
+        end;
+        if (A < 0) or (B < A) or (B >= Size) then exit;
+        Result := True;
+    end;
+
+    procedure SetDisposition(const Resp: TBrookHTTPResponse;
+        const _OrigName: string; _inline: boolean);
+    var
+        disp, enc: string;
+    begin
+        if _inline then disp := 'inline'
+        else
+            disp := 'attachment';
+        enc := _origName;
+
+        enc := StringReplace(enc, ' ', '%20', [rfReplaceAll]);
+        Resp.Headers.Values['Content-Disposition'] :=
+            Format('%s; filename="%s"; filename*=UTF-8''''%s', [disp, _origName, enc]);
+    end;
+begin
+
+	try
+		// Conditional
+		if (_req.Headers.Values['If-None-Match'] = _fileTags.etag) or
+		   (_req.Headers.Values['If-Modified-Since'] = _fileTags.last_modified) then
+		begin
+			Status := 304;
+			_resp.Headers.Values['ETag'] := _fileTags.etag;
+			_resp.Headers.Values['Last-Modified'] := _fileTags.last_modified;
+			// addCORSHeaders(_resp);
+            _resp.Send('', _fileTags.mimeType, httpNotModified.code);
+            log('StreamFile():: ... not modified');
+			exit;
+		end;
+
+		// Common headers
+		_resp.Headers.Values['ETag'] := _fileTags.etag;
+		_resp.Headers.Values['Last-Modified'] := _fileTags.last_modified;
+		_resp.Headers.Values['Accept-Ranges'] := 'bytes';
+		if config.ImmutableIDs then
+		    _resp.Headers.Values['Cache-Control'] := 'public, max-age=31536000, immutable'
+		else
+		    _resp.Headers.Values['Cache-Control'] := 'public, max-age=3600';
+
+		// Disposition: inline for common types
+		inm := LowerCase(_fileTags.mimeType);
+
+        _inline := (Pos('image/',inm)=1)
+                    or (Pos('text',inm)=1)
+                    or (inm='application/pdf')
+                    or (Pos('audio/',inm)=1)
+                    or (Pos('video/',inm)=1);
+
+		SetDisposition(_resp, _fileTags.fileName, _inline);
+
+		if ParseRange(_req.Headers.Values['Range'], _fileTags.size, a, b) then
+		begin
+		    Status := 206;
+		    _resp.Headers.Values['Content-Type'] := _fileTags.mimeType;
+		    _resp.Headers.Values['Content-Range'] := Format('bytes %d-%d/%d',[a,b,_fileTags.size]);
+		    _resp.Headers.Values['Content-Length'] := IntToStr(len);
+		    addCORSHeaders(_resp);
+
+            //if _inline then
+            //    _resp.SendFile(0,0,0,_fileTags.filepath, False, status)
+            //else
+            begin
+                len := b - a + 1;
+                fs := TFileStream.Create(_fileTags.filePath, fmOpenRead or fmShareDenyWrite);
+    		    fs.Position := a;
+    		    fs.Size := len;
+                _resp.SendStream(fs, true, status);
+                log('StreamFile():: chunking : from %d -> size %d', [a, len]);
+            end;
+		    exit;
+		end;
+		// Full
+		Status := 200;
+		_resp.Headers.Values['Content-Type'] := _fileTags.mimeType;
+		_resp.Headers.Values['Content-Length'] := IntToStr(_fileTags.size);
+		addCORSHeaders(_resp);
+        //if _inline then
+        //    _resp.SendFile(0,0,0,_fileTags.filepath, False, status)
+        //else
+        _resp.SendStream(TFileStream.Create(_fileTags.filePath, fmOpenRead or fmShareDenyWrite), true, status);
+        log('StreamFile():: ... sent');
+	finally
+	    //fs.Free; will be freed by _resp
+	end;
+end;
+
 procedure TLazBrookFileSrvRouter.getFile(const _route: string;
     ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
 
@@ -406,16 +538,14 @@ procedure TLazBrookFileSrvRouter.getFile(const _route: string;
         _etag := _fileCacheTags.etag;
         _len := _fileCacheTags.etag.Length;
 
-        log(HeaderName(hhIfNoneMatch));
-        log(ARequest.Headers.Get(HeaderName(hhIfNoneMatch)));
+        log(HeaderName(hhIfNoneMatch) + '::' + ARequest.Headers.Get(HeaderName(hhIfNoneMatch)));
 
         {Extract the If-None-Match header}
         _noneMatch := Copy(ARequest.Headers.Get(HeaderName(hhIfNoneMatch)), 1, _len);
         r := CompareStr(_noneMatch, _etag);
 
-        log(_fileCacheTags.filepath);
-        log('%s %s %s', [_noneMatch, ' vs ', _etag]);
-        log('compare string gave %d', [r]);
+        //log('%s %s %s', [_noneMatch, ' vs ', _etag]);
+        //log('compare string gave %d', [r]);
 
         if (r = 0) or (CompareStr(ARequest.Headers.Get(
             HeaderName(hhIfModifiedSince)), _fileCacheTags.last_modified) = 0) then
@@ -434,7 +564,7 @@ begin
     {This is where the files are served}
     {Assume that the urlparamPath in ARoute points to the file needed}
     _filePath := appendPath([downloadPath, _route]);
-
+    log ('getFile:: params = %s',[ARequest.Params.ToString]);
 
     if not FileExists(_filePath) then
     begin
@@ -454,12 +584,13 @@ begin
 
     with _fileTags do
     try
-        filepath := _filePath;
-        mimeType := getMIMEType(_filepath);
+        fileName      := ExtractFileName(_filePath);
+        filepath      := _filePath;
+        mimeType      := getMIMEType(_filepath);
+        fileAge       := _fileAge;
         last_modified := getHttpTime(_fileAge);
-        size := fileSize(_filePath);
-        etag := genETag(_fileTags);
-        // MD5 Hash of filename and modification time
+        size          := fileSize(_filePath);
+        etag          := genETag(_fileTags); // MD5 Hash of filesize and modification time
     except
         on E: Exception do
         begin
@@ -468,31 +599,34 @@ begin
         end;
     end;
 
-    AResponse.Headers.AddOrSet(HeaderName(hhContentType), _fileTags.mimeType);
-    AResponse.Headers.AddOrSet(HeaderName(hhCacheControl), 'public');
-    {$IFDEF Debug}
-    AResponse.Headers.AddOrSet('Access-Control-Allow-Origin', '*');
-    {$ENDIF}
-    AResponse.Headers.AddOrSet(HeaderName(hhETag), _fileTags.etag);
-    AResponse.Headers.AddOrSet(HeaderName(hhExpires), defaultExpiresOn);
-
-    _offerDownload := not (_fileTags.mimeType.StartsWith('video') or
-        _fileTags.mimeType.StartsWith('image') or
-        _fileTags.mimeType.StartsWith('audio') or
-        _fileTags.mimeType.StartsWith('text'));
-
     {ServerFile files from here}
     try
         if shouldSendFile(_fileTags) then
         begin
-            sendFile(_filePath, AResponse, _offerDownload);
-            log('fileserver:: sending file');
+            AResponse.Headers.AddOrSet(HeaderName(hhContentType), _fileTags.mimeType);
+            AResponse.Headers.AddOrSet(HeaderName(hhCacheControl), 'public');
+            {$IFDEF Debug}
+            AResponse.Headers.AddOrSet('Access-Control-Allow-Origin', '*');
+            {$ENDIF}
+            AResponse.Headers.AddOrSet(HeaderName(hhETag), _fileTags.etag);
+            AResponse.Headers.AddOrSet(HeaderName(hhExpires), defaultExpiresOn);
+
+            _offerDownload := not (_fileTags.mimeType.StartsWith('video') or
+                 _fileTags.mimeType.StartsWith('image') or
+                 _fileTags.mimeType.StartsWith('audio') or
+                 _fileTags.mimeType.StartsWith('text'));
+             //SetDisposition(AResponse, _fileTags.fileName, NOT _offerDownload);
+            //sendFile(_filePath, AResponse, _offerDownload);
+            log('fileserver:: sending file as download : %s', [truefalse(_offerDownload)]);
+            //StreamFile(_fileTags.filepath, _fileTags.fileName, _fileTags.mimeType, _fileTags.etag, _fileTags.last_modified, ARequest, AResponse);
+            StreamFile(_fileTags, ARequest, AResponse);
         end
         else
         begin
+            log('fileserver:: responded - not modified');
             {tell the browser to send use its cached version}
             AResponse.Send('', _fileTags.mimeType, httpNotModified.code);
-            log('fileserver:: responded - not modified');
+
         end;
     except
         on e: Exception do
@@ -542,8 +676,7 @@ begin
             _fileName := genUploadedFileName(_file);
             _url := appendURL([serverURL, FileSrvEntryPoint.entryPoint, _fileName]);
             _urlsJSONArray.Add(
-                TJSONObject.Create(['name',
-                _fileName, 'url', _url])
+                TJSONObject.Create(['name', _fileName, 'url', _url])
                 );
 
             saveTo(_file, appendPath([downloadPath, _fileName]));

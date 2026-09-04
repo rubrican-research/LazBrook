@@ -8,7 +8,7 @@ uses
     Classes, SysUtils, httpprotocol, BrookLibraryLoader, BrookMediaTypes,
 	BrookURLEntryPoints, BrookURLRouter, BrookHTTPServer, BrookUtility,
 	BrookHTTPResponse, BrookHTTPRequest, BrookHTTPCookies,
-	route.base, route.filesrv, server.defines, URIParser;
+	route.base, route.filesrv, server.defines, URIParser, sugar.htmlpage;
 
 type
     THTTPProtocol = (protocolUndefined, protocolhttp, protocolhttps, protocolfile);
@@ -35,7 +35,7 @@ type
         URLEntryPoints: TBrookURLEntryPoints;
         shutdownRouter: TBrookURLRouter;
         procedure HTTPServerError(ASender: TObject; AException: Exception);
-        procedure onHomePage(ASender: TObject; ARoute: TBrookURLRoute;
+        procedure DoOnHomePage(ASender: TObject; ARoute: TBrookURLRoute;
             ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
         procedure HTTPServerRequest(ASender: TObject; ARequest: TBrookHTTPRequest;
             AResponse: TBrookHTTPResponse);
@@ -54,6 +54,8 @@ type
 		myerrorPageHtml: string;
         myhomePageHtml: string;
 		myinfoPageHtml: string;
+		myonHomePage: TBrookURLRouteRequestEvent;
+		myonRequestError: TBrookHTTPRequestErrorEvent;
 		myonRestartRequest: TNotifyEvent;
 		myonTerminated: TNotifyEvent;
 		myprotocol: THTTPProtocol;
@@ -71,6 +73,8 @@ type
         procedure sethomePageHtml(const _value: string);
         procedure setHost(const _value: string);
 		procedure setinfoPageHtml(const _value: string);
+		procedure setonHomePage(const _value: TBrookURLRouteRequestEvent);
+		procedure setonRequestError(const _value: TBrookHTTPRequestErrorEvent);
 		procedure setonRestartRequest(const _value: TNotifyEvent);
 		procedure setonTerminated(const _value: TNotifyEvent);
         procedure setPort(const _value: uint16);
@@ -120,6 +124,10 @@ type
 
         property onInitiateShutdown: TNotifyEvent read myonTerminated write setonTerminated;
         property onRestartRequest: TNotifyEvent read myonRestartRequest write setonRestartRequest;
+
+        property onHomePage: TBrookURLRouteRequestEvent read myonHomePage write setonHomePage;
+        property onRequestError: TBrookHTTPRequestErrorEvent read myonRequestError write setonRequestError;
+
 
     end;
 
@@ -246,7 +254,6 @@ begin
     WebServer.host := _host;
     Webserver.Running := True;
     Result := True;
-    Webserver.homePageHtml := 'LazBrook server is running at ' + serverUrl;
     //OpenURL(Webserver.serverUrl);
 end;
 
@@ -288,9 +295,16 @@ end;
 procedure TWebserver.HTTPServerRequestError(ASender: TObject;
     ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse; AException: Exception);
 begin
+    if assigned(myonRequestError) then
+        myOnRequestError(ASender, ARequest, AResponse, AException);
+
     AResponse.Send(
-        'REQUEST ERROR: ' + ARequest.Path,
-        'text/html',
+        htmlPageify(
+        'REQUEST ERROR: ' + ARequest.Path +
+        '</br>' + sLineBreak +
+        'Exception:: ' + AException.Message),
+
+        mimeHTML,
         404
         );
 end;
@@ -319,7 +333,7 @@ procedure TWebserver.URLEntryPointsNotFound(ASender: TObject;
     const AEntryPoint, APath: string; ARequest: TBrookHTTPRequest;
     AResponse: TBrookHTTPResponse);
 begin
-    SendHtml(AResponse, Format('%s/%s was not found', [AEntryPoint, APath]));
+    SendHtml(AResponse, htmlPageify(Format('%s/%s was not found', [AEntryPoint, APath])));
 end;
 
 function TWebserver.getHost: string;
@@ -345,10 +359,9 @@ end;
 function TWebserver.getHomePageHtml: string;
 begin
     if myhomePageHtml.isEmpty then
-        Result := 'Lazbrook Webserver is running at ' + serverUrl
+        Result :=  htmlPageify('Lazbrook Webserver is running at ' + serverUrl)
     else
         Result := myhomePageHtml;
-
 end;
 
 function TWebserver.getPort: uint16;
@@ -356,28 +369,46 @@ begin
     Result := HTTPServer.Port;
 end;
 
+var
+    _reqCount: integer = 0;
 procedure TWebserver.HTTPServerRequest(ASender: TObject;
     ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
 var
     ep: TBrookURLEntryPoint;
     r: TBrookURLRoute;
 	c: TBrookHTTPCookie;
-
 begin
-    log('REQUEST: ' + ARequest.Path);
+    inc(_reqCount);
+    log('');
+    log('');
+    log('REQUEST %d: %s %s', [_reqCount, ARequest.Method,  ARequest.Path]);
+    log('HEADERS: %s', [ARequest.Headers.ToString]);
+    log('COOKIES: %s', [ARequest.Cookies.ToString]);
+    log('FIELDS: %s', [ARequest.Fields.ToString]);
+    log('PARAMS: %s', [ARequest.Params.ToString]);
+
     URLEntryPoints.Enter(ASender, ARequest, AResponse);
+
     c := AResponse.Cookies.Find('lazbrookafter');
     if not assigned(c) then begin
         c :=  AResponse.Cookies.Add;
         c.Name := 'lazbrookafter';
 	end;
     c.Value := GetTickCount64.ToString;
+    if AResponse.Compressed then
+        AResponse.Headers.AddOrSet('Vary', 'Accept-Encoding')
+    else
+        AResponse.Headers.Remove('Vary');
 end;
 
-procedure TWebserver.onHomePage(ASender: TObject; ARoute: TBrookURLRoute;
+procedure TWebserver.DoOnHomePage(ASender: TObject; ARoute: TBrookURLRoute;
     ARequest: TBrookHTTPRequest; AResponse: TBrookHTTPResponse);
 begin
-    SendHtml(AResponse, homePageHtml);
+
+    if assigned(myonHomePage) then
+        myOnHomePage(ASender, ARoute, ARequest, AResponse)
+    else
+        SendHtml(AResponse, homePageHtml);
 end;
 
 procedure TWebserver.HTTPServerError(ASender: TObject; AException: Exception);
@@ -422,6 +453,19 @@ procedure TWebserver.setinfoPageHtml(const _value: string);
 begin
 	if myinfoPageHtml=_value then Exit;
 	myinfoPageHtml:=_value;
+end;
+
+procedure TWebserver.setonHomePage(const _value: TBrookURLRouteRequestEvent);
+begin
+	if myonHomePage=_value then Exit;
+	myonHomePage:=_value;
+end;
+
+procedure TWebserver.setonRequestError(const _value: TBrookHTTPRequestErrorEvent
+	);
+begin
+	if myonRequestError=_value then Exit;
+	myonRequestError:=_value;
 end;
 
 procedure TWebserver.setonRestartRequest(const _value: TNotifyEvent);

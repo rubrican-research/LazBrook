@@ -8,15 +8,17 @@
       <Unit>
         <Filename Value="LazBrookTest.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
         <CursorPos X="83" Y="17"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="tests\gui\testfilesrv.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="testFileSrv"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="15"/>
         <TopLine Value="33"/>
         <CursorPos X="5" Y="15"/>
         <UsageCount Value="200"/>
@@ -25,8 +27,8 @@
       <Unit>
         <Filename Value="tests\utils\lazbrook.httpclient.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="9"/>
-        <CursorPos X="33" Y="25"/>
+        <EditorIndex Value="11"/>
+        <CursorPos X="92" Y="24"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit>
@@ -34,7 +36,7 @@
         <Filename Value="tests\testgender.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="testGender"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="12"/>
         <TopLine Value="109"/>
         <CursorPos X="19" Y="154"/>
         <UsageCount Value="202"/>
@@ -44,7 +46,7 @@
         <Filename Value="tests\testcontactinfo.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="testContactInfo"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="17"/>
         <TopLine Value="193"/>
         <CursorPos X="34" Y="264"/>
         <UsageCount Value="228"/>
@@ -55,7 +57,7 @@
         <ComponentName Value="Webserver"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="16"/>
         <TopLine Value="214"/>
         <CursorPos X="5" Y="219"/>
         <UsageCount Value="63"/>
@@ -70,23 +72,22 @@
       </Unit>
       <Unit>
         <Filename Value="routes\route.filesrv.pas"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="16"/>
-        <TopLine Value="226"/>
-        <CursorPos Y="16"/>
+        <EditorIndex Value="18"/>
+        <TopLine Value="181"/>
+        <CursorPos X="43" Y="235"/>
         <UsageCount Value="71"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="server\server.defines.pas"/>
-        <EditorIndex Value="17"/>
+        <EditorIndex Value="19"/>
         <TopLine Value="19"/>
         <UsageCount Value="40"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.utils.pas"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="8"/>
         <TopLine Value="547"/>
         <CursorPos X="26" Y="557"/>
         <UsageCount Value="101"/>
@@ -94,7 +95,7 @@
       </Unit>
       <Unit>
         <Filename Value="routes\route.base.pas"/>
-        <EditorIndex Value="18"/>
+        <EditorIndex Value="20"/>
         <TopLine Value="7"/>
         <CursorPos X="5" Y="33"/>
         <UsageCount Value="39"/>
@@ -173,6 +174,7 @@
       </Unit>
       <Unit>
         <Filename Value="users\server.users.pas"/>
+        <CursorPos X="105" Y="29"/>
         <UsageCount Value="104"/>
         <Bookmarks Count="2">
           <Item0 X="3" Y="191" ID="1"/>
@@ -183,7 +185,7 @@
       <Unit>
         <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.contactinfo.pas"/>
         <UnitName Value="sugar.contactInfo"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="10"/>
         <TopLine Value="184"/>
         <CursorPos X="5" Y="206"/>
         <UsageCount Value="128"/>
@@ -191,7 +193,7 @@
       </Unit>
       <Unit>
         <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\objpas\fgl.pp"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="373"/>
         <CursorPos X="14" Y="381"/>
         <UsageCount Value="119"/>
@@ -199,7 +201,7 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.gender.pas"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="13"/>
         <TopLine Value="106"/>
         <CursorPos X="78" Y="113"/>
         <UsageCount Value="61"/>
@@ -221,7 +223,7 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.languages.pas"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="14"/>
         <CursorPos X="96" Y="26"/>
         <UsageCount Value="49"/>
         <Loaded Value="True"/>
@@ -263,7 +265,7 @@
       </Unit>
       <Unit>
         <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\packages\fcl-fpcunit\src\fpcunit.pp"/>
-        <EditorIndex Value="19"/>
+        <EditorIndex Value="21"/>
         <TopLine Value="665"/>
         <CursorPos X="3" Y="668"/>
         <UsageCount Value="59"/>
@@ -333,7 +335,7 @@
       </Unit>
       <Unit>
         <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\objpas\classes\streams.inc"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="7"/>
         <TopLine Value="438"/>
         <CursorPos X="11" Y="455"/>
         <UsageCount Value="105"/>
@@ -363,7 +365,7 @@
       </Unit>
       <Unit>
         <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.jsonlib.pas"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="233"/>
         <CursorPos X="6" Y="244"/>
         <UsageCount Value="68"/>
@@ -378,7 +380,7 @@
       </Unit>
       <Unit>
         <Filename Value="R:\Apps\Lazarus\laz_conf\3.8\onlinepackagemanager\packages\Rhl\rhlCore.pas"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="9"/>
         <TopLine Value="258"/>
         <CursorPos X="3" Y="265"/>
         <UsageCount Value="46"/>
@@ -386,7 +388,7 @@
       </Unit>
       <Unit>
         <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\objpas\sysutils\syshelp.inc"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="127"/>
         <CursorPos X="3" Y="130"/>
         <UsageCount Value="37"/>
@@ -394,14 +396,21 @@
       </Unit>
       <Unit>
         <Filename Value="R:\Apps\Lazarus\3.8\fpc\3.2.2\source\rtl\inc\systemh.inc"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="1322"/>
         <CursorPos X="11" Y="1336"/>
         <UsageCount Value="34"/>
         <Loaded Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="server\server.apploop.pas"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="56" Y="15"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
     </Units>
-    <JumpHistory HistoryIndex="26">
+    <JumpHistory HistoryIndex="24">
       <Position>
         <Filename Value="tests\testcontactinfo.pas"/>
         <Caret Line="364" TopLine="344"/>
@@ -496,14 +505,6 @@
       <Position>
         <Filename Value="..\..\..\Libraries\sugar\src\mod\sugar.gender.pas"/>
         <Caret Line="113" Column="78" TopLine="106"/>
-      </Position>
-      <Position>
-        <Filename Value="tests\gui\testfilesrv.pas"/>
-        <Caret Line="28" Column="55" TopLine="36"/>
-      </Position>
-      <Position>
-        <Filename Value="tests\gui\testfilesrv.pas"/>
-        <Caret Line="15" Column="5" TopLine="33"/>
       </Position>
       <Position>
         <Filename Value="routes\route.filesrv.pas"/>
